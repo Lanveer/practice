@@ -1,0 +1,31 @@
+这里简单记录一下 如何使用个git上传本地的项目到github上面
+
+
+1. 确保github上面处于登陆状态（有账号），
+
+2.检查本地是否有id-rsa-public 证书，因为git本地与远程仓库是通过ssh协议进行通信的。
+如果有的话就可以直接跳过这一步，如果不存在的话就需要手动创建，
+$ ssh-keygen -t rsa -C "1442585939l@qq.com"
+这样就可以在本地创建一个ssh加密通信。
+3. 登录Github,找到右上角的图标，打开点进里面的Settings，再选中里面的SSH and GPG KEYS，点击右上角的New SSH key，然后Title里面随便填，再把刚才id_rsa.pub里面的内容复制到Title下面的Key内容框里面，最后点击Add SSH key，这样就完成了SSH Key的加密。具体步骤也可看下面：
+4.在Github上创建一个Git仓库。
+
+
+
+本地操作
+
+
+1.新建一个空白文件夹
+2.里面新建一个文件夹，一定要在文件夹里面放一个文件，因为git不允许传空文件。
+3. git init 初始化本地文件夹为一个仓库
+4. 执行 git add . 将文件夹里面的内容添加到git仓库
+5. git commit -m ''  填写提交的内容
+6.关联到远程仓库 git remote add origin https://github.com/Lanveer/practice.git
+7.获取远程库与本地同步合并（如果远程库不为空必须做这一步，否则后面的提交会失败）git pull --rebase origin master
+8.如果第六步失败的话，执行下面的代码 git remote rm origin
+9.把本地库的内容推送到远程，使用 git push命令，实际上是把当前分支master推送到远程。执行此命令后会要求输入用户名、密码，验证通过后即开始上传。
+git push -u origin master
+10.查看状态  git status
+
+
+ps：就按照上面的步骤就可以将一个本地的项目上传到github服务器上面。
