@@ -1,0 +1,22 @@
+ js中的函数是一等公民，下面就js中的函数做一个简单的读书笔记
+ 
+ 创建函数的三种方式以及区别
+ 
+ 1. 函数声明-----》 function sum(a,b){return a+b}
+ 2.函数表达式（函数字面量）----》  var sum= function(a,b){return a+b}
+ 
+  二者的区别：
+ 
+  解析器会先阅读函数声明，使其在执行任何代码志气啊可以被访问到，而函数表达式则必须等到解析器执行到他所在的代码的时候才会被执行
+ 3.自执行函数（也算是函数表达式中的一种）---》主要用于创建一个新的作用域，在此作用域内声明的变量不会和其他作用域内的变量冲突
+ 
+ （function(a,b){console.log(a+b)})（）
+ 
+ var sum=(function(a,b){return(a+b)})(2,3);
+ console.log(sum)
+ 
+ 4. 函数构造法---》里面的参数必须加引号，从技术角度来看其仍然属于函数表达式
+ 
+ var sum = new Function('a','b','return a+b');
+ console.log(sum(2,3))
+ 
