@@ -1,0 +1,119 @@
+ 
+ 一.函数作用域
+ 1. js是没有块级作用域的，有可能声明在if语句块内部的变量会变成全局变量，但是有可能全局已经存在一个全局变量的话就会造成全局变量的污染
+    var name="global";  
+    if(true){  
+        var name="local";  
+        console.log(name)  
+    }  
+    console.log(name);
+    
+    这段代码的执行结果都是local，  按照一般的理解最后一个应该输出global， 但是因为js没有块级作用域，所以代码会一次执行。
+    
+   二.变量作用域
+       function t(flag){  
+        if(flag){  
+            s="ifscope";  
+            for(var i=0;i<2;i++)   
+                ;  
+        }  
+        console.log(i);  
+    }  
+    t(true);  
+    console.log(s); 
+    
+    运行的结果会输出： 2 "ifscope"
+    这主要是Js中没有用var声明的变量都是全局变量，而且是顶层对象的属性。
+    所以你用console.log(window.s)也是会输出“ifconfig"
+
+    * 当使用var声明一个变量时，创建的这个属性是不可配置的，也就是说无法通过delete运算符删除
+    var name=1    ->不可删除
+    sex=”girl“    ->可删除
+    this.age=22   ->可删除
+    
+    三：作用域链
+    
+      name="lwy";  //申明的全局变量
+      function t(){  
+          var name="tlwy";  
+          function s(){  
+              var name="slwy";  
+              console.log(name);  
+          }  
+          function ss(){  
+              console.log(name);  
+          }  
+          s();  
+          ss();  
+      }  
+      t();  
+      
+      
+     执行结果
+       当执行s时，将创建函数s的执行环境(调用对象),并将该对象置于链表开头，然后将函数t的调用对象链接在之后，最后是全局对象
+       然后从链表开头寻找变量name,很明显
+       name是"slwy"。
+       但执行ss()时，作用域链是： ss()->t()->window,所以name是”tlwy"
+       
+  四：with语句
+  
+  说到作用域链，不得不说with语句。with语句主要用来临时扩展作用域链，将语句中的对象添加到作用域的头部。
+  
+  person={name:"yhb",age:22,height:175,wife:{name:"lwy",age:21}};  
+  with(person.wife){  
+      console.log(name);  
+  } 
+  
+  解析：with语句将person.wife添加到当前作用域链的头部，所以输出的就是：“lwy"， with语句结束后，作用域链恢复正常
+  
+  
+  上面的例子讲了函数的作用域，但是都只是其中一方面发散出来的，下面介绍一些宏观的作用域知识，就是全局作用域和局部作用域。
+  
+   1.  全局作用域（Global Scope）
+   （1）最外层函数和在最外层函数外面定义的变量拥有全局作用域，例如：
+   
+       var authorName="山边小溪";
+        function doSomething(){
+          var blogName="梦想天空";
+          function innerSay(){
+              alert(blogName);
+          }
+          innerSay();
+      }
+        alert(authorName); //山边小溪
+        alert(blogName); //脚本错误
+        doSomething(); //梦想天空
+        innerSay() //脚本错误
+    （2）所有末定义直接赋值的变量自动声明为拥有全局作用域，例如：
+    
+      function doSomething(){
+        var authorName="山边小溪";
+        blogName="梦想天空";
+        alert(authorName);
+    }
+    doSomething(); //山边小溪
+    alert(blogName); //梦想天空
+    alert(authorName); //脚本错误
+    
+    变量blogName拥有全局作用域，而authorName在函数外部无法访问到。
+    
+    
+    2. 局部作用域（Local Scope）
+    
+    和全局作用域相反，局部作用域一般只在固定的代码片段内可访问到，最常见的例如函数内部，所有在一些地方也会看到有人把这种作用域称为函数作用域，
+    例如下列代码中的blogName和函数innerSay都只拥有局部作用域。
+    function doSomething(){
+    var blogName="梦想天空";
+    function innerSay(){
+        alert(blogName);
+    }
+        innerSay();
+    }
+    alert(blogName); //脚本错误
+    innerSay(); //脚本错误
+  
+  
+  
+  
+  
+  
