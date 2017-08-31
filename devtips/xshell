@@ -1,0 +1,22 @@
+1.要使用 zip 来压缩文件，在 shell 提示下键入下面的命令：
+zip -r filename.zip filesdir
+在这个例子里，filename.zip 代表你创建的文件，filesdir 代表你想放置新 zip 文件的目录。-r 选项指定你想递归地（recursively）
+包括所有包括在 filesdir 目录中的文件。
+2.要解压缩 zip 文件的内容，键入以下命令
+unzip filename.zip
+你可以使用 zip 命令同时处理多个文件和目录，方法是将它们逐一列出，并用空格间隔：
+zip -r filename.zip file1 file2 file3 /usr/work/school
+上面的命令把 file1、file2、 file3、以及 /usr/work/school 目录的内容（假设这个目录存在）压缩起来，然后放入 filename.zip 文件中。
+tar 文件是几个文件和（或）目录在一个文件中的集合。这是创建备份和归档的佳径。
+tar 使用的选项有：
+-c — 创建一个新归档。
+-f — 当与 -c 选项一起使用时，创建的 tar 文件使用该选项指定的文件名；当与 -x 选项一起使用时，则解除该选项指定的归档。
+-t — 显示包括在 tar 文件中的文件列表。
+-v — 显示文件的归档进度。
+-x — 从归档中抽取文件。
+-z — 使用 gzip 来压缩 tar 文件。
+-j — 使用 bzip2 来压缩 tar 文件。
+
+
+
+
