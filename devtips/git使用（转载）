@@ -1,0 +1,54 @@
+1. 版本库
+　　版本库又名仓库,英文名repository,你可以简单的理解一个目录，这个目录里面的所有文件都可以被Git管理起来，每个文件的修改，删除，Git都能跟踪，以便任何时刻都可以追踪历史，或者在将来某个时刻还可以将文件”还原”.
+2. 创建版本库(初始化)
+git init
+这时候你当前目录下会多一个.git的目录，这个目录是Git来跟踪管理版本的，没事千万不要手动乱改这个目录里面的文件，否则会把git仓库给破坏了.
+3. 说明
+　　首先要明确下，所有的版本控制系统，只能跟踪文本文件的改动，比如txt文件，网页，所有程序的代码等，Git也不列外，版本控制系统可以告诉你每次的改动，但是图片，视频这些二进制文件，虽能也能由版本控制系统管理，但没法跟踪文件的变化，只能把二进制文件每次改动串起来，也就是知道图片从1kb变成2kb，但是到底改了啥，版本控制也不知道。
+4. 添加文件到暂存区
+git add fileName1,fileName2...
+5. 提交暂存区文件到远程仓库
+git commit -m 'commit description'
+6. 查看暂存区状态
+git status
+7. 查看暂存区中代码的改变
+git diff fileName
+8. 查看暂存区的提交日志
+git log
+9. 回退已提交到暂存区但尚未push到远程仓库的代码
+git reset --hard commit_version
+其中commit_version就是通过日志看到的每次提交的全局唯一版本号
+10. 回退到上一版本
+git reset --hard HEAD^
+11. 查看暂存区内容
+git reflog
+12. 查看当前分支，其中前面有*符号的表示当前分支
+git branch
+13. 切换分支
+git checkout branchName
+14. 新建分支
+git checkout -b newBranchName
+15. 合并分支
+git merge branchName
+16. 删除分支
+git branch -d branchName
+17. 添加远程仓库位置
+git remote add origin remote_url
+这样我们就指定了当前git的远程仓库。
+18. push本地代码到远程仓库
+git push origin master
+19. 克隆远程仓库代码到本地
+git clone remote_url
+20. 隐藏本地修改到缓存区
+git stash
+21. 恢复缓存区中的修改
+恢复修改，且不删除stash内容
+git stash apply
+　　2).恢复以后，直接删除stash内容
+git stash pop
+22. 查看远程仓库信息
+git remote
+23. 查看远程仓库的详细信息
+git remote -v
+24. 拉取远端最新代码
+git pull
