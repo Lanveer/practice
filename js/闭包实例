@@ -1,0 +1,69 @@
+最近研究了闭包，早上找了一些实例，看是看懂了，但是转过头来就忘了，现在在网上找了一个比较形象的例子来说明闭包，下面直接看代码
+
+第一个例子：
+  var name = "The Window";
+  var object = {
+      name: "My object",
+      getNameFunc: function() {
+          return function() {
+              return this.name;
+          };
+      }
+  }
+alert(object.getNameFunc()()); // "The Window"
+
+
+这个例子比较典型，对象里面定义函数，定义了变量，函数里面还有嵌套函数，这就是典型的闭包，在这个函数里面，拆分结果成两个部分，
+var first=object.getNameFunc()
+var second=first();
+
+在这里，返回的第一步就获得了first的匿名函数，这个时候的getNameFun是做为object的方法在调用，如果在里面使用this的话，这个时候this所指向的
+就是object对象，
+
+第二步开始，调用的是first函数，这个时候的first函数就已经是脱离了对象存在，是属于作为函数调用的，而且是处于全局作用域下面，因此此时的first
+函数中的this是指向window对象的，所以返回的结果就是window
+
+引用javascript噶几程序设计里面的一句话：
+
+  为什么匿名函数没有取得其包含作用域（外部作用域）的this对象呢？
+
+  每个函数被调用的时候，其活动对象都会自动取得两个特殊的变量，this和arguments，内部函数在搜索这两个变量的时候，只会搜索到其的活动
+  对象为止，因此永远不可能直接访问外部函数中的这两个变量。
+  
+  衍生：如何获得外部作用域中的this对象呢
+  
+  思考：可以把外部作用域中的this对象保存到闭包可以访问的变量里面
+  
+    于是第二个列子便呼之欲出了
+    
+    var name = "The Window";
+    var object = {
+        name: "My object",
+        getNameFunc: function() {
+            var that = this;   // 将getNameFunc()的this保存在that变量中
+            var age = 15;
+            return function() {
+                return that.name;
+            };
+        }
+    }
+alert(object.getNameFunc()());   // "My object"
+
+
+  这个时候，getNameFunc执行时候的活动对象有，that，this，匿名函数，在执行匿名函数的时候，同时引用了getNameFunc()中的活动对象
+  因此是可以直接拿到that和age 的值，由于是在全局环境中调用的匿名函数，所以匿名函数内部的this还是指向了window对象，所以便会有了现在
+  的结果。
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+  
+  
