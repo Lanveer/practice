@@ -34,3 +34,4 @@ ps：就按照上面的步骤就可以将一个本地的项目上传到github服
 补充： 如果在push代码的时候报错eg：failed to push some refs to  xxxxx.git的话，，
 解决办法:git pull --rebase origin master   
 含义：本地的仓库和线上的仓库有不同的地方，需要将二者统一，然后再进行代码的更新
+这一点比较有用。
