@@ -1,0 +1,10 @@
+1.百度网盘下载navicate for mysql 
+2.下载mysql直接安装
+3.打开控制台依次输入
+appledeMBP-4:~ lanveer$ alias mysql=/usr/local/mysql/bin/mysql
+appledeMBP-4:~ lanveer$ alias mysqladmin=/usr/local/mysql/bin/mysqladmin
+appledeMBP-4:~ lanveer$ mysql -u root -p
+
+然后久能进入了。
+
+ps：mac下面使用数据库存在很多的坑，都需要一步一步的去实践才能找出这些坑，慢慢的去填补。后面有更新的地方会慢慢的添加上去的。
