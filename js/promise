@@ -1,0 +1,35 @@
+Promise是抽象异步处理对象以及对其进行各种操作的组件。 其详细内容在接下来我们还会进行介绍，Promise并不是从JavaScript中发祥的概念。
+要想创建一个promise对象、可以使用new来调用Promise的构造器来进行实例化。
+
+var promise = new Promise(function(resolve, reject) {
+    // 异步处理
+    // 处理结束后、调用resolve 或 reject
+});
+
+
+eg：
+    function asyncFunction() {
+
+        return new Promise(function (resolve, reject) {
+            setTimeout(function () {
+                resolve('Async Hello world');
+            }, 16);
+        });
+    }
+
+    asyncFunction().then(function (value) {
+        console.log(value);    // => 'Async Hello world'
+    }).catch(function (error) {
+        console.log(error);
+});
+
+
+我们已经大概了解了Promise的处理流程，接下来让我们来稍微整理一下Promise的状态。
+
+用new Promise 实例化的promise对象有以下三个状态。
+
+"has-resolution" - Fulfilled
+resolve(成功)时。此时会调用 onFulfilled
+
+"has-rejection" - Rejected
+reject(失败)时。此时会调用 onRejected
