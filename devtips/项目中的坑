@@ -13,3 +13,10 @@
 3. angular解决post提交表单后台收不到数据，
   1）在请求中配置 headers:{'Content-Type': 'application/x-www-form-urlencoded'}, 
   2）post方式的话参数使用data  get使用params
+  
+  4.angular uirouter 的代理问题，方便不同的请求对应不同的端口
+  
+  解释：
+  
+  
+  
