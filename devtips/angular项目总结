@@ -7,3 +7,15 @@ console.log(item.id)
 }
 
 在这个方法里面，function中的item就是前面data里面的值，通过item.id就可以获取到正在所选中的ID了。
+
+
+
+
+2.使用<pre>{{data }}</pre>这样的方式可以动态看到data所绑定的值的变化，，
+eg：   ng-model="data.name"  /  ng-model="password=data" 通过这样的方式就可以根据输入获取到对应值的变化，可以在pre这个标签里面看到我们所
+输入的结果。
+
+
+
+
+3. ¥scope函数里面如果遇到多个条件的话，不需要使用层层的嵌套，可以使用angular的switch完成。
