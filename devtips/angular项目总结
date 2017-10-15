@@ -19,3 +19,10 @@ eg：   ng-model="data.name"  /  ng-model="password=data" 通过这样的方式�
 
 
 3. ¥scope函数里面如果遇到多个条件的话，不需要使用层层的嵌套，可以使用angular的switch完成。
+
+
+4. anghular 的ng-file-upload 实现文件上传
+
+
+
+5.ng-model实现反相数据的更新，在restful接口开发中最实用。
