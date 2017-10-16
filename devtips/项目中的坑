@@ -10,30 +10,3 @@
 解决办法：直接在两个字符之间加上/就可以了，'<td>'+score.win_match+'/'+score.fail_match+' </td>' 就像这样。
 
 
-3. angular解决post提交表单后台收不到数据，
-  1）在请求中配置 headers:{'Content-Type': 'application/x-www-form-urlencoded'}, 
-  2）post方式的话参数使用data  get使用params
-  
-  4.angular uirouter 的代理问题，方便不同的请求对应不同的端口
-  
-  解释：
-  
-  
-  5.解决angular spa中加载的时候总是显示一个怪异页面的问题。
-  
-  解释：
-  
-  
- 6. 解决angular 1.5 版本的成功回调函数不执行的问题
-  解释：
-
-
-7. angular实现文件上传
-解释
-
-8. angular实现图片上传
-
-解释
-
-9.angular的富文本编辑
-解释
