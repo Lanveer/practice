@@ -26,3 +26,32 @@ eg：   ng-model="data.name"  /  ng-model="password=data" 通过这样的方式�
 
 
 5.ng-model实现反相数据的更新，在restful接口开发中最实用。
+
+
+6. angular解决post提交表单后台收不到数据，
+  1）在请求中配置 headers:{'Content-Type': 'application/x-www-form-urlencoded'}, 
+  2）post方式的话参数使用data  get使用params
+  
+  7.angular uirouter 的代理问题，方便不同的请求对应不同的端口
+  
+  解释：
+  
+  
+  8.解决angular spa中加载的时候总是显示一个怪异页面的问题。
+  
+  解释：
+  
+  
+ 9. 解决angular 1.5 版本的成功回调函数不执行的问题
+  解释：
+
+
+10. angular实现文件上传
+解释
+
+11. angular实现图片上传
+
+解释
+
+12.angular的富文本编辑
+解释
