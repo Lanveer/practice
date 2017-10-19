@@ -1,0 +1,14 @@
+1. 模板的使用
+
+
+1）模板的编写
+<template name="courseLeft">
+   xxxxxx
+</template>
+
+2).css样式的编写和正常的页面css一样
+
+3）使用模板
+<import src="../../templates/courseList.wxml"/>  ==页面引入
+ <template is="{{index%2 === 0 ? 'courseLeft' : 'courseRight'}}" data="{{...item}}"></template> == 使用的地方
+ @import "../template/courseList.wxss";===样式表的引入
