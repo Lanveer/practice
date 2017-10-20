@@ -28,3 +28,22 @@ api之前都没有用到，还有一些，虽然之前版本就有的，但是�
  <view style="background: blue; width: 200px; height: 100px; display: inline-block"></view>
  <view style="background: yellow; width: 200px; height: 100px; display: inline-block"></view>
 </scroll-view>
+
+
+
+2. 参数的传递问题
+ bindViewTap: function() {
+    wx.navigateTo({
+      url: '../logs/logs?name=hello' 
+    })
+  },
+  
+  接收：
+    onLoad: function (query) {
+    this.setData({
+      nickname:query.name
+    });
+  }
+  
+  
+  
