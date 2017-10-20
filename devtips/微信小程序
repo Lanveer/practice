@@ -45,5 +45,12 @@ api之前都没有用到，还有一些，虽然之前版本就有的，但是�
     });
   }
   
+  3. 获取小程序唯一的openid
   
+  第一步： 通过login函数获取code
+  第二部：通过wx.request请求
+                  var l='https://api.weixin.qq.com/sns/jscode2session?appid='+d.appid+'&secret='+d.secret+'&
+                  js_code='+res.code+'&grant_type=authorization_code';  
+                  
+                  在回调函数里面获取到openid 
   
