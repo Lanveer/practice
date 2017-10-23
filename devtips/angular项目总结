@@ -98,8 +98,7 @@ C.具体方法：
 
                     // editor.insertImage($scope.editable, file_location, uploaded_file_name);
 
-                //
-                    $scope.editor.summernote('editor.insertImage', file_location);
+                    $scope.editor.summernote('editor.insertImage', file_location);//在编辑框中显示我们上传的文件
 
                 });
 
@@ -107,7 +106,8 @@ C.具体方法：
 
         };
         
-        这里面需要注意的地方 // var editor = $.summernote.eventHandler.getModule()  如果使用这个的话
+        这里面需要注意的地方 // var editor = $.summernote.eventHandler.getModule()  如果使用这个的话，会报一个getModule() undefined的错误
+        ，在网上搜索了很多都找不到解决办法，我们使用这个的目的就是在上传文件到服务器之后可以在编辑框里面展示我们不上传的图片。便于再次编辑，
 
 
 
