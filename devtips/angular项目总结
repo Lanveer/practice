@@ -55,3 +55,71 @@ eg：   ng-model="data.name"  /  ng-model="password=data" 通过这样的方式�
 
 12.angular的富文本编辑
 解释
+
+
+13. angular使用summernote富文本上传图片到服务器--使用上传插件是ng-file-upload
+用法：一般情况下，使用富文本编辑图片的时候，图片都通过base64格式存放在本地的数据库里面，缺点很明显，一个是数据量打，一个是效率不高，还有就是支持
+率不高，小程序的富文本渲染器就不支持base64的渲染，所以，我们再使用summernote的时候，就把图片全部上传到服务器上面
+
+使用：  <summernote config="options" ng-model="AddDate.introduce" editor="editor" editable="editable" 
+data-on-image-upload="imageUpload(files)"></summernote>
+
+controller： 
+A.首先在控制器的依赖模块里面注入需要的组件 Upload以及上传所需要的
+B.定义上传图片执行方法函数：
+   $scope.imageUpload = function(files) {
+            uploadEditorImage(files);
+        };
+C.具体方法：
+解释：oss是提前在模块里面定义的解析上传文件的方法，包括对文件后缀的处理，以及文件名的生成
+
+  function uploadEditorImage(files) {
+            var key = oss.key + oss.random_string(10) + oss.get_suffix(files[0].name);
+            if (files != null) {
+                Upload.upload({
+                    url: 'http://jswpic.oss-cn-hangzhou.aliyuncs.com', //S3 upload url including bucket name
+                    // file: files[0],
+                    data: {
+                        key: key, // the key to store the file on S3, could be file name or customized
+                        OSSAccessKeyId: oss.OSSAccessKeyId,
+                        acl: 'public-read', // sets the access to the uploaded file in the bucket: private, public-read, ...
+                        policy: oss.policy, // base64-encoded json policy (see article below)
+                        signature: oss.signature, // base64-encoded signature based on policy string (see article below)
+                        "Content-Type": files.type != '' ? files.type : 'application/octet-stream', // content type of the file (NotEmpty)
+                        filename: files[0].name, // this is needed for Flash polyfill IE8-9
+                        success_action_status: 200,
+                        file:files[0]
+                    }
+                }).success(function(data, status, headers, config) {
+                    $scope.richImgs = 'http://pic.jiushang.cn/' + key;
+                    console.log('jjj:'+$scope.richImgs)
+                    // var editor = $.summernote.eventHandler.getModule(),
+                        var file_location =$scope.richImgs;
+
+                    // editor.insertImage($scope.editable, file_location, uploaded_file_name);
+
+                //
+                    $scope.editor.summernote('editor.insertImage', file_location);
+
+                });
+
+            }
+
+        };
+        
+        这里面需要注意的地方 // var editor = $.summernote.eventHandler.getModule()  如果使用这个的话
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
