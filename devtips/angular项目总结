@@ -94,7 +94,7 @@ C.具体方法：
                     $scope.richImgs = 'http://pic.jiushang.cn/' + key;
                     console.log('jjj:'+$scope.richImgs)
                     // var editor = $.summernote.eventHandler.getModule(),
-                        var file_location =$scope.richImgs;
+                        var file_location =$scope.richImgs;   //上传服务器的图片的url
 
                     // editor.insertImage($scope.editable, file_location, uploaded_file_name);
 
