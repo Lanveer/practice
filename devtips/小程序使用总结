@@ -20,9 +20,30 @@
  绑定数据：
  1、将模板所需要的 data 传入，一般我们都会使用列表渲染。
  
-    <block wx:for="{{courseList}}">
-       <template is="{{index%2 === 0 ? 'courseLeft' : 'courseRight'}}" data="{{...item}}"></template>
+    <block wx:for="{{courseList}}">   //这里的courseList 就是这个页面需要获取的数据
+       <template is="{{index%2 === 0 ? 'courseLeft' : 'courseRight'}}" data="{{...item}}"></template>   //item的话根据需要是展开还是
+       
+       不展开 如果是展开的话在模板里面绑定数据的时候就不需要使用item.  去绑定了，直接输入值名就可以了，反之亦然。
    </block>
    
    a.可以通过表达式来确定使用哪个模板is="{{index%2 === 0 ? 'courseLeft' : 'courseRight'}}" 
    或者通过wx:if来确定。index是数组当前项的下标。
+   
+   
+   
+   
+   
+   
+4.使用piker循环数组
+
+      data: {  
+              Data: [{id:0,value:'a',name:'A' },{id:1,value:'b',name:'B' }], 
+              Index: 0,
+  
+          },
+
+      <picker class="picker" bindchange="bindChange" value="{{Index}}"  range="{{Data}}" range-key="name">
+          <view >
+            当前选择：{{Data[Index].name}}
+          </view>
+      </picker>
