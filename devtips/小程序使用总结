@@ -42,8 +42,22 @@
   
           },
 
-      <picker class="picker" bindchange="bindChange" value="{{Index}}"  range="{{Data}}" range-key="name">
+      <picker class="picker" bindchange="hotelPiker" value="{{Index}}"  range="{{Data}}" range-key="name">
           <view >
             当前选择：{{Data[Index].name}}
           </view>
       </picker>
+      
+      处理选中的方法：
+      
+        hotelPiker(e) {
+       var that=this;
+       that.setData({
+         Index: e.detail.value,
+         hotelId: that.data.hotelData[e.detail.value].id
+       })
+
+       },
+       
+       这样就能获得选中的值
+      
