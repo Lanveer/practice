@@ -12,3 +12,17 @@
 <import src="../../templates/courseList.wxml"/>  ==页面引入
  <template is="{{index%2 === 0 ? 'courseLeft' : 'courseRight'}}" data="{{...item}}"></template> == 使用的地方
  @import "../template/courseList.wxss";===样式表的引入
+ 
+ 
+ 模板里面可以定义多个模板，每个模板有不同的name，调用的时候，取出不同的name值就可以了，
+ 
+ 
+ 绑定数据：
+ 1、将模板所需要的 data 传入，一般我们都会使用列表渲染。
+ 
+    <block wx:for="{{courseList}}">
+       <template is="{{index%2 === 0 ? 'courseLeft' : 'courseRight'}}" data="{{...item}}"></template>
+   </block>
+   
+   a.可以通过表达式来确定使用哪个模板is="{{index%2 === 0 ? 'courseLeft' : 'courseRight'}}" 
+   或者通过wx:if来确定。index是数组当前项的下标。
