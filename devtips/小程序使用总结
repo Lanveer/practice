@@ -60,4 +60,23 @@
        },
        
        这样就能获得选中的值
+       
+       
+ 5. radio的使用
+      <view class="picker" style='margin-top:50rpx;'>
+       是否热门:
+       <radio-group bindchange="radioChange" style='margin-left:10px;;'>
+         <label wx:for="{{items}}">
+           <radio value="{{item.name}}" checked="{{item.checked}}" />{{item.value}}
+         </label>
+       </radio-group>
+     </view>
+     
+     
+     radioChange:function(e){
+    var that=this;
+    that.setData({
+      is_hot:e.detail.value
+    })
+  },
       
