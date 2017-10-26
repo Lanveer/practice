@@ -112,6 +112,25 @@ C.具体方法：
 
 
 
+14. 使用angular完成失去焦点的时候发送ajax请求
+  <input type="text" class="tjh-input" placeholder="请输入产品关键词" value="" ng-model="AddDate.goods" ng-blur="test()">
+  在controller里面定义
+       $scope.test=function () {
+            var keyword=$scope.AddDate.goods;
+            var searchPromise= $http({
+                url:'http://jswapi.jiushang.cn/public/local/goods',
+                method:'get',
+                type:'json',
+                params:{keyword:$scope.AddDate.goods}
+            });
+            searchPromise.then(function (res) {
+              console.log(res)
+            })
+        }
+        
+        就可以了
+
+
 
 
 
