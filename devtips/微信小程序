@@ -76,4 +76,19 @@ api之前都没有用到，还有一些，虽然之前版本就有的，但是�
   
   
   8.在小程序使用switch 语句块的时候，如果switch里面参数是数字的话需要转化为parseInt（）类型才能进行执行，不然的话是执行不下去的。
+  
+  
+  9.小程序通过缓存实现搜索或者历史记录的展示功能
+    tips：入股是做搜索历史记录的话，就需要在搜索成功的回调函数里面去做，便于取得成功的值，如果是浏览记录的话，就在浏览页被加载的时候做。
+   var histoty = [];
+          var x = wx.getStorageSync('histoty'); // 取出缓存数据
+          if (x == '') {
+            var x = [];
+            var ky = that.data.inputValue;
+            x.push(ky);
+            wx.setStorageSync('histoty', x);  // 判断缓存数据为空的情况，新增加缓存
+          } else {
+            x.push(that.data.inputValue);
+            wx.setStorageSync('histoty', x);   // 如果缓存数据不为空的话，将现在的数据pus到以前的，并存到缓存里面。
+          }
 
