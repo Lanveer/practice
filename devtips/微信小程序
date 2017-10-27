@@ -91,4 +91,24 @@ api之前都没有用到，还有一些，虽然之前版本就有的，但是�
             x.push(that.data.inputValue);
             wx.setStorageSync('histoty', x);   // 如果缓存数据不为空的话，将现在的数据pus到以前的，并存到缓存里面。
           }
+          
+          
+ 10. 小程序处理字符串问题
+ 
+ 有时候在列表中需要对过于长的字符串进行截取处理，但是由不能直接在{{}}中进行运算，所以只有在成功回调函数中循环需要截取的这个字符串
+ 
+    for (var i = 0; i < that.data.productList.length; i++) {
+            var obj = {};
+            var str = that.data.productList[i].goods_name;
+            var key = 'productList[' + i + '].goods_name';
+            if (str.length > 6) {
+              str = str.substr(0, 6) + "...";
+            }
+            obj[key] = str;
+            that.setData(obj)
+          }
+          
+          
+         通过这样的方法，就能将这个截取后的字符串放到原来返回值的数组里面去了，关键点是这里的 var key = 'productList[' + i + '].goods_name';
+         一定要和原来的数组返回值保持一致，不然的在data中就出现了两个不同的值。
 
