@@ -124,3 +124,54 @@ setData({})到data中去， 然后在点击列表的时候获取其中点击列�
     
    <view class='list' bindtap='productHref' wx:for='{{productList}}' data-index="{{index}}"> wxml中的写法
 
+
+
+12.  小程序实现照片上传
+
+  chooseImageTap1: function () {
+    var that = this;
+    wx.showActionSheet({
+      itemList: ['从相册中选择', '拍照'],
+      itemColor: "#f7982a",
+      success: function (res) {
+        if (!res.cancel) {
+          if (res.tapIndex == 0) {
+            that.chooseWxImage1('album')
+          } else if (res.tapIndex == 1) {
+            that.chooseWxImage1('camera')
+          }
+        }
+      }
+    })
+  },
+  chooseWxImage1: function (type) {
+    let that = this;
+    wx.chooseImage({
+      sizeType: ['original', 'compressed'],
+      sourceType: [type],
+      success: function (res) {
+        that.setData({
+          enterPrice: res.tempFilePaths[0],
+        })
+        // 文件上传
+        var file = res.tempFilePaths[0]
+        wx.uploadFile({
+          url: app.globalData.host + 'v2/wechat.user/upload',
+          filePath: file,
+          header: { "Content-Type": "application/x-www-form-urlencoded" },
+          name: 'file',
+          formData: {
+            'token': that.data.userInfo.token,
+            'file': file
+          },
+          success: function (res) {
+            var obj = JSON.parse(res.data);
+            console.log(obj.data.url)
+            that.setData({
+              companyLicenceUrl: obj.data.url
+            })
+          }
+        })
+      }
+    })
+  },
