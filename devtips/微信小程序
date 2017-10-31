@@ -199,3 +199,34 @@ Page({
 })
 
 总结：在这里，checkbox是通过循环出来的，这边按上绑定了点击事件，首先获得现在存在的个数所属的数组，然后将长度push进这个数组
+
+
+
+
+
+15.小程序实现当前元素高亮状态
+
+微信小程序有个属性hover-class='active',是指当点击列表元素时当按下鼠标左键会显示active样式,但是鼠标离开样式就会复原.可以参考以下解决方案,
+直接上代码
+<view class="taga">
+ <view class="tag-title">标签</view>
+ <view class="tag-box">
+ <view wx:for="{{taga}}" wx:key="id" wx:for-index="i">
+ <view class="taga-item {{currentItem==item.id?'active-tag':''}}" data-id="{{item.id}}" bindtap="tagChoose">{{item.name}}</view>
+ </view>
+ </view>
+ 
+ 
+ js代码
+    tagChoose:function(options){
+   var that = this
+   var id = options.currentTarget.dataset.id;
+   console.log(id)
+   //设置当前样式
+   that.setData({
+   'currentItem':id
+   })
+   }
+
+
+
