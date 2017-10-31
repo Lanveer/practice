@@ -175,3 +175,27 @@ setData({})到data中去， 然后在点击列表的时候获取其中点击列�
       }
     })
   },
+  
+  
+  13. 小程序实现动态添加元素
+  
+  <button bindtap="insert">增加按钮</button>
+<view wx:for="{{checkbox}}">
+    <checkbox>checkbox</checkbox>
+</view>
+
+
+Page({
+  data:{
+    checkbox: [],
+  },
+  insert: function() {
+    var cb = this.data.checkbox;
+    cb.push(this.data.checkbox.length);
+    this.setData({
+      checkbox: cb
+    });
+  }
+})
+
+总结：在这里，checkbox是通过循环出来的，这边按上绑定了点击事件，首先获得现在存在的个数所属的数组，然后将长度push进这个数组
