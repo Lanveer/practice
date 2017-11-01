@@ -1,0 +1,11 @@
+1.setData的问题，在开发中，我们会将一些需要的变量定义在data中，然后在下面的方法中可能会setData去动态的改变这些值
+
+data{
+test:{
+name:'lanveer',
+age:'28'
+  }
+}
+
+下面我们需要对年龄进行更新操作，如果是我们再一次setData的话就会出错 setData({age:'30'})  这样的话整个test就变成只有age字段了，name就不见了，
+这样做肯定不行，我们需要setData({'test.age':30})  通过这样的方式就能将年龄改变了，同时保留name字段
