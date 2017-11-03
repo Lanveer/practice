@@ -1,0 +1,7 @@
+ 
+ 1.js提取url链接中的一个参数值。
+ 这个参数值没有=，但是又需要我们获取这个参数值。
+  var str='https://tjh-min.jiushang.cn/sharejjjjjjjjjjjjj?from18407614 ';
+  var x= str.lastIndexOf('m');
+  var y= str.substring(x+1,str.length-1)
+  console.log(y);
