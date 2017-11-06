@@ -1,0 +1,27 @@
+
+
+1.jq改变背景图片
+
+jquery设置背景图片:$(this).css("background-image","url(on.jpg)");就可以了
+$(this).css("background-image","url(on.jpg)");
+
+
+
+2. jq实现回到顶部
+
+    $(".toTop-up").click(function(){
+        $('body,html').animate({ scrollTop: 0 }, 800)
+    });
+
+3.适当距离出现回到顶部按钮
+
+    $(window).scroll(function(){
+        if ($(window).scrollTop()>100){
+            $("#toTop").fadeIn(1500);
+        }
+        else
+        {
+            $("#toTop").fadeOut(1500);
+        }
+    });
+
