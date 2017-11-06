@@ -1,0 +1,40 @@
+
+
+var studentList = [
+    {
+        name: "xiaoming",
+        age: "22",
+        hobby: "sleep"
+    },
+    {
+        name: "xiaohong",
+        age: "22",
+        hobby: {
+            one: "eat",
+            two: "eatfood"
+        }
+ 
+    }
+]
+ 
+//模块化
+module.exports = {
+    studentList: studentList
+}
+
+
+
+然后在indexjs中调用
+var common = require("../aa/common.js")
+//获取应用实例
+var app = getApp()
+Page({
+  data: {
+  },
+   
+  onLoad: function () {
+    this.setData({
+        studentList:common.studentList
+        });
+  }
+})
