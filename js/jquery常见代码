@@ -53,4 +53,10 @@ $(this).css("background-image","url(on.jpg)");
     var item=colors.pop();//移除最后一项,并返回最后一项的值
     alert(item);//“black”    
     alert(colors.length);//2
+    
+    
+    7.shift和unshift
+    1):shift()移除数组中第一个项并返回改项,同时将数组长度减1.
+
+    2):unshift()在数组前端添加任意个项并返回新数组的长度.
 
