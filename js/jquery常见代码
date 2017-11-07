@@ -24,4 +24,18 @@ $(this).css("background-image","url(on.jpg)");
             $("#toTop").fadeOut(1500);
         }
     });
-
+    
+    
+   4. js将字符串转换为数组
+   
+   var x='13453,13423';
+    var y=x.split(',');
+    console.log(y)
+  //结果 ["13453", "13423"]
+   
+   5.js将数组转化为字符串
+   
+    var x=[111,222];
+    var y=x.join();
+    console.log(y)
+    //结果 111,222
