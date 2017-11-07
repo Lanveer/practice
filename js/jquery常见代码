@@ -60,3 +60,10 @@ $(this).css("background-image","url(on.jpg)");
 
     2):unshift()在数组前端添加任意个项并返回新数组的长度.
 
+8. 3.Array.reverse()方法，返回逆序数组
+
+    var a = [1,2,3];
+
+    a.reverse();
+
+    console.log(a); //直接改变a数组的值 返回的是[3,2,1]
