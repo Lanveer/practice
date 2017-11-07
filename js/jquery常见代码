@@ -36,6 +36,6 @@ $(this).css("background-image","url(on.jpg)");
    5.js将数组转化为字符串
    
     var x=[111,222];
-    var y=x.join();
+    var y=x.join();//  toString()  valueOf()   toLocalString()
     console.log(y)
     //结果 111,222
