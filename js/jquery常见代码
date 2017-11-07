@@ -39,3 +39,18 @@ $(this).css("background-image","url(on.jpg)");
     var y=x.join();//  toString()  valueOf()   toLocalString()
     console.log(y)
     //结果 111,222
+    
+    
+    6. 数组的push和pop ／／ push可以将元素推进数组里面，pop可以移除元素的最后一项，然后返回这个被移除的元素。
+    var colors=new Array();//创建一个数组
+    var count=colors.push("red","green");//推入两项
+    alert(count);//2
+
+
+    count=colors.push("black");//推入另一项
+    alert(count);//3
+
+    var item=colors.pop();//移除最后一项,并返回最后一项的值
+    alert(item);//“black”    
+    alert(colors.length);//2
+
