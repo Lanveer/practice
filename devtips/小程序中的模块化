@@ -38,3 +38,47 @@ Page({
         });
   }
 })
+
+
+
+2.  模块化实现小程序获取当前时间
+
+//date.js
+function formatTime(date) {
+  var year = date.getFullYear()
+  var month = date.getMonth() + 1
+  var day = date.getDate()
+
+  var hour = date.getHours()
+  var minute = date.getMinutes()
+  var second = date.getSeconds()
+
+  return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
+}
+
+function formatNumber(n) {
+  n = n.toString()
+  return n[1] ? n : '0' + n
+}
+
+module.exports = {
+  formatTime: formatTime
+}
+
+
+// 在需要使用的js文件中，导入js
+var date = require('date.js');
+Page({
+  data: {
+
+  },
+  onLoad: function () {
+    // 调用函数时，传入new Date()参数，返回值是日期和时间
+    var time = date.formatTime(new Date());
+    // 再通过setData更改Page()里面的data，动态更新页面的数据
+    this.setData({
+      time: time
+    });
+  }
+
+})
