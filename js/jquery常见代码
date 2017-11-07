@@ -80,3 +80,27 @@ B   var a = [1,2,3];
     var b = a.join();
     console.log(b)
     ／／结果是： 1,2,3   
+
+
+10.forEach()方法，从头至尾遍历数组，为每个元素调用指定的函数。
+var a = [1,2,3,4,5];
+             
+var sum = 0;
+             
+a.forEach(function (value) {
+    sum += value
+})
+console.log(sum); //sum = 15
+             
+
+11.map()方法
+
+和forEach()类似，调用数组的每个元素传递给指定函数，并返回一个数组，所以它和forEach()的区别在于，有一个返回值。不修改原数组，返回的数组长度和原数组相同
+
+var a = [1,2,3,4,5];
+             
+var b = a.map(function (value) {
+    return value+1
+})
+             
+console.log(b); //返回[2,3,4,5,6]
