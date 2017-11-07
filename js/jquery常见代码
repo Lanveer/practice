@@ -67,3 +67,16 @@ $(this).css("background-image","url(on.jpg)");
     a.reverse();
 
     console.log(a); //直接改变a数组的值 返回的是[3,2,1]
+
+
+9. 数组join（）的区别
+A   var a = [1,2,3];
+    var b = a.join("");
+    console.log(b)
+   ／／结果是： 123
+   
+   
+B   var a = [1,2,3];
+    var b = a.join();
+    console.log(b)
+    ／／结果是： 1,2,3   
