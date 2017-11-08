@@ -1,0 +1,19 @@
+   wx.uploadFile({
+            url: 'https://<upload_domain>/save',
+            filePath:photoPath,　//待上传的图片，由 chooseImage获得
+            name:'food_image',
+            formData: {
+              latitude:0.0,
+              longitude:0.0,
+              restaurant_id:0,
+              city:'北京',
+              name:'beijing' // 名称
+            }, // HTTP 请求中其他额外的 form data
+            success: function(res){
+              console.log("addfood success",res);
+            },
+            fail: function(res) {
+              console.log("addfood fail",res);
+            },
+          })
+},
