@@ -1,0 +1,77 @@
+1.给出一个字符串，显示出字符串里重复次数最多的元素，并显示次数出来
+　　如："sdoiokasdhdiuwasad" 
+　　输出：  出现最多：d    出现次数：4
+  
+  code：
+  function remenber(str){
+      var o = {};
+      for (var i = 0; i < str.length; i++) {
+        if (o[str[i]]) { //char就是对象o的一个属性，o[char]是属性值，o[char]控制出现的次数
+          o[str[i]]++; //次数加1
+        } else {
+          o[str[i]] = 1; //若第一次出现，次数记为1
+        }
+      }
+      console.log(o); //输出的是完整的对象，记录着每一个字符及其出现的次数
+      //遍历对象，找到出现次数最多的字符和次数
+        var max = 0;
+        for (var key in o) {
+          if (max < o[key]) {
+            max = o[key]; //max始终储存次数最大的那个
+          }
+        }
+        for (var key in o){
+          if (o[key] == max){
+          //console.log(key);
+            console.log("最多的字符是" + key);
+            console.log("出现的次数是" + max);
+          }
+        }
+    }
+    remenber("sdoiokasdhdiuwasad");
+    
+    
+ 2.给出一个数组，数组中的元素最多可以出现两次
+ 
+ function newarr(arr){
+      var tmp = [];
+      var str = ",";
+      for(var i = 0; i < arr.length; i++){
+          var sm = str.match(new RegExp(","+arr[i]+",", "g"));
+          if(!sm || sm.length < 2) {
+              tmp.push(arr[i]);
+              str += arr[i] + ",";
+          }
+      }
+      console.log("原数组是：" + arr);
+      console.log("清除后的数组："+tmp);
+    }
+    newarr([12,34,5,6,32,12,34,56,5,12,34]);
+    
+    
+    
+   3.给出一个数组，求这个数组的最大和
+   
+   function a(arr){
+      var st = [];
+      var res = [];
+      for(var i=0; i < arr.length; i++){  //将数组元素转换为string类型
+        var arr1 = arr[i].toString();
+        st.push(arr1);
+      }
+      console.log(st[1][0]);
+      for(var j = 0; j < arr.length-1; j++){ //用冒泡排序将数组的元素的第一个数进行排序的到从小到大的排序
+        for(var k = 0; k < arr.length-j-1; k++){
+          if(st[j][0] > st[j+1][0]){
+            var temp = st[k];
+            st[k] = st[k+1];
+            st[k+1] = temp;
+          }
+        }
+      }
+      for(var c = st.length; c >= 0; c--){//将冒泡排完序后的到的数组进行倒序排序
+        res.push(st[c]);
+      }
+      console.log(res.join(""));//最后合并元素
+    }
+    a([12,23,34,5]);
