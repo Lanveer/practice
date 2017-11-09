@@ -114,3 +114,32 @@ var b = a.filter(function (value) {
 })
              
 console.log(b); //返回[4,5]
+
+
+12 jq 的index方法
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js">
+</script>
+<script>
+$(document).ready(function(){
+  $("ul li.hot").click(function(){
+    alert($(this).index('.hot'));
+  });
+});
+</script>
+</head>
+<body>
+
+<p>Click the button to get the index of the element with id="favorite", relative to the jQuery selector (class="hot"):</p>
+<button>Get index</button>
+
+<ul>
+<li>Milk</li>
+<li class="hot">Tea</li>
+<li class="hot">Coffee</li>
+</ul>
+
+</body>
+</html>
