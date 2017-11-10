@@ -1,0 +1,39 @@
+ 1. js拼接两个数组 可以使用  
+ 
+ var a=['a'];
+ var b=['b'];
+ var c= a.concat(b);
+ console.log(c)  //  ["a", "b"]
+ 
+  var a=['a'];
+  var b=['b'];
+  var c= a.push(b);
+ console.log(c)  // 最终返回数组的长度 2
+ 
+ 2.对象的拼接
+var a={name:'lan'}
+var b={name:'hello'}
+
+var c= Object.assign( a,b);
+
+console.log(c)  //结果只会返回hello
+
+
+var a={name:'lan'}
+var b={name:'hello'}
+
+var c= Object.assign(b,a);
+
+console.log(c) //结果会返回 lan
+
+如果想要全部返回应该怎么办呢？  需要注意的是对象的键值对中的键要不同才行，不然只会返回最后一个的
+
+
+var o1 = { a: 'hello' };
+var o2 = { b: 'world' };
+var o3 = { c: 'hh' };
+
+var obj = Object.assign(o1, o2, o3);
+console.log(obj)
+//结果 {a: "hello", b: "world", c: "hh"}
+ 
