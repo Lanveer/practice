@@ -37,3 +37,16 @@ var obj = Object.assign(o1, o2, o3);
 console.log(obj)
 //结果 {a: "hello", b: "world", c: "hh"}
  
+ 
+ 
+ 3. 按照指定格式完成数组内容的拼装，
+ [
+ {id:1,name:'hello'},
+ {id:2,name:'world'},
+ time:'2017',
+ author:'lan'
+ ]
+ 
+ 要实现这样的拼接，需要怎么做呢，数组里面包含对象倒是很好办，现在需要在数组里面加一个time和author，这个时候我们可以把一个变量赋给数组，
+ var x=[{},{}];然后在使用 x.time='2017'; x.author='lan'这样的话就可以实现上面的拼接了。
+ 
