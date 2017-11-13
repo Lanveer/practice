@@ -10,6 +10,20 @@
   var c= a.push(b);
  console.log(c)  // 最终返回数组的长度 2
  
+注意：这是单个元素的拼接，如果是多个元素的拼接就有不一样了。
+
+var a=['a','b'];
+var b=['c','d'];
+ 我们想要实现的效果是  ['a','b','c','d']
+ 
+应该这样来做：
+ a=a.concat(b);
+ console.log(a)
+ 
+ 这样得到的结果就是['a','b','c','d']
+ 
+ 
+ 
  2.对象的拼接
 var a={name:'lan'}
 var b={name:'hello'}
