@@ -50,3 +50,57 @@ console.log(obj)
  要实现这样的拼接，需要怎么做呢，数组里面包含对象倒是很好办，现在需要在数组里面加一个time和author，这个时候我们可以把一个变量赋给数组，
  var x=[{},{}];然后在使用 x.time='2017'; x.author='lan'这样的话就可以实现上面的拼接了。
  
+ 
+ 
+ 
+ 4.  循环数组和对象的问题（这个问题来源于绿通车小程序报送数据时候参数的组合）
+ 
+ 问题描述： 需要将一个对象进行循环，然后，动态的从这个对象里面取里面的参数出来。
+ 
+ 但是问题是，最后push进数组的对象就只有循环体的最后一个，如果有循环三次的话，最后的结果只有第三个，原因就是我们把空对象定义在了循环体的外面，
+ 我们应该把空对象定义在循环体的内部，这样的话循环结束之后就会将所有需要的都push到我们定义的数组里面去了。
+ 
+ var arr=[
+    {id:1,name:'zhangsan'},
+     {id:2,name:'lisi'},
+     {id:3,name:'wangwu'},
+     {id:4,name:'wanger'}
+ ];
+ var res=[];
+ var tem={}
+
+ for(var i=0; i<arr.length;i++){
+ tem.idx=arr[i].id;
+ tem.person=arr[i].name;
+
+ res.push(tem)
+ }
+
+
+ console.log(res);
+ //(4) [{…}, {…}, {…}, {…}]0: {idx: 4, person: "wanger"}1: {idx: 4, person: "wanger"}2: {idx: 4, person: "wanger"}3: {idx: 4, person: "wanger"})
+
+
+如果是这样的话
+var arr=[
+    {id:1,name:'zhangsan'},
+     {id:2,name:'lisi'},
+     {id:3,name:'wangwu'},
+     {id:4,name:'wanger'}
+];
+
+
+for(var i=0; i<arr.length;i++){
+var res=[];
+var tem={}
+tem.idx=arr[i].id;
+tem.person=arr[i].name;
+
+res.push(tem)
+}
+
+
+console.log(res);
+//[{…}]   结果是只有一个结果，就是最后一个wanger
+
+ 
