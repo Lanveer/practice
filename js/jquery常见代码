@@ -143,3 +143,8 @@ $(document).ready(function(){
 
 </body>
 </html>
+
+
+
+13. 在使用css的时候实现同时使用背景图和背景色
+background:url(images/图片) 0 0 no-repeat #000;
