@@ -3,3 +3,23 @@
 
 小记：
   这周末基本上没有事情可以做的，就是在无聊中度过了，这样的情况已经持续了很久了。需要好好的调整一下状态了。
+
+1.commonJs方法
+// 新定义的模块方法  lib。js
+function log(arg) {
+    console.log(arg);
+}
+
+// 把方法暴露给其他模块
+  exports.log = log;
+  
+  // ./lib是我们需要的一个依赖
+var lib = requrie("./lib");
+
+// 新定义的模块方法
+function foo() {
+    lib.log("jeri");
+}
+
+// 把方法暴露给其他模块
+exports.foo = foo;
