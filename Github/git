@@ -1,0 +1,27 @@
+问题： git clone 之后才想提交代码怎么办？
+
+git remote remove origin
+
+通过刚才的分析，我们已经提到了，主要的问题来自于git remote的地址问题，那么我们要做的首先应该是将本地与当前远程remote切断联系，这里我参考了 git中本地与远程库的关联与取消 这篇文章中提到的方法。
+
+fork 原项目，为本地仓库添加远程remote
+
+到了这一步，思路就逐渐明朗了，我们刚刚切断了远程，那么现在就需要添加一个新的远程仓库，这个新的仓库从何而来呢？就需要我们对原仓库进行fork了，之后就是使用刚刚文章中提到的添加远程的方法。
+
+git remote add origin git@github.com:git_username/repository_name.git
+git push origin master
+
+最后，我们就可以按照原来熟悉的套路来提交代码了。
+
+git add -A
+git commit -m 'what your comment is '
+git push origin master
+我们知道如果我们在clone代码库到本地的时候，采用SSH加密的方式的话，在git push的时候是无须输入远程仓库的github账户密码的，SSH的写法就像下面这样：
+
+git@github.com:git_username/repository_name.git
+但是由于我们的前提条件，并没有给我们那样的机会。因此到了git push的时候，自然还是需要我们老老实实输入账号密码的。
+
+作者：继续海阔天空
+链接：http://www.jianshu.com/p/b011f6769bdf
+來源：简书
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
