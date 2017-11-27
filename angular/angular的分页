@@ -1,0 +1,8 @@
+ 
+ 问题1. 分页的时候获取到了数据但是不能刷新视图
+ 
+ 主要使用了angular-bootstrap框架的pagination组件实现的，在整个ng-app中，内容区块假设是contentController ， 分页区块是pageController，如果在使用
+ 的时候，将page分页区块的controller写成了contentController的话，整个视图渲染就会执行两次，这样导致的结果就是分页点击下一页的时候，虽然可以获取到
+ 最新的数据，但是视图是不会刷新的。因为执行了两次视图渲染。解决办法就是不要写两个相同的controller。
+ 
+ 
