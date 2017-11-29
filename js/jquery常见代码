@@ -148,3 +148,28 @@ $(document).ready(function(){
 
 13. 在使用css的时候实现同时使用背景图和背景色
 background:url(images/图片) 0 0 no-repeat #000;
+
+
+
+14.一分钟倒计时
+
+var ele=$('.getCode')
+var countdown=10;
+function getCode(obj) {
+    if (countdown == 0) {
+        obj.removeAttribute("disabled");
+        ele.html("发送验证码");
+        countdown = 60;
+        return;
+    } else {
+        obj.setAttribute("disabled", true);
+        ele.html("重新发送(" + countdown + ")");
+        countdown--;
+    }
+    setTimeout(function() {
+            getCode(obj) }
+        ,1000)
+}
+
+ <button class="getCode" onclick="getCode(this)">发送验证码</button>
+
