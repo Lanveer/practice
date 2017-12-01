@@ -177,14 +177,21 @@ function getCode(obj) {
  15. 将一个数组里面的字符串转换为n个数组对象
  var a=['a','b','c'];
 var c=[];
-
 for(var i=0;i<a.length;i++){
 var b={};
-
-   b.id=i;
+    b.id=i;
     b.val=a[i]
-c.push(b)
+    c.push(b)
 }
 
 console.log(c)
+//[{id:0,val:'a'},{id:1,val:'b'},{id:2,val:'c'}]
 
+16. 将对象里面的值转换为数组
+    var a=[{id:0,val:'hello'},{id:1,val:'world'}];
+    var b=[];
+    for(var i=0;i<a.length;i++){
+    b.push(a[i].val)
+    }
+    console.log(b)
+    // ['hello','world']
