@@ -172,4 +172,19 @@ function getCode(obj) {
 }
 
  <button class="getCode" onclick="getCode(this)">发送验证码</button>
+ 
+ 
+ 15. 将一个数组里面的字符串转换为n个数组对象
+ var a=['a','b','c'];
+var c=[];
+
+for(var i=0;i<a.length;i++){
+var b={};
+
+   b.id=i;
+    b.val=a[i]
+c.push(b)
+}
+
+console.log(c)
 
