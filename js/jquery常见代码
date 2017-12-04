@@ -195,3 +195,24 @@ console.log(c)
     }
     console.log(b)
     // ['hello','world']
+    
+    
+ 17.一行代码实现选项卡
+<ul class='tab'>
+    <li>11</li>
+    <li>22</li>
+    <li>33</li>
+</ul>
+
+<div class='content'>
+    <div class="con">aa</div>
+    <div class="con">bb</div>
+    <div class="con">cc</div>
+</div>
+
+$('.tab>li').click(function(){
+    var idx= $(this).index();
+    $('.con').hide().eq(idx).show();
+})
+ 
+ 
