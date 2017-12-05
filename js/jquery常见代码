@@ -216,3 +216,33 @@ $('.tab>li').click(function(){
 })
  
  
+ 18. jq实现元素的匹配和筛选
+ ①[attribute=value] 匹配给定的属性是某个特定值的元素
+②[attribute!=value] 匹配所有不含有指定的属性，或者属性不等于特定值的元素
+③[attribute^=value] 匹配给定的属性是以某些值开始的元素
+④[attribute$=value] 匹配给定的属性是以某些值结尾的元素
+⑤[attribute*=value] 匹配给定的属性是以包含某些值的元素
+*/
+/*
+比如有下面2个input元素：
+<input type="checkbox" name="newsletter" value="Hot Fuzz" />
+<input type="checkbox" name="newsletter" value="Cold Fusion" />
+<input type="checkbox" name="accept" value="Evil Plans" />
+*/
+//①方式举例：
+$("input[name='newsletter']").attr("checked", true);
+//表示 查找所有 name 属性是 newsletter 的 input 元素,并设置为选中状态
+//②方式
+$("input[name!='newsletter']").attr("checked", true);
+//查找所有 name 属性不是 newsletter 的 input 元素,并设置为选中状态
+//③方式
+$("input[name^='news']").attr("checked", true);
+//查找所有 name 以 'news' 开始的 input 元素,并设置为选中状态
+//④方式
+$("input[name$='letter']").attr("checked", true);
+//查找所有 name 以 'letter' 结尾的 input 元素,并设置为选中状态
+//⑤方式
+$("input[name*='news']").attr("checked", true);
+//查找所有 name 包含 'man' 的 input 元素,并设置为选中状态
+// 根据上面的列举，需要的应该是②方式。
+// 然而，这5种方式是比较容易混淆
