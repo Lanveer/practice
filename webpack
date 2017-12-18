@@ -19,5 +19,23 @@ document.write("It works.");
 webpack runoob1.js bundle.js
 
 这样的话项目目录就会多出bundle.js，这个时候直接运行index的话就会输出test1中的值，以上是webpack的简单用法
+不过webpack只能处理js，如果涉及到css以及image的话就需要另外引入插件来实现。
+
+1. 安装css处理器
+cnpm install css-loader style-loader
+
+2.编写css文件
+body {
+    background: yellow;
+}
+
+3. 修改test1.js
+require("!style-loader!css-loader!./style.css");
+
+4 执行webpack命令
+webpack runoob1.js bundle.js
+
+5.这个时候index打开的时候，背景颜色就已经改变了。
+
 
 
