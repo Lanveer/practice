@@ -107,9 +107,6 @@ delete p1.age;
  */
 
 
-
-
-
 Person.prototype.lastName = 'Jin'; 
 
 /* 改写原型，动态反应到实例中。正如你妈变新潮了，邻居提起你都说你妈真潮。
@@ -123,8 +120,6 @@ Person.prototype.lastName = 'Jin';
  * p2：'Mark';                          __proto__:{'jin',__proto__:18,['Shenzhen','Shanghai']}
 
  */
-
-
 
 Person.prototype = { 
 
@@ -147,8 +142,6 @@ var p3 = new Person('Obama');
  * p3:'Obama';__proto__: 28 {country: 'USA', city: 'Washington'}
 
  */
-
-
 
 
 
@@ -285,36 +278,18 @@ var p2 = new Person('Mark', 18); //p2:'Mark'; __proto__:18,['running','football'
 结果是酱紫的：
 
 
-
- 
-
-
-
-
-
 原型中不再有 age 和 hobby 属性了，只有两个方法，正是我们想要的结果！
 
 
 
 关键点在于 object(o) 里面，这里借用了一个临时对象来巧妙避免了调用new Mother()，然后将原型为 o 的新对象实例返回，从而完成了原型链的设置。很绕，对吧，那是因为我们不能直接设置 Person.prototype = Mother.prototype 啊。
 
-
-
 小结
-
-
 
 说了这么多，其实核心只有一个：属性共享和独立的控制，当你的对象实例需要独立的属性，所有做法的本质都是在对象实例里面创建属性。若不考虑太多，你大可以在Person里面直接定义你所需要独立的属性来覆盖掉原型的属性。总之，使用原型继承的时候，要对于原型中的属性要特别注意，因为他们都是牵一发而动全身的存在。
 
-
-
 下面简单罗列下js中创建对象的各种方法，现在最常用的方法是组合模式，熟悉的同学可以跳过到文章末尾点赞了。
-
-
-
 1）原始模式
-
-
 
 //1.原始模式，对象字面量方式
 
