@@ -133,5 +133,80 @@
 并且成功解决了对引用属性的共享问题，完美解决。
 
 
+二。 基于原型链的继承
+
+
+    <script type="text/javascript">
+
+        /**
+         * 基于原型链的集成中都是对象
+         * 存在问题：
+         * 1、对于引用类型变量，造成数据不一致
+         */
+        var Person = {
+                    name: "人",
+                    age: 0,
+                    hobbies: [],
+                    say: function ()
+                    {
+                        console.log(this.name + " , " + this.age + " , " + this.hobbies);
+                    }
+                }
+                ;
+
+        var Student = clone(Person);
+        Student.no ="";
+        Student.sayHello = function()
+        {
+            console.log(this.name  +"hello ") ;
+        }
+
+        var stu1 = clone(Student);
+        stu1.name = "zhangsan";
+        stu1.age = 12;
+        stu1.hobbies.push("Java");
+        stu1.say();
+
+        var stu2 = clone(Student);
+        stu2.name = "lisi";
+        stu2.age = 13;
+        stu2.hobbies.push("Javascript");
+        stu2.say();
+
+        /**
+         * 返回一个prototype执行obj的一个对象
+         * @param obj
+         * @returns {F}
+         */
+        function clone(obj)
+        {
+            var F = function ()
+            {
+            };
+            F.prototype = obj;
+            return new F();
+
+        }
+
+
+    </script>
+    
+    结果
+        zhangsan , 12 , Java   
+lisi , 13 , Java,Javascript   
+
+
+对象间通过一个clone函数，不断的返回一个新的对象，且prototype执行传入的对象，整个继承过程其实就是_proto_不断的指向，形成一个链，所以叫做原型链。
+
+
+
+好了，已经介绍完了，js的两种集成的方式，最好使用的还是通过类的继承（上述第一种方案，解决存在问题的）。
+
+
+
+
+
+
+
   
   
