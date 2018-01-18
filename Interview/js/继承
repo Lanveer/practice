@@ -1,0 +1,137 @@
+
+ <script type="text/javascript">
+
+
+        function Person(name, age)
+        {
+            this.name = name;
+            this.age = age;
+        }
+        Person.prototype.say = function ()
+        {
+            console.log(this.name + " , " + this.age);
+        }
+        function Student(no)
+        {
+            this.no = no;
+        }
+<span style="white-space:pre">	/**
+         * Student的prototype指向Person的对象
+         */</span>
+        Student.prototype = new Person();
+        var stu1 = new Student("0001");
+        stu1.name = '张三';
+        stu1.age = '11';
+        console.log(stu1.no);
+        stu1.say();
+
+
+    </script>
+    
+    结果：
+    0001   
+  张三 , 11 
+  解析：
+  将Student.prototype指向new Person() , new Person的_proto_又指向Person Prototype；这样完成了整个继承。
+
+但是这种方式存在问题：
+
+问题1：当父类存在引用类型变量时，造成数据不一致，下面我们给Person添加一个hobbies属性，类型为数组。
+
+
+ <script type="text/javascript">
+        /**
+         * 存在问题
+         * 1、无法在Student的构造方法中传递参数用于父类的构造方法
+         * 2、对于引用类型变量，造成数据不一致
+         */
+
+
+        function Person(name, age)
+        {
+            this.name = name;
+            this.age = age;
+            this.hobbies = [] ;
+        }
+        Person.prototype.say = function ()
+        {
+            console.log(this.name + " , " + this.age +" , " +this.hobbies);
+        }
+        function Student(no)
+        {
+            this.no = no;
+        }
+        Student.prototype = new Person();
+
+        var stu1 = new Student("0001");
+        stu1.name = '张三';
+        stu1.age = '11';
+        stu1.hobbies.push("soccer");
+        stu1.say();
+
+        var stu2 = new Student("0002");
+        stu2.name = '李四';
+        stu2.age = '12';
+        stu2.hobbies.push("girl");
+        stu2.say();
+
+    </script>
+    
+    结果： 
+张三 , 11 , soccer   
+李四 , 12 , soccer,girl   
+
+可以看出，李四的hobbies应该只有girl，但是上面的代码让所有对象共享了hobbies属性。
+上述的继承方式还存在一个问题：
+
+问题2：在Student的构造方法中，无法使用new Student("00001" , "张三" , 12) ；创建对象，并初始化name和age属性，必须stu.name, stu.age进行赋值
+
+为了解决上述问题，对上述代码进行修改：
+
+ <script type="text/javascript">
+
+        function Person(name, age)
+        {
+            this.name = name;
+            this.age = age;
+            this.hobbies = [];
+        }
+        Person.prototype.say = function ()
+        {
+            console.log(this.name + " , " + this.age +" , " + this.hobbies);
+        }
+
+        function Student(name, age, no)
+        {
+            /**
+             * 使用call方法，第一个参数为上下文；
+             * 有点类似Java中的super(name,age)的感觉
+             */
+            Person.call(this, name, age);
+            this.no = no;
+        }
+
+        Student.prototype = new Person();
+
+        var stu1 = new Student("0001","张三",11);
+        stu1.hobbies.push("soccer");
+        stu1.say();
+
+        var stu2 = new Student("0002","李四",12);
+        stu2.hobbies.push("cangjin");
+        stu2.hobbies.push("basketball");
+        stu2.say();
+
+    </script>
+
+
+结果：
+0001 , 张三 , soccer   
+0002 , 李四 , cangjin,basketball   
+
+在Student的构造方法中使用了Person.call(this,name,age)感觉就像super(name,age)【call的第一个参数为上下文】；
+并且成功解决了对引用属性的共享问题，完美解决。
+
+
+  
+  
