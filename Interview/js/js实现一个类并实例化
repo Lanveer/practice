@@ -1,1 +1,89 @@
 
+　1.工厂方式：
+     //通过工厂方式创建对象，先定义一个工厂方法
+    function createObj(){
+        var obj  =  new Object();
+        obj.name="xxx";
+        obj.say=function(){
+            alert("我是xxx");
+        }
+        return obj;
+    }
+    //调用工厂方法创建对象:
+    var obj1  =  createObj();
+
+
+    //也可以用这种形式
+    function createObj(){
+        var obj  =  {};  //这样生成对象
+        obj.name="xxx";
+        obj.say=function(){
+            alert("我是xxx");
+        }
+        return obj;
+    }
+    var obj1  =  createObj();
+    
+    2.构造器方式：
+    
+        //创建一个构造器，构造函数首字母大写
+    function Obj(){
+        this.name="xxx";
+        this.say=function(){
+            alert("我是xxx");
+        };
+    }
+    //利用构造器，通过new关键字生成对象
+    var obj1=new Obj();
+    
+    　3.原型方式：
+     
+           //用空函数创建一个类
+      function Obj(){
+      }
+      //在类的原型链上添加属性和方法
+      Obj.prototype.name="xxx";
+      Obj.prototype.say=function(){
+          alert("我是xxx");
+      }
+      //生成对象
+      var obj1=new Obj();
+      
+      4.原型/构造联合方式
+      
+      //用构造函数定义对象的非函数属性
+function Obj(name){
+    this.name=name;
+    this.arr=new Array('a','b');
+}
+//用原型方式定义对象的方法
+Obj.prototype.say=function(){
+    alert("我是xxx");
+}
+//生成对象
+var obj1 = new Obj('xxx');
+
+　5.动态原型方式
+//动态原型方式和原型/构造混合方式的原理相似，唯一的区别就是赋予对象方法的位置
+function Person(name, sex) {
+    this.name = name;
+    this.sex = sex;
+    if (typeof this.say != "function") {
+        Person.prototype.say = function () {
+            alert(this.name);
+        }
+    }
+}
+var man =new Person ("凯撒", "男");
+man.say();//凯撒
+
+
+实例化obj对象有三步：
+
+　　1. 创建obj对象：obj=new Object();
+
+　　2. 将obj的内部__proto__指向构造他的函数Obj的prototype，同时，obj.constructor===Obj.prototype.constructor，从而使得obj.constructor.prototype指向Obj.prototype（obj.constructor.prototype===A.prototype）。obj.constructor.prototype与的内部_proto_是两码事，实例化对象时用的是_proto_，obj是没有prototype属性的，但是有内部的__proto__，通过__proto__来取得原型链上的原型属性和原型方法。
+
+　　3. 将obj作为this去调用构造函数Obj，从而设置成员（即对象属性和对象方法）并初始化。
+
+　　当这3步完成，这个obj对象就与构造函数Obj再无联系，这个时候即使构造函数Obj再加任何成员，都不再影响已经实例化的obj对象了。
