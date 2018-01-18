@@ -52,33 +52,33 @@
       4.原型/构造联合方式
       
       //用构造函数定义对象的非函数属性
-function Obj(name){
-    this.name=name;
-    this.arr=new Array('a','b');
-}
-//用原型方式定义对象的方法
-Obj.prototype.say=function(){
-    alert("我是xxx");
-}
-//生成对象
-var obj1 = new Obj('xxx');
+          function Obj(name){
+              this.name=name;
+              this.arr=new Array('a','b');
+          }
+          //用原型方式定义对象的方法
+          Obj.prototype.say=function(){
+              alert("我是xxx");
+          }
+          //生成对象
+          var obj1 = new Obj('xxx');
 
 　5.动态原型方式
-//动态原型方式和原型/构造混合方式的原理相似，唯一的区别就是赋予对象方法的位置
-function Person(name, sex) {
-    this.name = name;
-    this.sex = sex;
-    if (typeof this.say != "function") {
-        Person.prototype.say = function () {
-            alert(this.name);
-        }
-    }
-}
-var man =new Person ("凯撒", "男");
-man.say();//凯撒
+    //动态原型方式和原型/构造混合方式的原理相似，唯一的区别就是赋予对象方法的位置
+          function Person(name, sex) {
+              this.name = name;
+              this.sex = sex;
+              if (typeof this.say != "function") {
+                  Person.prototype.say = function () {
+                      alert(this.name);
+                  }
+              }
+          }
+          var man =new Person ("凯撒", "男");
+          man.say();//凯撒
 
 
-实例化obj对象有三步：
+     实例化obj对象有三步：
 
 　　1. 创建obj对象：obj=new Object();
 
@@ -87,3 +87,4 @@ man.say();//凯撒
 　　3. 将obj作为this去调用构造函数Obj，从而设置成员（即对象属性和对象方法）并初始化。
 
 　　当这3步完成，这个obj对象就与构造函数Obj再无联系，这个时候即使构造函数Obj再加任何成员，都不再影响已经实例化的obj对象了。
+  
