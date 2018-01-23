@@ -1,1 +1,19 @@
 
+1. 枚举 - enumerate 可以有参数哦
+之前我们这样操作：
+
+i = 0
+for item in iterable:
+    print i, item
+    i += 1
+现在我们这样操作：
+
+for i, item in enumerate(iterable):
+    print i, item
+enumerate函数还可以接收第二个参数。就像下面这样：
+
+>>> list(enumerate('abc')) 
+[(0, 'a'), (1, 'b'), (2, 'c')] 
+ 
+>>> list(enumerate('abc', 1)) 
+[(1, 'a'), (2, 'b'), (3, 'c')]
