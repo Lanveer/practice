@@ -64,3 +64,11 @@ a.reverse()
 >>> foo = "yasoob"
 >>> foo[::-1]
 'boosay'
+
+
+6. 三元运算
+三元运算是if-else 语句的快捷操作，也被称为条件运算。这里有几个例子可以供你参考，它们可以让你的代码更加紧凑，更加美观。
+
+[on_true] if [expression] else [on_false]
+x, y = 50, 25
+small = x if x < y else y
