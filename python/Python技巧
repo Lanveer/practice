@@ -28,3 +28,10 @@ my_set = {i * 15 for i in xrange(100)}
 # There is only a difference of ':' in both
  
 # 两者的区别在于字典推导中有冒号
+
+
+3. 强制浮点除法
+from __future__ import division 
+result = 1/2
+# print(result)
+# 0.5
