@@ -17,3 +17,14 @@ enumerate函数还可以接收第二个参数。就像下面这样：
  
 >>> list(enumerate('abc', 1)) 
 [(1, 'a'), (2, 'b'), (3, 'c')]
+
+
+2. 字典/集合 解析
+你也许知道如何进行列表解析，但是可能不知道字典/集合解析。它们简单易用且高效。就像下面这个例子：
+
+my_dict = {i: i * i for i in xrange(100)} 
+my_set = {i * 15 for i in xrange(100)}
+ 
+# There is only a difference of ':' in both
+ 
+# 两者的区别在于字典推导中有冒号
