@@ -46,3 +46,21 @@ my_list = ast.literal_eval(expr)
 expr = "[1, 2, 3]"
 my_list = eval(expr)
 我相信对于大多数人来说这种形式是第一次看见，但是实际上这个在Python中已经存在很长时间了。
+
+
+5. 字符串/数列 逆序
+你可以用以下方法快速逆序排列数列：
+
+>>> a = [1,2,3,4]
+>>> a[::-1]
+[4, 3, 2, 1]
+ 
+# This creates a new reversed list. 
+# If you want to reverse a list in place you can do:
+ 
+a.reverse()
+这总方式也同样适用于字符串的逆序：
+
+>>> foo = "yasoob"
+>>> foo[::-1]
+'boosay'
