@@ -72,3 +72,19 @@ a.reverse()
 [on_true] if [expression] else [on_false]
 x, y = 50, 25
 small = x if x < y else y
+
+
+7. Python里面如何拷贝一个对象
+标准库中的copy模块提供了两个方法来实现拷贝.一个方法是copy,它返回和参数包含内容一样的对象.
+
+import copy
+new_list = copy.copy(existing_list)
+有些时候,你希望对象中的属性也被复制,可以使用deepcopy方法:
+
+import copy
+new_list_of_dicts = copy.deepcopy(existing_list_of_dicts)
+copy(x)
+Shallow copy operation on arbitrary Python objects.
+ 
+deepcopy(x, memo=None, _nil=[])
+Deep copy operation on arbitrary Python objects.
