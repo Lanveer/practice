@@ -35,3 +35,14 @@ from __future__ import division
 result = 1/2
 # print(result)
 # 0.5
+
+4. 对Python表达式求值
+我们都知道eval函数，但是我们知道literal_eval函数么？也许很多人都不知道吧。可以用这种操作：
+
+import ast 
+my_list = ast.literal_eval(expr)  
+来代替以下这种操作：
+
+expr = "[1, 2, 3]"
+my_list = eval(expr)
+我相信对于大多数人来说这种形式是第一次看见，但是实际上这个在Python中已经存在很长时间了。
