@@ -22,3 +22,116 @@ IE是事件冒泡、firefox支持事件冒泡和事件捕获模型
 2、stopPropagation（HTML DOM Event 对象方法）：（Firefox）终止事件在传播过程的捕获、目标处理或起泡阶段进一步传播。调用该方法后，
 该节点上处理该事件的处理程序将被调用，事件不再被分派到其他节点。 
 3、 preventDefault（HTML DOM Event 对象方法）通知浏览器不要执行与事件关联的默认动作
+
+
+  <div id="p">
+    parent
+    <div id="c">
+      child
+    </div>
+  </div>
+
+  //点击子div，则输出父节点捕获，子节点捕获，子节点冒泡，父节点冒泡--看参数false则是事件冒泡，若是true，则是事件捕获
+  <script type="text/javascript">
+    window.alert = function (msg) {
+      console.log(msg);
+    };
+    var p = document.getElementById('p'),
+        c = document.getElementById('c');
+    p.addEventListener('click', function (e) {
+      alert('父节点冒泡')
+    }, false);
+
+    c.addEventListener('click', function (e) {
+      alert('子节点捕获')
+    }, true);
+    c.addEventListener('click', function (e) {
+      alert('子节点冒泡')
+    }, false);
+    p.addEventListener('click', function (e) {
+      alert('父节点捕获')
+    }, true);
+
+    //点击子div，则输出父节点捕获，子节点冒泡，子节点捕获，父节点冒泡
+    p.addEventListener('click', function (e) {
+      alert('父节点冒泡')
+    }, false);
+
+    c.addEventListener('click', function (e) {
+      alert('子节点冒泡')
+    }, false);
+    c.addEventListener('click', function (e) {
+      alert('子节点捕获')
+    }, true);
+
+    p.addEventListener('click', function (e) {
+      alert('父节点捕获')
+    }, true);
+  </script>
+</body>
+</html>
+
+
+<div id='one'>
+  <div id='two'>
+    <div id='three'>
+      <div id='four'>
+      </div>
+    </div>
+  </div>
+</div>
+
+//可看参数全是事件冒泡事件，点击one元素，输出one；点击two元素，输出two one;点击three元素，输出 three two one；点击four元素，输出 four three two one；
+<script type='text/javascript'>
+  var one=document.getElementById('one');
+  var two=document.getElementById('two');
+  var three=document.getElementById('three');
+  var four=document.getElementById('four');
+  one.addEventListener('click',function(){
+    alert('one');
+  },false);
+  two.addEventListener('click',function(){
+    alert('two');
+  },false);
+  three.addEventListener('click',function(){
+    alert('three');
+  },false);
+  four.addEventListener('click',function(){
+    alert('four');
+  },false);
+</script>
+
+//点击four元素,最终执行结果为：one three four two
+one.addEventListener('click',function(){
+alert('one');
+},true);
+two.addEventListener('click',function(){
+alert('two');
+},false);
+three.addEventListener('click',function(){
+alert('three');
+},true);
+four.addEventListener('click',function(){
+alert('four');
+},false);
+
+
+//点击two执行结果：one(因为是two的父元素支持捕获事件所以先执行)  two,bubble  two,capture(顺序执行，注意逗号不是间隔，是输出内容。)
+//如果目标元素不是two，则two的两个事件按先捕获后冒泡触发执行，点击three执行结果：one two,capture three,bubble two,bubble
+one.addEventListener('click',function(){
+alert('one');
+},true);
+two.addEventListener('click',function(){
+alert('two,bubble');
+},false);
+two.addEventListener('click',function(){
+alert('two,capture');
+},true);
+three.addEventListener('click',function(){
+alert('three,bubble');
+},true);
+four.addEventListener('click',function(){
+alert('four');
+},true);
+
+
