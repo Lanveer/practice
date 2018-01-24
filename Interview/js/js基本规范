@@ -1,0 +1,73 @@
+1、减少全局污染
+
+　　我们都知道javascript使用function来管理自己的作用域，一个定义在函数内的变量对外是不可见的，这有点类似于其它语言里的私有变量。
+  对于javascript的执行环境来说一般都有一个全局变量，在所有的函数外可以用this来指引，例如在浏览器端是window。但是当过多的在全局
+  执行环境下定义变量会造成各种苦逼的事情，比方说你定义的变量被其他人定义的同名变量覆盖掉，或者你未来定义的变量把你过去定义的同名变
+  量也覆盖掉，而且过多的全局变量放在执行对战里还会造成内存的浪费等等不优化的情况发生。我就不再具体讲没个苦逼的事情是如何苦逼了，
+  仅仅讲讲可能会导致这种情况发生的不好的示例吧。
+  
+  var sample = function () {
+   var a1 = "hello"; 
+       a2 = "world"; 
+    };
+    sample();
+    alert(a1);//undefined
+    alert(a2);//world
+    
+    
+    ②变量名提升。
+
+　　javascript中函数内所有使用var声明的变量都会提升到函数体头部，这也是很多人容易犯错的一点。具体来讲就是：
+  
+  myname = "global"; 
+  function sample() {
+     alert(myname); // "undefined"
+     var myname = "local";
+     alert(myname); // "local"
+  }
+  sample();
+  
+  如你所见，第一个alert出来的并非global。原因在于，函数sample内部声明的myname会提升到函数体顶部，而原语句的地方才是正在赋值的地方。
+  在声明和赋值直接引用的话肯定是undefined了。其执行效果如下
+  
+  myname = "global"; 
+  function sample() {
+     var myname;//没有赋值
+     alert(myname); // "undefined"
+     myname = "local";//此处赋值
+     alert(myname); // "local"
+  }
+  sample();
+  　所以一个重要的经验就是，在函数体讲所有的var声明的东西都拿到函数体顶部，以免造成不必要的错误。
+   
+   
+   
+   2、for循环。
+
+　　我们习惯将for循环写成如下形式：
+  for (var i = 0; i < myarray.length; i++) {
+    //logic
+  }
+  
+  　看似没有问题，但是如果myarray是读取的DOM的节点，那么每一次循环都要去DOM里选取节点再做判断，非常影响性能。可能数量不大感觉不错来，
+   多了就非常严重了。所以，for循环判断条件里尽量不要使用涉及到DOM操作的动作。优化如下：
+   for (var i = 0, max = myarray.length; i < max; i++) {
+     // logic
+      }
+      
+      3、用“===”取代“==”
+
+　　前者是严格判断，后者会提前进行隐式的类型转换。
+
+　　4、不使用eval()
+
+　　5、统一缩进大小（无论用tab或者2个或者4个空格，团队统一即可），任何用花括号括起来并换行的都进行缩进。
+
+　　6、花括号{}
+
+　　for循环或者if判断等，即使只有一行，也要换行并用{}括起来。
+
+　　7、空格
+
+　　任何“;”后空一格、for循环中初始化“,”后空一格、数组中","后空一格、对象中“:”后空一格、如：
+
