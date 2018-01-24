@@ -1,0 +1,54 @@
+这题目的看起来比较简单，但是总感觉有没有那么简单，确实是这样子。所以回答这个题目要从不同的角度去回答。
+首先回答清楚它是干什么的有什么用，然后在谈谈它对作用域的影响，
+然后就是执行效率的问题，最后谈谈eval()的其它作用。
+
+
+1.eval()的作用
+把字符串参数解析成JS代码并运行，并返回执行的结果；
+
+例如：
+  eval("2+3");//执行加运算，并返回运算值。  
+  eval("varage=10");//声明一个age变量  
+  
+  2.eval的作用域
+  
+  functiona(){  
+     eval("var x=1"); //等效于 var x=1;  
+     console.log(x); //输出1  
+    }  
+    a();  
+    console.log(x);//错误 x没有定义 
+    
+    //全局
+    functiona(){  
+     window.eval("var x=1"); // 等效于window.x=1;定义了全局变量  
+     console.log(x); //输出1  
+    }  
+    a();  
+    console.log(x);//输出1  
+    
+    
+    //兼容写法
+    functiona(){  
+     if(window.execScript){ // 支持IE8及以下的版本  
+      window.execScript("var x=1");  
+     }  
+     else{ //常用的浏览器都支持  
+      window.eval("var x=1");  
+     }  
+     console.log(x);  
+    }  
+    a();  
+    console.log(x);
+    
+    
+    注意事项
+
+    应该避免使用eval，不安全，非常耗性能（2次，一次解析成js语句，一次执行）。
+
+    其它作用
+
+    由JSON字符串转换为JSON对象的时候可以用eval，例如：
+    varjson="{name:'Mr.CAO',age:30}";  
+    varjsonObj=eval("("+json+")");  
+    console.log(jsonObj);  
