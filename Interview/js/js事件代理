@@ -1,0 +1,54 @@
+在传统的事件处理中，你按照需要为每一个元素添加或者是删除事件处理器。然而，事件处理器将有可能导致内存泄露或者是性能下降——你用得越多这种风险就越大。
+如下：
+<ul id="parent-list">
+  <li id="post-1">Item 1</li>
+  <li id="post-2">Item 2</li>
+  <li id="post-3">Item 3</li>
+  <li id="post-4">Item 4</li>
+  <li id="post-5">Item 5</li>
+  <li id="post-6">Item 6</li>
+</ul>
+
+//给每个li标签都添加了事件，这样可能导致内存泄漏
+function addListeners4Li(liNode){
+    liNode.onclick = function clickHandler(){...};
+    liNode.onmouseover = function mouseOverHandler(){...}
+}
+window.onload = function(){
+    var ulNode = document.getElementById("parent-list");
+    var liNodes = ulNode.getElementByTagName("Li");
+    for(var i=0, l = liNodes.length; i < l; i++){
+        addListeners4Li(liNodes[i]);
+    }   
+}
+
+
+事件代理
+
+优点：
+
+1.管理的函数变少了。可以把事件处理器添加到一个父级元素上，这样就避免了把事件处理器添加到多个子级元素上。(这样可以得益于事件冒泡)创建的以及驻留在
+内存中的事件处理器少了，这样我们就提高了性能，并降低了崩溃的风险。
+
+2.可以方便地动态添加和修改元素，不需要因为元素的改动而修改事件绑定。
+
+
+<ul id="parent-list">
+  <li id="post-1">Item 1</li>
+  <li id="post-2">Item 2</li>
+  <li id="post-3">Item 3</li>
+  <li id="post-4">Item 4</li>
+  <li id="post-5">Item 5</li>
+  <li id="post-6">Item 6</li>
+</ul>
+
+window.onload = function() {
+    var ul = document.getElementById("parent-list");
+
+    ul.addEventListener("click",function(e){
+        // 检查事件源e.targe是否为Li
+        if(e.target && e.target.nodeName.toUpperName === "LI") {
+            console.log("List item ",e.target.id.replace("post-")," was clicked!");
+        }
+    });
+}
