@@ -1,1 +1,58 @@
 
+1.事件对象
+触发DOM上的某个对象时，会产生一个事件对象event
+
+DOM0级事件对象
+
+无论指定事件处理程序时使用什么方法(DOM0级和DOM2级)，都传入event对象
+
+阻止特定事件的默认行为，就是使用preventDefault();
+
+阻止进一步事件的事件捕获或冒泡，就是使用stopPropagation()
+
+IE中的事件对象
+
+目标：srcElement
+
+阻止特定事件的默认行为，就是使用returnValue
+
+阻止进一步事件的事件捕获或冒泡，就是使用cancelBubble
+
+
+编码：跨浏览器的事件对象
+
+var EventUtil = {
+
+    //根据情况分别获取DOM或者IE中的事件对象，事件目标，阻止事件的默认行为
+    getEvent: function(event) {
+        return event ? event : window.event;
+    },
+    getTarget: function(event) {
+        return event.target || event.srcElement;
+    },
+    preventDefault: function(event) {
+        if(event.preventDefault) {
+            event.preventDefault();
+        } else {
+            event.returnValue = false;
+        }
+    },
+
+    //根据情况分别取消DOM或者IE中事件冒泡
+    stopPropagation: function(event) {
+        if (event.stopPropagation) {
+            event.stopPropagation();
+        } else {
+            event.cancelBubble = true;
+        }
+    }
+}
+
+var btn = document.getElementById("myBtn");
+
+btn.onclick = function(event) {
+    event = EventUtil.getEvent(event);
+    var target = EventUtil.getTarget(event);
+    EventUtil.preventDefault(event);
+    EventUtil.stopPropagation(event);
+}
