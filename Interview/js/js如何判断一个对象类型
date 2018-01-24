@@ -1,1 +1,47 @@
 
+javascript中检测对象的类型的运算符有：typeof、constructor、instanceof。
+
+typeof：typeof是一个一元运算符，返回结果是一个说明运算数类型的字符串。如："number"，"string"，"boolean"，"object"，"function"，
+"undefined"（可用于判断变量是否存在）。 但 typeof 的能力有限，其对于Date、RegExp、Array类型返回的都是"object"。所以它只在区别对象
+和原始类型的时候才有用。要区一种对象类型和另一种对象类型，
+必须使用其他的方法。
+
+
+typeof  new Date()
+// object
+
+ type of  new RegExp()
+ //object
+ 
+ type of {}
+ // Object
+ 
+ type of []
+ // object
+
+
+instanceof 运算符：instanceof 运算符要求其左边的运算数是一个对象，右边的运算数是对象类的名字或构造函数。如果 object 是 class 或构造函数的实例，
+则 instanceof 运算符返回 true。如果 object 不是指定类或函数的实例，或者 object 为 null，则返回 false。instanceof方法可以判断变量是否是数组
+类型，但是只限同一全局环境之内，在一个页面有多个iframe的情况下，instanceof失效。
+
+var arr=[];
+arr instanceof Array
+// true
+
+var obj={};
+obj instanceof object
+//true
+
+var str='hello';
+str instanceof number
+
+// false
+
+
+
+constructor 属性: JavaScript中，每个对象都有一个constructor属性，它引用了初始化该对象的构造函数，常用于判断未知对象的类型。如给定一个求知的值
+通过typeof运算符来判断它是原始的值还是对象。如果是对象，就可以使用constructor属性来判断其类型。
+
+
+
+Object.prototype.toString.call()：该方法是目前为止发现的判断一个对象类型的最好的办法。
