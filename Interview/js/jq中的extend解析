@@ -1,0 +1,69 @@
+jQuery.extend({
+    liu: function(){
+        alert('liu');
+    }
+});
+
+
+<!doctype html>
+<html lang="zh-cmn-Hans-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="jquery-2.1.1.js"></script>
+    <script type="text/javascript">
+    ;(function($) {
+        $.extend({
+            liu: function(){
+         　　　　alert('liu');
+   　　　　　}
+　　　　});
+    })(jQuery);
+    </script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $.liu();
+    });
+
+    </script>
+</head>
+<body></body>
+</html>
+
+
+
+区别
+
+<!doctype html>
+<html lang="zh-cmn-Hans-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="jquery-2.1.1.js"></script>
+    <script type="text/javascript">
+    ;(function($) {
+        $.fn.extend({
+            liu: function(){
+        　　　　 alert('liu');
+    　　　　 }
+　　　　});
+    })(jQuery);
+    </script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('div').liu();
+    });
+
+    </script>
+</head>
+<body>
+    <div></div>
+</body>
+</html>
+
+
+其实吧，jQuery.extend()这个方法，主要是用来拓展个全局函数啦，例如$.ajax()这种，要不就是拓展个选择器啦，例如$.fn.each()，当选择器用。
+大部分插件都是用jQuery.fn.extend()。
+差不多就这样吧，这是我的个人理解，若是各位看客有更佳的看法，欢迎提出来。
+
+
