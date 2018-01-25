@@ -1,0 +1,17 @@
+用函数语句创建的函数add2，函数名称和函数体均被提前，在声明它之前就使用它。
+但是使用var表达式定义函数add1，只有变量声明提前了，变量初始化代码仍然在原来的位置，没法提前执行。
+运行结果如下：
+
+
+使用函数声明创建的函数
+console.log(add2(1,1)); //输出2
+function add2(a,b){
+    return a+b;
+}
+
+
+使用函数表达式创建的函数
+console.log(add1(1,1));  //报错：add1 is not a function
+var add1 = function(a,b){
+    return a+b;
+}
