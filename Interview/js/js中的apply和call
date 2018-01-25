@@ -1,1 +1,45 @@
 
+
+一句话总结apply和call， call(this,'a','b')  call接受的参数是罗列在后面的  apply(this,['a','b']) 接受的参数是以数组形式罗列在后面的
+
+
+var Person = function(name) {
+    this.name = name;
+    this.gender = ['man', 'woman'];
+}
+
+// child
+var Student = function(name, age) {
+
+    // inherit
+    Person.call(this);
+}
+Student.prototype.message = function() {
+    console.log('name:'+this.name+', age:'+this.age+', gender:.'+this.gender[0]);
+}
+
+var xm = new Student('xiaom', 12);
+xm.message(); //name:undefined, age:undefined, gender:.man
+
+
+改变后
+var Person = function(name) {
+    this.name = name;
+    This.age=age;
+    this.gender = ['man', 'woman'];
+}
+
+// child
+var Student = function(name, age) {
+
+    // inherit
+    Person.call(this,’lanveer’,’26’);
+//或者说
+Person.apply(this,[‘lanveer’,’23’]);
+}
+Student.prototype.message = function() {
+    console.log('name:'+this.name+', age:'+this.age+', gender:.'+this.gender[0]);
+}
+
+var xm = new Student('xiaom', 12);
+xm.message(); //name:undefined, age:undefined, gender:.man
