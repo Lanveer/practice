@@ -1,1 +1,39 @@
 
+var baz=3;
+ var bazz={  
+   baz: 2, 
+   getbaz: function() { 
+         return this.baz 
+   }
+  }
+  console.log(bazz.getbaz())
+  var g=bazz.getbaz;
+   console.log(g());
+
+
+// 2
+// 3
+
+第一个输出是2，第二个输出是3，这题考察的就是this的指向，函数作为对象本身属性调用的时候this指向对象，作为普通函数调用的时候就指向全局了
+
+
+另外一个例子
+
+function a(){
+    var user = "追梦子";
+    console.log(this.user); //undefined
+    console.log(this);　　//Window
+}
+window.a();
+
+
+var o = {
+    user:"追梦子",
+    fn:function(){
+        console.log(this.user);  //追梦子
+    }
+}
+o.fn();
+
+这里的this指向的是对象o，因为你调用这个fn是通过o.fn()执行的，那自然指向就是对象o，这里再次强调一点，this的指向在函数创建的时候是决定不了的，
+在调用的时候才能决定，谁调用的就指向谁，一定要搞清楚这个。
