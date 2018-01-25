@@ -1,1 +1,43 @@
 
+（1）新建一个对象
+instance=new Object();
+（2）设置原型链
+instance.__proto__=F.prototype;
+（3）让F中的this指向instance，执行F的函数体。
+（4）判断F的返回值类型：
+如果是值类型，就丢弃它，还是返回instance。
+如果是引用类型，就返回这个引用类型的对象，替换掉instance。
+
+步骤：
+
+1. var Func=function(){  
+2. };  
+3. var func=new Func (); 
+4. 
+
+new共经过了4几个阶段
+1、创建一个空对象
+var obj=new Object(); 
+2、设置原型链
+obj.__proto__= Func.prototype; 
+
+3、让Func中的this指向obj，并执行Func的函数体。
+var result =Func.call(obj); 
+
+4、判断Func的返回值类型：
+如果是值类型，返回obj。如果是引用类型，就返回这个引用类型的对象
+1. if (typeof(result) == "object"){  
+2.   func=result;  
+3. }  
+4. else{  
+5.     func=obj;
+
+
+
+
+
+
+
+
+
+
