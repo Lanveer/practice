@@ -1,1 +1,28 @@
 
+ui.router工作原理
+路由，大致可以理解为：一个 查找匹配 的过程。
+
+对于前端 MVC(VM) 而言，就是将 hash值 (#xxx)与一系列的 路由规则 进行查找匹配，匹配出一个符合条件的规则，然后根据这个规则，进行数据的获取，
+以及页面的渲染。
+
+路由的创建
+
+首先，看一个简单的例子：
+
+$stateProvider
+    .state('home', {
+        url: '/abc',
+        template: 'hello world'
+    });
+    
+ 上面，我们通过调用 $stateProvider.state(...) 方法，创建了一个简单路由规则，通过参数，可以容易理解到：
+
+规则名：'home'
+匹配的url：'/abc'
+对应的模板：'hello world'
+意思就是说：当我们访问 http://xxxx#/abc 的时候，这个路由规则被匹配到，对应的模板会被填到某个 div[ui-view] 中。
+
+这里需要深入的是： $stateProvider.state(...) 方法，它做了些什么工作？
+
+首先，创建并存储一个state对象，里面包含着该路由规则的所有配置信息。
+然后，调用 $urlRouterProvider.when(...) 方法，进行路由的 注册 (之前是路由的创建)
