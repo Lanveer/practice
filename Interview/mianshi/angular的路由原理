@@ -1,4 +1,21 @@
 
+ui-router路由机制的步骤
+ng-route包含的内容
+   ng的路由机制是靠ngRoute提供的，通过hash和history两种方式实现了路由，可以检测浏览器是否支持history
+
+    来灵活调用相应的方式。ng的路由(ngRoute)是一个单独的模块，包含以下内容：
+
+   •服务$routeProvider用来定义一个路由表，即地址栏与视图模板的映射
+
+   •服务$routeParams保存了地址栏中的参数，例如{id : 1, name : 'tom'}   
+
+   •服务$location用来实现用于获取当前url以及改变当前的url,并且存入历史记录
+
+   •服务$route完成路由匹配，并且提供路由相关的属性访问及事件，如访问当前路由对应的controller
+
+   •指令ngView用来在主视图中指定加载子视图的区域
+
+
 ui.router工作原理
 路由，大致可以理解为：一个 查找匹配 的过程。
 
@@ -26,3 +43,6 @@ $stateProvider
 
 首先，创建并存储一个state对象，里面包含着该路由规则的所有配置信息。
 然后，调用 $urlRouterProvider.when(...) 方法，进行路由的 注册 (之前是路由的创建)
+
+
+
