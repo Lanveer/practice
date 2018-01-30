@@ -12,3 +12,41 @@ webview.addJavascriptInterface(new Object() {
 
 <a href="javascript:void(0)" onclick="alert(android.openActivity('Recharge'))">充值</a>
 <a href="javascript:void(0)" onclick="alert(android.openActivity('Goods'))">抢购</a>
+
+
+2、H5 调用 Native 方法实现 H5页面 按钮点击事件处理，代码如下：
+<input type="button" value="JS Call Native: Toast Message" onclick="android.toastMessage()">   
+public class MyJsInterface {  
+
+        @JavascriptInterface  
+        public void toastMessage(String msg) {  
+            Toast.makeText(WebViewActivity.this, "app to H5 toast " + msg, Toast.LENGTH_SHORT).show();  
+            Intent intent = new Intent(WebViewActivity.this, FirstActivity.class);  
+            WebViewActivity.this.startActivity(intent);  
+        } 
+        
+        
+3、Native 传递数据给 H5，场景：点击原生页面的标题栏按钮，给H5页面传值 并且更新 H5页面：
+
+// 点击原生按钮，向H5页面发送数据，可更新H5页面  
+tv_click.setOnClickListener(new View.OnClickListener() {  
+    @Override  
+    public void onClick(View v) {  
+        String msg = "from Native";  
+        <strong>// loadUrl必须在主线程中执行  
+        webView.loadUrl("javascript:toNative('" + msg + "')");</strong>  
+    }  
+}); 
+
+ H5 中页面数据更新代码：
+<input type="text" value="hhhh" id="pp"/>  
+
+<script type="text/javascript">   
+    // 2. js供 Native 调用的方法  
+    function toNative(msg) {  
+        alert("Hello, from H5, received msg: " + msg);  
+        var p = document.getElementById("pp");  
+        p.value = msg;  
+    }  
+</script>  
+
