@@ -1,1 +1,14 @@
 
+
+1. js中调用客户端事先定义好的方法，然后执行客户端的方法。
+
+webview.addJavascriptInterface(new Object() {
+    @JavascriptInterface
+    public void openActivity(String activity){
+        Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(activity));
+        mContext.startActivity(i);
+    }
+}, "android");
+
+<a href="javascript:void(0)" onclick="alert(android.openActivity('Recharge'))">充值</a>
+<a href="javascript:void(0)" onclick="alert(android.openActivity('Goods'))">抢购</a>
