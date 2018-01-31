@@ -32,3 +32,20 @@ app.controller('Ctrltst2', function($scope, 'Myservice') {
 <div ng-controller='Ctrltest2'>
     <div ng-click="add()">my name {{name}}</div>
 </div>
+
+二、基于事件广播的方式
+基于事件广播，需要用到$emit()、$broadcaset()和$emit()这三个方法。
+
+
+1.向父作用域层次结构发出自定义事件：使用$emit()方法，scope.$emit(name,[args,...])
+注：name是事件名，args 是0个或多个参数。
+应用场景：用于子页面控制器向父页面的控制器传递参数。
+
+2.向子作用域层次结构广播自定义事件：
+
+应用场景：用于父页面控制器向子页面的控制器传递参数或者同级控制器之间传递参数。
+
+
+
+使用$broadcaset()方法，$scope.$broadcaset(name,[args,...])
+注：name是事件名，args 是0个或多个参数.
