@@ -1,1 +1,34 @@
 
+一、基于angular服务的方式：
+在angular中服务是一个单例，所以在服务中生成一个对象，该对象就可以利用依赖注入的方式在所有的控制器中共享。参照以下例子，在一个控制器修改了服务对象的值，
+在另一个控制器中获取到修改后的值
+
+代码如下：
+var app = angular.module('myApp', []);
+
+app.factory('Myservice', function(){
+    return {};
+});
+      //定义服务
+
+app.controller('Ctrltest1', function($scope, 'Myservice') {
+  $scope.change = function() {
+       Myservice.name = $scope.test;   //在第一个控制器中为服务对象赋值
+  };
+});
+
+
+app.controller('Ctrltst2', function($scope, 'Myservice') {
+    $scope.add = function() {
+        $scope.name = Myservice.name;  //将第一个控制器中为服务对象赋的值传给第二个控制器
+    };
+});
+
+<div ng-controller='Ctrltest1'>
+     <input type="text" ng-model="test" />
+     <div ng-click="change()">click me</div>
+<
+</div>
+<div ng-controller='Ctrltest2'>
+    <div ng-click="add()">my name {{name}}</div>
+</div>
