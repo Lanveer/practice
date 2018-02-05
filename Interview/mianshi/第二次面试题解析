@@ -12,3 +12,49 @@
 
 1.angular的provider和service的区别和作用
 
+ 面试前看了一小会儿，但是没有咋实际中运用过，所以对这三个的概念理解起来还是很生疏的。
+  1)这三个都是angular创建自定义服务的方式。
+  factory：
+   该方式创建的服务，作用就是返回一个有属性有方法的对象。相当于：var f = myFactory();
+   
+   举例说明：
+   
+   <!DOCTYPE html>
+    <html>
+    <head>
+    <meta charset="utf-8">
+    <script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
+    </head>
+    <body>
+    <div ng-app="myApp" ng-controller="myCtrl">
+        <p>{{r}}</p>
+    </div>
+
+    <script>
+        //创建模型
+        var app = angular.module('myApp', []);
+
+        //通过工厂模式创建自定义服务
+        app.factory('myFactory', function() {
+            var service = {};//定义一个Object对象'
+            service.name = "张三";
+            var age;//定义一个私有化的变量
+            //对私有属性写getter和setter方法
+            service.setAge = function(newAge){
+                age = newAge;
+            }
+            service.getAge = function(){
+                return age; 
+            }
+            return service;//返回这个Object对象
+        });
+        //创建控制器
+        app.controller('myCtrl', function($scope, myFactory) {
+            myFactory.setAge(20);
+            $scope.r =myFactory.getAge();
+            alert(myFactory.name);
+        });
+    </script>
+    </body>
+    </html>
+
