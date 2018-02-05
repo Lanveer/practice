@@ -6,10 +6,11 @@
 下面罗列一些比较基础但是经常容易忽略的css知识
 
 1. 列车下面的区别：
-line-height:150%
-line-height:1.5
-line-height:15px
-line-height:1.5em
+line-height:150%  ---子元素计算后再继承父元素的行高
+line-height:1.5em ---子元素计算后再继承父元素的行高
+line-height:1.5  ---子元素直接继承父元素的行高
+line-height:15px  ---子元素直接继承父元素的行高
+
 
 <div style="line-height:150%;font-size:16px;"> 
   父元素内容    
@@ -22,4 +23,10 @@ line-height:1.5em
 1.  当line-height:150%的时候，父元素的行高为150%时，会根据父元素的字体大小先计算出行高值然后再让子元素继承。所以当line-height:150%时，
     字、子元素的行高等于16px * 150% = 24px：
 
-
+2.当line-height:1.5em的效果，父元素的行高为150%时，会根据父元素的字体大小先计算出行高值然后再让子元素继承。所以当line-height:1.5em时，
+  子元素的行高等于16px * 1.5em = 24px：
+  
+3.当line-height:1.5的效果，父元素行高为1.5时，会根据子元素的字体大小动态计算出行高值让子元素继承。所以，当line-height:1.5时，子元素行
+    高等于30px * 1.5 = 45px：  
+    
+4.当line-height:15px的时候，就是我们常见的让字体的高度是15px
