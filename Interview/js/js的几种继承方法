@@ -122,3 +122,35 @@ console.log(cat instanceof Cat); // true
 
 效率较低，内存占用高（因为要拷贝父类的属性）
 无法获取父类不可枚举的方法（不可枚举方法，不能使用for in 访问到）
+
+5、组合继承
+
+function Cat(name){
+  Animal.call(this);
+  this.name = name || 'Tom';
+}
+Cat.prototype = new Animal();
+
+Cat.prototype.constructor = Cat;
+
+// Test Code
+var cat = new Cat();
+console.log(cat.name);
+console.log(cat.sleep());
+
+特点：
+
+弥补了方式2的缺陷，可以继承实例属性/方法，也可以继承原型属性/方法
+既是子类的实例，也是父类的实例
+不存在引用属性共享问题
+可传参
+函数可复用
+缺点：
+
+调用了两次父类构造函数，生成了两份实例（子类实例将子类原型上的那份屏蔽了）
+
+
+
+
+console.log(cat instanceof Animal); // true
+console.log(cat instanceof Cat); // true
