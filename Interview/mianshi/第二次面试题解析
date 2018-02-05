@@ -89,3 +89,43 @@
     });
 </script>
 
+2）service
+通过service方式创建自定义服务，相当于new的一个对象：var s = new myService();，只要把属性和方法添加到this上才可以在controller里调用。
+
+<div ng-app="myApp" ng-controller="myCtrl">
+    <h1>{{r}}</h1>
+</div>
+<script>
+    var app = angular.module('myApp', []);
+
+    app.service('myService', function($http,$q) {
+        this.name = "service";
+        this.myFunc = function (x) {
+            return x.toString(16);//转16进制
+        }
+        this.getData = function(){
+            var d = $q.defer();
+            $http.get("ursl")//读取数据的函数。
+                .success(function(response) {
+                d.resolve(response);
+            })
+                .error(function(){
+                alert(0)
+                d.reject("error");
+            });
+            return d.promise;
+        }
+    });
+    app.controller('myCtrl', function($scope, myService) {
+        $scope.r = myService.myFunc(255);
+        myService.getData().then(function(data){
+            console.log(data);//正确时走这儿
+        },function(data){
+            alert(data)//错误时走这儿
+        });
+    });
+</script>
+
+
+
+
