@@ -1,1 +1,37 @@
 
+原型链法
+	function Animal() {
+		this.name = 'animal';
+	}
+	Animal.prototype.sayName = function(){
+		alert(this.name);
+	};
+
+	function Person() {}
+	Person.prototype = Animal.prototype; // 人继承自动物
+	Person.prototype.constructor = 'Person'; // 更新构造函数为人
+属性复制法
+	function Animal() {
+		this.name = 'animal';
+	}
+	Animal.prototype.sayName = function() {
+		alert(this.name);
+	};
+
+	function Person() {}
+
+	for(prop in Animal.prototype) {
+		Person.prototype[prop] = Animal.prototype[prop];
+	} // 复制动物的所有属性到人量边
+	Person.prototype.constructor = 'Person'; // 更新构造函数为人
+构造器应用法
+	function Animal() {
+		this.name = 'animal';
+	}
+	Animal.prototype.sayName = function() {
+		alert(this.name);
+	};
+
+	function Person() {
+		Animal.call(this); // apply, call, bind方法都可以．细微区别，后面会提到．
+	}
