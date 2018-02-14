@@ -1,4 +1,6 @@
 
+要实现js的多重继承的话，可以使用属性复制法来实现。因为当所有父类的prototype属性被复制后，子类自然拥有类似行为和属性．
+
 原型链法
 	function Animal() {
 		this.name = 'animal';
