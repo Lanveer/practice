@@ -16,3 +16,30 @@
 浅拷贝：基本类型拷贝的时候只是在内存中又开辟了新的空间，和它的父元素（再次我们称被拷贝的对象为父元素）属于 互不想干的东西，因此深浅拷贝是相对于引用类型的
 
 代码：
+
+var father1 = {name:'shangdi',age:1000,job:['teacher','cook']};
+//浅拷贝函数
+function copy(obj){
+    var childs = {};
+    for(var key in obj){
+        childs[key] = obj[key];
+    }
+    return childs;
+}
+var child1 = copy(father1);
+console.log(child1);    //{ name: 'shangdi', age: 1000 }
+console.log(typeof child1); //object
+
+//改变子对象的name属性，发现对父对象的name没有影响 哈哈！
+child1.name = 'bangbang';
+console.log(father1);   //{ name: 'shangdi', age: 1000 }
+console.log(child1);    //{ name: 'bangbang', age: 1000 }
+
+//注意：这次改变子对象的job属性也就是改变数组,
+//发现对父对象的job竟然有影响,吓死宝宝了，那怎么办呢,那这个copy有什么用呢是吧！
+child1.job.push('programer');
+console.log(father1);   //{ name: 'shangdi',age: 1000,job: [ 'teacher', 'cook', 'programer' ] }
+console.log(child1);    //{ name: 'shangdi',age: 1000,job: [ 'teacher', 'cook', 'programer' ] }
+
+
+
