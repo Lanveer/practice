@@ -6,3 +6,8 @@ console.log(~~x);
 console.log(x|0);
 console.log(Math.floor(x))
 以上结果都将输出123
+
+2. 实现六位随机验证码
+var x= Math.random().toString().slice(-6);
+var x= Math.random().toFixed().slice(-6);
+var x=''+ Math.floor(Math.random()*999999) //后面的数字位数代表了取几位数的随机数
