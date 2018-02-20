@@ -32,3 +32,24 @@ var  y= [...new Set(x)];
 6. es6实现一个长度为6 而且每个值都是8 的数组
  var x= Array(6).fill(8);
  console.log(x)    // [8, 8, 8, 8, 8, 8]
+
+
+7. 将arguments对象转换为数组
+var obj={
+name:'lanveer',
+age:26
+}
+
+var argsArr= Array.from(obj);
+console.log(argsArr)   //  [{…}]   
+[{name: "lanveer", age: 26}]
+
+var argArrray = Array.prototype.slice.call(arguments);
+
+
+
+
+
+
+
+
