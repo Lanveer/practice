@@ -27,3 +27,39 @@ replace(/b/g,'hhh'),这样的话所有的b字符都会被替换成hhh。
 {a:1}==={a:1}   // false
 {}==={}   //flase
 原因是数组和对象是两个独立的，他们只是恰好包含了相同的值，但是却具有不同的引用，因此从根源来看是不相同的。
+
+
+4. 闭包函数, 看下面的函数， 我们想要得到的结果是依次打印出来的结果是123...可是不管怎么都是10 
+ var arr=[];
+  for(var i=0; i< 10; i++){
+arr.push( function(){
+console.log(i)
+})
+}
+
+arr[0]()  //10
+arr[1]()  //10
+
+改写1：  var arr=[];
+  for(let i=0;i<10;i++){
+  arr.push(function(){
+  console.log(i)
+  })
+  }
+ 
+  arr[0]()   //0
+  arr[1]()  //1
+  
+ 原因是： let和var的不同点在于作用域， var的作用域是最近的函数块，而let的作用域是最近的封闭块，封闭块可以小于函数块
+ 
+ 改写2：
+ var arr=[];
+  for(var i=0; i<10; i++){
+  arr.push(console.log.bind(null,i))
+  }
+
+arr[0]()  //    0
+arr[8]()    //8
+
+
+
