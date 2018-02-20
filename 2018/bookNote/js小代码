@@ -40,11 +40,10 @@ name:'lanveer',
 age:26
 }
 
-var argsArr= Array.from(obj);
+1.var argsArr= Array.from(obj);
 console.log(argsArr)   //  [{…}]   
 [{name: "lanveer", age: 26}]
 
-var argArrray = Array.prototype.slice.call(arguments);
 
 
 
