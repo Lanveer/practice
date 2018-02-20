@@ -1,1 +1,16 @@
 
+1. 排序，一般我们会使用js的sort方法给数组排序，但是sort在默认的情况下使用字母数字来排序，也就是Unicode编码，所以就会出现一个坑。
+var a=[1,10,2,5];
+var b= a.sort();
+console.log(b)    //[1, 10, 2, 5]
+
+结果既然是这样。那么要正确输出的话，我们必须这么做。
+var a=[1,10,2,9,3,4,8];
+var b= a.sort(function(a,b){return a-b});
+console.log(b)  //[1, 2, 3, 4, 8, 9, 10]
+我们必须从新定义sort方法。
+
+es6的箭头函数
+var a=[1,10,2,9,3,4,8];
+var b= a.sort((a,b)=> a-b);
+console.log(b) // [1, 2, 3, 4, 8, 9, 10]
