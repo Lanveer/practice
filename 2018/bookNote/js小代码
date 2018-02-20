@@ -1,1 +1,8 @@
 
+1 浮点数取整
+var x= 123.33;
+console.log(>>x);
+console.log(~~x);
+console.log(x|0);
+console.log(Math.floor(x))
+以上结果都将输出123
