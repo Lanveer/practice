@@ -8,4 +8,7 @@
 content-box： W3C标准盒模型，其元素的长宽等于content的长宽
 border-box：IE传统盒子模型，设置元素的长宽= border+padding+content
 
-3.
+3.css可以继承的属性
+ font-size， font-family
+ 不可以继承的属性：
+ border， margin， padding，width， height
