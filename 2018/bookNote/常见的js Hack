@@ -1,1 +1,34 @@
+下面总结几个常见的js 代码hack
+1. 使用 !! 将变量转换为布尔值
+有时我们需要检查一个变量是否存在或者是否是有效值。为了实现这个功能，你可以对变量应用使用 !! 操作符：!!variable，这可以把任何类型的值转换为布尔值，
+并且只有当这个变量的值为 0 / NULL /  " " / NaN 的时候才会返回 FALSE，其他情况都返回 TRUE。
 
+function Account(cash) {
+    this.cash = cash;
+    this.hasMoney = !!cash;
+}
+var account = new Account(100.50);
+console.log(account.cash); // 100.50
+console.log(account.hasMoney); // true
+
+var emptyAccount = new Account(0);
+console.log(emptyAccount.cash); // 0
+console.log(emptyAccount.hasMoney); // false
+
+这个例子中，只要 account.cash 的值大于 0 ，account.hasMoney 就将为TRUE。
+
+
+2. 使用 + 转换为数值
+
+function toNumber(strNumber) {
+    return +strNumber;
+}
+console.log(toNumber("1234")); // 1234
+console.log(toNumber("ACB")); // NaN
+
+并且此方法也可作用于 Date 函数，这是它将返回时间戳：
+
+console.log(+new Date()) // 1461288164385
+
+
+3.
