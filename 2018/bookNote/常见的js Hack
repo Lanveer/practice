@@ -132,3 +132,10 @@ console.log(array1.concat(array2)); // [1,2,3,4,5,6];
 var array1 = [1,2,3];
 var array2 = [4,5,6];
 console.log(array1.push.apply(array1, array2)); // [1,2,3,4,5,6];
+
+10.打乱数组元素的顺序
+
+不适用 Lodash 等这些库打乱数组元素顺序，你可以使用这个技巧：
+
+var list = [1,2,3];
+console.log(list.sort(function() { Math.random() - 0.5 })); // [2,1,3]
