@@ -89,9 +89,46 @@ for(var i = 0, length = array.length; i < length; i++) {
 
 6. 获取数组中最后的元素
 
-当你设置了 begin 和 end 两个参数的时候，Array.prototype.slice(begin, end) 方法可以剪切数组。但当你不设置 end 参数时，该函数将自动把它设置为数组的最大值。我想很多人可能不知道该函数可以接受负的参数。如果你设置一个负值的话，该函数将得到数组后面的元素：
+当你设置了 begin 和 end 两个参数的时候，Array.prototype.slice(begin, end) 方法可以剪切数组。但当你不设置 end 参数时，该函数将自动把它设置为
+数组的最大值。我想很多人可能不知道该函数可以接受负的参数。如果你设置一个负值的话，该函数将得到数组后面的元素：
 
 var array = [1,2,3,4,5,6];
 console.log(array.slice(-1)); // [6]
 console.log(array.slice(-2)); // [5,6]
 console.log(array.slice(-3)); // [4,5,6]
+
+
+7. 数组截断
+
+这个技巧可以锁定数组的长度，当你需要根据你设置的元素个数来删除一些元素时，这个方法非常有帮助。比如，当数组中有 10 个元素，而你只想获取其中前 5 个的话，你可以截断数组，通过设置 array.length = 5 使其更小。看下面的例子：
+
+var array = [1,2,3,4,5,6];
+console.log(array.length); // 6
+array.length = 3;
+console.log(array.length); // 3
+console.log(array); // [1,2,3]
+
+
+8全部替换
+
+String.replace() 函数允许使用字符串和正则来替换字符串，默认情况下，它只会替换第一个出现的。但你可以通过在正则最后加上 /g 来模拟 replaceAll() 
+函数：
+
+var string = "john john";
+console.log(string.replace(/hn/, "ana")); // "joana john"
+console.log(string.replace(/hn/g, "ana")); // "joana joana"
+
+9合并数组
+
+如果你需要合并两个数组的话，可以使用 Array.concat()：
+
+var array1 = [1,2,3];
+var array2 = [4,5,6];
+console.log(array1.concat(array2)); // [1,2,3,4,5,6];
+
+然而，这个函数并不适用于合并大的数组，因为它需要创建一个新的数组，而这会消耗很多内存。这时，你可以使用 Array.push.apply(arr1, arr2) 
+来代替创建新的数组，它可以把第二个数组合并到第一个中，从而较少内存消耗：
+
+var array1 = [1,2,3];
+var array2 = [4,5,6];
+console.log(array1.push.apply(array1, array2)); // [1,2,3,4,5,6];
