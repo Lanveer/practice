@@ -31,4 +31,67 @@ console.log(toNumber("ACB")); // NaN
 console.log(+new Date()) // 1461288164385
 
 
-3.
+3.代码精简--在双重判断的条件下可以精简
+
+if (conected) {
+    login();
+}
+
+你可以通过使用 && 操作符组合两个变量来缩短它。比如前面这段代码可以缩短为：
+
+conected && login();
+
+你也可以用这种方法检测一个类中的属性或者方法是否存在。类似的代码：
+
+user && user.login();
+
+4. 使用 || 设置默认值
+
+现在 ES6 中支持默认值参数。在比较旧的浏览器中模拟这一特性，你可以使用 || 操作符，通过将默认值设置为第二个参数来实现。如果第一个参数返回 FALSE，
+第二个值将被作为默认值，例如：
+
+function User(name, age) {
+    this.name = name || "Oliver Queen";
+    this.age = age || 27;
+}
+var user1 = new User();
+console.log(user1.name); // Oliver Queen
+console.log(user1.age); // 27
+
+var user2 = new User("Barry Allen", 25);
+console.log(user2.name); // Barry Allen
+console.log(user2.age); // 25
+
+
+
+
+5. 在循环中缓存 array.length
+
+当在循环中处理很大的数组时，这个小技巧虽然很简单，却会带来巨大的性能提升。通常情况下，基本上所有人都会这么循环数组：
+
+for(var i = 0; i < array.length; i++) {
+    console.log(array[i]);
+}
+
+如果这是一个小的数组那还好，但如果是大数组，每一次循环都会重复计算数组的长度，所有就会产生一部分延迟。为了避免这种情况，你应当把 array.length 缓存到一个变量中，而不是在循环中每次计算 array.length ：
+
+var length = array.length;
+for(var i = 0; i < length; i++) {
+    console.log(array[i]);
+}
+
+更简化一些的话，你可以这么写：
+
+for(var i = 0, length = array.length; i < length; i++) {
+    console.log(array[i]);
+}
+
+
+6. 获取数组中最后的元素
+
+当你设置了 begin 和 end 两个参数的时候，Array.prototype.slice(begin, end) 方法可以剪切数组。但当你不设置 end 参数时，该函数将自动把它设置为数组的最大值。我想很多人可能不知道该函数可以接受负的参数。如果你设置一个负值的话，该函数将得到数组后面的元素：
+
+var array = [1,2,3,4,5,6];
+console.log(array.slice(-1)); // [6]
+console.log(array.slice(-2)); // [5,6]
+console.log(array.slice(-3)); // [4,5,6]
