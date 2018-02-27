@@ -15,7 +15,7 @@ const square = new Shape(10, 10);
 console.log(square.area);    // 100
 console.log(square._width);  // 10
 
-2. 使用symbol
+2. 使用weakmap
 const map = new WeakMap();
 
 // 创建一个在每个实例中存储私有变量的对象
@@ -39,3 +39,24 @@ class Shape {
 const square = new Shape(10, 10);
 console.log(square.area);      // 100
 console.log(map.get(square));  // { height: 100, width: 100 }
+
+
+3. 使用symbol
+
+const widthSymbol = Symbol('width');
+const heightSymbol = Symbol('height');
+
+class Shape {
+  constructor(width, height) {
+    this[widthSymbol] = width;
+    this[heightSymbol] = height;
+  }
+  get area() {
+    return this[widthSymbol] * this[heightSymbol];
+  }
+}
+
+const square = new Shape(10, 10);
+console.log(square.area);         // 100
+console.log(square.widthSymbol);  // undefined
+console.log(square[widthSymbol]); // 10
