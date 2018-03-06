@@ -1,10 +1,13 @@
 
 将要做：Mounted =》React Component被render解析，并生成对应的DOM节点，并被插入到浏览器的DOM结构的一个过程，组件被mounted，浏览器从有到无的过程，是不可见的
 1.getDEfaultProps()
-2.getInitialState（）
+2.getInitialState（）  一般用作初始化， this.state.shxingming便可以获取state中的初始化值
 3.componentWillMount
 4.render
 5.componentDidMount
+
+备注 props是不可变的
+ state是可变的
 
 将要做Update=》 指的是一个mounted的React Component组件被重新render的过程
 已经做Unmounted=》 指的是一个mounted的React Component对应的DOM节点被从DOM中移除的过程
