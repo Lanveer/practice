@@ -15,13 +15,21 @@
 <div id='test'></div>
 var hello= React.createClass({
 render:function(){
-return:<div>hello {this.props.name} </div>
+return:<div>hello {this.props.name} </div>   //这里的div并不是实体，而是react component
   }
 })
+
+1.通过React.createClass创建component
+2.通过render解析这个component
+3. this表示当前component的实例
+4.this.props表示当前实例所指的指（name 或者 val）
 
 React.render(<hello name='world'/>, document.getElementById('test'))
 这个时候这个div中就会显示出hello world
 
+
+还需要提前引入解析jsx 的js库
+如果是外联的话就需要<script type='text/label'></script>
 
 
 
