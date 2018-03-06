@@ -10,4 +10,20 @@
 2、组建化开发，高度可重用。
 3、复杂场景的高性能要求
 4、重用组件库
-5、
+
+
+<div id='test'></div>
+var hello= React.createClass({
+render:function(){
+return:<div>hello {this.props.name} </div>
+  }
+})
+
+React.render(<hello name='world'/>, document.getElementById('test'))
+这个时候这个div中就会显示出hello world
+
+
+
+
+
+
