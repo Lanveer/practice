@@ -20,6 +20,49 @@
 2、React 的事件绑定
 
 
+var testClick= React.CreateClass({
+handleClick: funtion(event){
+event.stopPropgation()
+event.preventDefault()
+//这里的event具有js方法同样的属性，可以阻止冒泡，也可以阻止默认事件
+}
+
+render: funtion(){
+return 
+  <div>
+    <button></button><span onClick={this.handleClick}>点击</span>
+  </div>
+}
+})
+
+
+var testInput= React.CreateClass({
+
+getInintState: funtion(){
+  return {
+     inputContent:''
+  }
+},
+changeHandler: funtion(event){
+
+}
+
+ render: funtion(){
+     return　
+     <div>
+      <inpout type='text' onChange={this.changeHandler}><span>｛this.state.inputContent｝</span>
+     </div>  
+ }
+})
+
+
+React.render(
+<div>
+  <div>testClick</div>
+  <div>testInput</div>
+</div>,
+document.getElementById('test')
+)
 
 
 
