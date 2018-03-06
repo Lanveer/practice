@@ -15,7 +15,7 @@
 <div id='test'></div>
 var hello= React.createClass({
 render:function(){
-return:<div>hello {this.props.name} </div>   //这里的div并不是实体，而是react component
+return:<div className="test" style={ {backgroundColor:'red'} }>hello {this.props.name} </div>   //这里的div并不是实体，而是react component
   }
 })
 
@@ -23,6 +23,8 @@ return:<div>hello {this.props.name} </div>   //这里的div并不是实体，而
 2.通过render解析这个component
 3. this表示当前component的实例
 4.this.props表示当前实例所指的指（name 或者 val）
+5.使用外联样式必须使用className
+6.行内样式的话也必须要使用对象的方式声明
 
 React.render(<hello name='world'/>, document.getElementById('test'))
 这个时候这个div中就会显示出hello world
