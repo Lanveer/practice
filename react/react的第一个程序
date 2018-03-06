@@ -13,9 +13,13 @@
 
 
 <div id='test'></div>
+var style={
+fontSize:'20px'
+}
 var hello= React.createClass({
 render:function(){
-return:<div className="test" style={ {backgroundColor:'red'} }>hello {this.props.name} </div>   //这里的div并不是实体，而是react component
+return:<div className="test" style={ {backgroundColor:'red'} }  style={style}//这样也可以 >hello {this.props.name} </div> 
+//这里的div并不是实体，而是react component
   }
 })
 
