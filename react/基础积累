@@ -1,11 +1,38 @@
 1.component之间exports 和exports default之间的关系。
 
- export function Func () { }
- 
+
+   export function Func () { }
    //另外页面引用这个component的时候
     import { Func } from 'func'
 
+
     export default function Func () { }
-    
    //另外页面引用这个component的时候
     import Func from 'func'
+    
+    1. 一种情况
+    one.js
+    var a= 'hello';
+    var b= function(val){console.log(val)}
+    exports{a,b}
+    
+    //引用的时候
+    two.js
+    import {a,b}  from one.js;
+    console.log(a,b)  
+
+    
+    2. 第二种情况
+    one.js
+    var a= 'hello';
+    var b= function(val){console.log(val)}
+        exports default a
+        exports default b
+        
+    //引用的时候
+    two.js
+    import a from one.js
+    import b from one.js
+    
+    console.log(a,b)
+    
