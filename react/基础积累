@@ -1,0 +1,11 @@
+1.component之间exports 和exports default之间的关系。
+
+ export function Func () { }
+ 
+   //另外页面引用这个component的时候
+    import { Func } from 'func'
+
+    export default function Func () { }
+    
+   //另外页面引用这个component的时候
+    import Func from 'func'
