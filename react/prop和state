@@ -1,1 +1,47 @@
 
+在使用react的时候，什么时候该使用prop什么时候该使用state呢
+
+
+UI=fn(state, props), 人们常说 React 组件是一个状态机，但我们应该清楚的是他是由 state 和 props 构成的双状态机;
+
+props 和 state 的改变都会触发组件的重新渲染，那么我们使用它们的时机分别是什么呢？由于 state 是组件自身维护的，并不与他的父级组件进行沟通，
+进而也无法与他的兄弟组件进行沟通，因此我们应该尽量只在页面的根节点组件或者复杂组件的根节点组件使用 state，而在其他情况下尽量只使用 props，
+这可以增强整个 React 项目的可预知性和可控性。
+
+但凡事不是绝对的，全都使用 Props 固然可以使组件可维护性变强，但全部交给用户来操作会使用户的使用成本大大提高，利用 state，我们可以让组件自己维护
+一些状态，从而减轻用户使用的负担。
+
+
+{/* 受控模式 */}
+<input value="a" onChange={ function() {doChange()} } />
+{/* 非受控模式 */}
+<input onChange={ function() {doChange()} } />
+
+
+value 配置时，input 的值由 value 控制，value 没有配置时，input 的值由自己控制，如果把 <input /> 看做一个组件，那么此时可以认为 input 此时有一个
+state 是 value。显然，无 value 状态下的配置更少，降低了使用的成本，我们在做组件时也可以参考这种模式。
+
+例如在我们希望为用户提供 行选择 的功能时，用户通常是不希望自己去控制行的变化的，而只是关心行的变化时应该拿取的数据，此时我们就可以将 data 这个 prop
+变成 state。有一点需要注意的是，用户的 prop
+
+class Table extends React.Component {
+    constructor(props) {
+        super(props);
+        this.data = deepcopy(props.data);
+        this.state = {
+            data: this.data,
+        };
+    }
+    
+    /**
+     * 在 data 发生改变时，更改对应的 state 值。
+     */
+    componentWillReceiveProps(nextProps, nextState) {
+        if (!deepEqual(nextProps.data, this.data) {
+            this.data = deepcopy(nextProps.data);
+            this.setState({
+                data: this.data,
+            });
+        }
+    }
+}
