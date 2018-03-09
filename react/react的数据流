@@ -1,1 +1,4 @@
 
+props是从父组件传过来的属性，是不可变的，我们使用的render方法也只会调用一次。但是我们想让组件获取数据后重新渲染，就用到了可变的state，state是组件私有的，我们可以通过this.setState()更新它，组件就会被重新渲染~ 
+render()方法依赖于props 和 state 
+componentDidMount () 是一个组件被渲染时被React自动调用的方法. 
