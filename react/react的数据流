@@ -33,11 +33,41 @@ var Children = React.createClass({
     }
 })
 
+【注意】 React强烈不推荐去修改自身的props，因为这会破坏UI和Model的一致性，props只能够由使用者来决定，props只会根据父组件传递的值改变而改变，
+修改props并不会影响父组件的值
+
+
+
+2. state
+
+
 注意： 但是子组件如果需要反向的向父组件传递数据的话就不能通过这样的方式了，因为，，react传递数据的方式是单向的数据流，只能由父组件向子组件传递，但是
 不能反方向传递。所以需要回溯的话就需要使用redux，来控制整个的数据流的流向。
 
+
+
+3.getDefaultProps
  
-2. state
+ var MyTitle = React.createClass({
+  getDefaultProps : function () {
+    return {
+      title : 'Hello World'
+    };
+  },
+
+  render: function() {
+     return <h1> {this.props.title} </h1>;
+   }
+});
+
+ReactDOM.render(
+  <MyTitle />,
+  document.body
+);
+
+
+最后的结果会输出hello world
+
 
 
 
