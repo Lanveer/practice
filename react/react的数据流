@@ -13,4 +13,34 @@ componentDidMount () 是一个组件被渲染时被React自动调用的方法.
 一旦组件的 state 发生变化，用户界面有改动的部分就会被重绘。组件的状态通常在组件的内部函数 getInitialState() 中声明，使用 setState() 函数更新值，
 并通过 this.state.状态名 来获取值。state状态只属于组件自身，组件运行时自身需修改的数据就是状态
 
+1.props
+
+父组件向子组件传递数据的时候就需要使用props进行传递
+
+var Parent = React.createClass({  
+    getInitialState: function(){
+        return{
+            data: 'parent'
+        }
+    },
+    render: function(){
+        return <div><Children fromParent={this.state.data}/></div>;
+    }
+})
+var Children = React.createClass({  
+    render: function(){
+        return <div>{this.props.fromParent}</div>;
+    }
+})
+
+注意： 但是子组件如果需要反向的向父组件传递数据的话就不能通过这样的方式了，因为，，react传递数据的方式是单向的数据流，只能由父组件向子组件传递，但是
+不能反方向传递。所以需要回溯的话就需要使用redux，来控制整个的数据流的流向。
+
+ 
+2. state
+
+
+
+
+
 
