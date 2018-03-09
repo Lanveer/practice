@@ -68,6 +68,29 @@ ReactDOM.render(
 
 最后的结果会输出hello world
 
+4. react获取表单的值是属于用户和表单之间的互动，就不能使用this.props来获取
+
+var Input = React.createClass({
+  getInitialState: function() {
+    return {value: 'Hello!'};
+  },
+  handleChange: function(event) {
+    this.setState({value: event.target.value});
+  },
+  render: function () {
+    var value = this.state.value;
+    return (
+      <div>
+        <input type="text" value={value} onChange={this.handleChange} />
+        <p>{value}</p>
+      </div>
+    );
+  }
+});
+ReactDOM.render(<Input/>, document.body);
+
+
+
 
 
 
