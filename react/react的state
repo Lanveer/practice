@@ -119,6 +119,34 @@ three:
     return item !='react'
    })
  }))
+ 
+ 
+ 当状态的类型是普通对象的时候--》 不包含数字和字符串
+ 
+ // 方法一：将state先赋值给另外的变量，然后使用Object.assign创建新对象
+ let owner - this.state.owner;
+ this.setState({
+ owner: Object.assign({},owner,{name:'lanveer'})
+ })
+ 
+ // 方法二：使用preState、Object.assign创建新对象
+ 
+ this.setState(preState=>({
+ owner: Object.assign({},preState.owner,{name:'lanveer'})
+ }))
+ 
+ //使用对象扩展语法
+ let owner=this.state.owner;
+ this.setState({
+ owner:{...owner,name:'lanveer'}
+ })
+
+//使用preState对象扩展语法创建新的对象
+this.setState(preState=>({
+
+owner:{...preState.owner,name:'lanveer'}
+}))
+
 
 
 
