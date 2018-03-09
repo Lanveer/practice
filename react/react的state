@@ -87,6 +87,38 @@ three:
  books[...preState,books,'reactjs']
  }))
  
+ 
+ 当需要向state中删除一个数据的时候
+  let books= this.state.books;
+  one： 常见的方法
+  this.setState({
+  books:books.slice(1,3);
+  })
+  
+  two： 使用preState
+  this.setState(preState=>({
+  books:preState.books.slice(1,3)
+  
+  }))
+  
+  当需要从state中过滤的时候
+  let books = this.state.books;
+ 
+ // 方法一：将state先赋值给另外的变量，然后使用filter创建新数组
+ this.setState({
+   books: books.filter(item =>{
+     return item!='react'
+   })
+ })
+ 
+ //方法2 使用preState.filter创建新的数组
+ 
+  
+ this.setState(preState=>({
+   books:preState.books.filter(item =>{
+    return item !='react'
+   })
+ }))
 
 
 
