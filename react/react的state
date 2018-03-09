@@ -66,6 +66,28 @@ this.state = {
 在这里只是把title进行更新了然而之前的content还是用的以前的。并不会被更新掉
 
 
+4. 往state状态中添加或者是删除，---》  state中的状态值是数组类型。任何的添加和删除操作都需要使用数组的操作来完成
+
+如有一个数组类型的状态books，当向books中增加一本书时，
+
+ let books= this.state.books;
+ 
+ one:
+ 
+ this.setState({
+ books:books.concat(['angularjs']);
+ })
+ 
+ two:
+this.setState(preState=>({books:preState.books.concat(['reactjs'])}))
+
+three:
+ 这种方法是通过es6 的扩展语法来实现的
+ this.setState(preState>({
+ books[...preState,books,'reactjs']
+ }))
+ 
+
 
 
   
