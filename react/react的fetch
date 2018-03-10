@@ -34,3 +34,10 @@ ReactDom.render(
     <Nav></Nav>,
     document.querySelector('#app')
 );
+
+
+
+2. 同样可以使用axios 代替fetch发送请求回去数据
+import React from 'react';
+import ReactDom from 'react-dom';
+import axios from 'axios';
