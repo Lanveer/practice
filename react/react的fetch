@@ -41,3 +41,15 @@ ReactDom.render(
 import React from 'react';
 import ReactDom from 'react-dom';
 import axios from 'axios';
+
+
+经过改装的fetch
+fetch(url).then(function(response) {
+  return response.json();
+}).then(function(data) {
+  console.log(data);
+}).catch(function(e) {
+  console.log("Oops, error");
+});
+
+
