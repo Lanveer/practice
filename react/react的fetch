@@ -1,1 +1,36 @@
 
+import React from 'react';
+import ReactDom from 'react-dom';
+import $ from 'jquery';
+
+class Nav extends React.Component{
+    constructor(){
+        super();
+        this.state = {
+            arr: {}
+        };
+        this.get = this.get.bind(this);
+    }
+    get(){
+        fetch('data/word.txt').then((res)=>{
+            if(res.ok){
+                res.text().then((data)=>{
+                    console.log(data);
+                })
+            }
+        }).catch((res)=>{
+            console.log(res.status);
+        });
+    }
+    render(){
+        return <div>
+            <input type="button" value="按钮" onClick={this.get}/>
+        </div>
+    }
+}
+
+
+ReactDom.render(
+    <Nav></Nav>,
+    document.querySelector('#app')
+);
