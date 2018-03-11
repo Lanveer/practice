@@ -1,3 +1,5 @@
+
+1
 之前写了一些关于js运行环境中this 的问题，今天偶尔翻阅的时候发现遗漏了this会随着运行环境的改变而发生变化。
 
 var A = {
@@ -13,3 +15,27 @@ f() // "姓名：李四"
 
 
 这里的f()就不会打印出 ‘张三’，原因是A.description被赋值给了f，然而这个时候内部的this就会指向f运行时所在的对象--》 在这里是属于顶层对象的。
+
+
+
+2.使用场合
+（1）全局环境使用this，它指的就是顶层对象window。
+this === window // true
+function f() {
+  console.log(this === window);
+}
+f() // true
+上面代码说明，不管是不是在函数内部，只要是在全局环境下运行，this就是指顶层对象window。
+
+（2）构造函数
+
+构造函数中的this，指的是实例对象。
+
+var Obj = function (p) {
+  this.p = p;
+};
+
+上面代码定义了一个构造函数Obj。由于this指向实例对象，所以在构造函数内部定义this.p，就相当于定义实例对象有一个p属性。
+
+var o = new Obj('Hello World!');
+o.p // "Hello World!"
