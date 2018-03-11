@@ -1,1 +1,15 @@
+之前写了一些关于js运行环境中this 的问题，今天偶尔翻阅的时候发现遗漏了this会随着运行环境的改变而发生变化。
 
+var A = {
+  name: '张三',
+  describe: function () {
+    return '姓名：'+ this.name;
+  }
+};
+
+var name = '李四';
+var f = A.describe;
+f() // "姓名：李四"
+
+
+这里的f()就不会打印出 ‘张三’，原因是A.description被赋值给了f，然而这个时候内部的this就会指向f运行时所在的对象--》 在这里是属于顶层对象的。
