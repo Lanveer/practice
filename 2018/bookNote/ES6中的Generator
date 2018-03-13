@@ -30,3 +30,20 @@ console.log(n.next());//Object {value: undefined, done: true}
 //第三次调用，Generator函数从上次yield语句停下的地方，一直执行到return语句（如果没有return语句，就执行到函数结束）。  
 //next方法返回的对象的value属性，就是紧跟在return语句后面的表达式的值（如果没有return语句，则value属性的值为undefined），  
 //done属性的值true，表示遍历已经结束。 
+
+
+function* foo(){  
+    yield 'a';  
+    yield 'b';  
+}  
+function* bar(){  
+    yield 'x';  
+    foo();  
+    yield 'y';  
+}  
+for(let i of bar()){  
+    console.log(i);  
+}  
+//x  
+//y  
+//上面代码中，foo和bar都是 Generator 函数，在bar里面调用foo，是不会有效果的。 
