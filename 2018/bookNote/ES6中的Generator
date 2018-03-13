@@ -68,3 +68,20 @@ for(let i of bar()){
 //y  
 //从语法角度看，如果yield命令后面跟的是一个遍历器对象，需要在yield命令后面加上星号，  
 //表明它返回的是一个遍历器对象。这被称为yield*语句。 
+
+function* g(){  
+    yield* ['a','b','c'];  
+}  
+console.log(g().next());//Object {value: "a", done: false}  
+//上面代码中，yield命令后面如果不加星号，返回的是整个数组，加了星号就表示返回的是数组的遍历器对象。  
+  
+//实际上，任何数据结构只要有Iterator接口，就可以被yield*遍历。  
+let arr = (function*(){  
+        yield 'hello';  
+        yield* 'hello';  
+})();  
+console.log(arr.next().value);//hello  
+console.log(arr.next().value);//h  
+console.log(arr.next().value);//e  
+//上面代码中，yield语句返回整个字符串，yield*语句返回单个字符。  
+//因为字符串具有Iterator接口，所以被yield*遍历。 
