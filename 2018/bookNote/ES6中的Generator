@@ -47,3 +47,24 @@ for(let i of bar()){
 //x  
 //y  
 //上面代码中，foo和bar都是 Generator 函数，在bar里面调用foo，是不会有效果的。 
+
+
+
+function* foo(){  
+    yield 'a';  
+    yield 'b';  
+}  
+function* bar(){  
+    yield 'x';  
+    yield* foo() ;  
+    yield 'y';  
+}  
+for(let i of bar()){  
+    console.log(i);  
+}  
+//x  
+//a  
+//b  
+//y  
+//从语法角度看，如果yield命令后面跟的是一个遍历器对象，需要在yield命令后面加上星号，  
+//表明它返回的是一个遍历器对象。这被称为yield*语句。 
