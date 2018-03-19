@@ -37,3 +37,28 @@ function TodoItem({ item }) {
 }
 
 
+
+
+// 定义一个高阶组件
+
+function withLoadingSpinner(Component) {
+  return function EnhancedComponent({ isLoading, ...props }) {
+    if (!isLoading) {
+      return <Component { ...props } />;
+    }
+
+    return <LoadingSpinner />;
+  };
+}
+
+// 使用
+
+const ListItemsWithLoadingIndicator = withLoadingSpinner(ListItems);
+
+<ListItemsWithLoadingIndicator
+  isLoading={props.isLoading}
+  list={props.list}
+/>
+
+
+
