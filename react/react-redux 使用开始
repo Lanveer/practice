@@ -1,1 +1,15 @@
 
+
+创建组件的几种方式
+
+// React.createClass
+var TodoItem = React.createClass({ ... })
+
+// React ES6 class
+class TodoItem extends React.Component { ... }
+
+// functional stateless component
+function TodoItem() { ... }
+
+
+
