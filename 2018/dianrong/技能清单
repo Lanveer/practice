@@ -1,1 +1,33 @@
 
+面试中的专业问题：
+基础问题 - 考察基本前端知识和能力
+计算机基础知识
+基础原生js(比如dom节点操作，数组方法)
+jquery相关问题
+基本布局
+position属性值的说明
+border属性值的说明
+浮动与清理浮动
+针对简历中有的框架(backbone, angular, react...)，进行使用层面的询问
+http get post
+字符编码相关的知识，为什么会出现乱码，如何解决
+进阶问题 - 考察队知识点的理解和深度
+javascript继承
+Javascript中的几种继承方式比较http://blog.csdn.net/kkkkkxiaofei/article/details/46474069
+闭包
+学习Javascript闭包（Closure）http://www.ruanyifeng.com/blog/2009/08/learning_javascript_closures.html
+Javascript闭包——懂不懂由你，反正我是懂了http://kb.cnblogs.com/page/110782/
+CSS3
+flex布局
+动画
+选择器
+js对象深度克隆
+canvas
+客户端存储
+跨域问题解决方式 - 可以针对某一种方法，进一步询问
+HTTP 重要的header
+研究性问题 - 主要是给出一个场景，要求其提供完整的解决方案，并阐述优劣
+你是如何进行前端性能优化的
+如何设计restful API - 包括路径设计，http method使用，http status code理解与使用
+如何实现离线webpapp
+使用过的web build工具，web build需要实现哪些特性(任务)
