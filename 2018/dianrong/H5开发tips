@@ -1,1 +1,22 @@
 
+1. 目前安卓app不支持localStorage和sessionStorage，所以app内嵌的h5活动页请不要使用这两个api。
+
+2. 目前活动都会做在活动系统里，如果是特性的活动，独立实现组件，然后在活动系统中配置。
+
+3. 要考虑低网速情况下的交互反馈和图片预加载。比如低网速下，弹窗的背景图片，按钮的activite、disabled状态的图片。
+
+4. 使用注册组建的时候，要注意url上带参数referral或者referredBy。这样才能在注册时记录推荐人。
+
+5. 活动上线前，及时在gio中圈选指标。
+
+6. button:active 伪类样式在safari下不会生效，需要用onTouchStart和onTouchEnd来实现效果切换，当然要注意图片预加载。
+
+7 css图片预加载方法：
+
+.preloader { 
+    /* Images you want to preload*/ 
+    background-image: url(/events/assets/_slot/award-icon.png), url(/events/assets/_slot/notget.png), url(/events/assets/_slot/btn-active.png), url(/events/assets/_slot/btn-disabled.png); 
+    width: 0; 
+    height: 0; 
+    display: block; 
+  }
