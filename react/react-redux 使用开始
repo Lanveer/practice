@@ -12,4 +12,28 @@ class TodoItem extends React.Component { ... }
 function TodoItem() { ... }
 
 
+注意 现在一般都不适用第一种声明组件了。 基本上使用第二种或者是第三种。
+
+函数式声明组件
+function TodoList({ list }) {
+  return (
+    <div>
+      {map(list, (item) => <div>{item.name}</div>)}
+    </div>
+  );
+}
+我们还可以按函数的方式将其拆分
+
+function TodoList({ list }) {
+  return (
+    <div>
+      {map(list, (item) => <TodoItem item={item} />)}
+    </div>
+  );
+}
+
+function TodoItem({ item }) {
+  return <div>{item.name}</div>;
+}
+
 
