@@ -66,3 +66,21 @@ document.getElementById('test')
 
 
 
+
+
+补充 2018年3月20
+
+组件初始化：constructor
+componentWillMount
+componentDidMount
+componentWillReceiveProps
+shouldComponentUpdate
+componentWillUpdate
+componentDidUpdate
+componentWillUnmount
+componentDidCatch
+
+以上是react的完整的生命周期，当一个组件从创造到销毁就会不断地循环这个过程。
+
+
+
