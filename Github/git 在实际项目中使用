@@ -41,7 +41,7 @@ b.在本地切换并新建分支，git checkout -b 分支名
 git rebase-i + id
 接下来按步骤进行就可以了
 
-4.
+4.cherry-pick，这个是项目开发中经常会遇到的一个从操作。
 
 
 
