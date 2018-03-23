@@ -50,6 +50,22 @@ git rebase-i + id
 
 
 
+项目中遇到新功能的时候
+
+ 1.从dev新建一个分支作为开发
+ 确保当前出于dev分支， 执行git pull 拉取当前dev分支最新的代码，为确保一致性， 可以查看git log确保是和远端一致。
+  git checkout -b  fixed origin/dev
+ 
+ 2. 执行开发任务， 完成开发任务之后
+ git add --all  将所有修改的文件添加到stage区域
+ git commit -m ''  提交commit
+ git push origin/dev  push代码到拉取的当前分支的远端
+ 
+ 3. 然后新建一个pull request合并到dev中
+ 
+ 
+
+
 
 
 
