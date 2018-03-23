@@ -64,6 +64,8 @@ git rebase-i + id
  3. 然后新建一个pull request合并到dev中
  
  
+ 从分支拉取代码开发也是同样的步骤
+ 
 
 
 
