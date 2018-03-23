@@ -39,9 +39,19 @@ b.在本地切换并新建分支，git checkout -b 分支名
 3.去除重复的commit
 找到需要合并的最下面的一个id，然后执行
 git rebase-i + id
-接下来按步骤进行就可以了
+接下来按步骤进行就可以了 
+ 最后一步需要执行 git push 当前的分支 + --force
+ 强制将多个更改合并为一个。
 
 4.cherry-pick，这个是项目开发中经常会遇到的一个从操作。
+现在有两个分支， dev 和 fixed， 你在fixed上做了功能的修改， 但是dev上面没有你做得这个修改， 你需要将fixed上的修改也同步到dev上去，
+就需要切换到当前的dev分支，然后找到fixed  commit的最新的id， 然后再dev的情况之下执行 git cherry-pick + commit的最新的id
+如果没冲突的话就把这个功能添加到了dev上了。
+
+
+
+
+
 
 
 
