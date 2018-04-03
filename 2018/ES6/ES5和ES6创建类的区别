@@ -1,1 +1,19 @@
 
+ES5
+<span style="font-size:18px;">//Person.js  
+function Person(x,y){  
+    this.x = x;  
+    this.y = y;  
+}  
+  
+Person.prototype.toString = function (){  
+    return (this.x + "的年龄是" +this.y+"岁");  
+}  
+export {Person};  
+//index.js  
+import {Person} from './Person';  
+let person = new Person('张三',12);  
+console.log(person.toString());
+
+
+ES6
