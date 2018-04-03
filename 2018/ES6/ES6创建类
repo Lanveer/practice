@@ -10,3 +10,22 @@ class Shape{
     }
 }
 
+
+class Circle extens Shape{
+    constructor(w, l, radius){
+        super(w, l);
+        this.radius = radius;
+    }
+    
+    static getpi(){
+        return 3014;
+    }
+    
+    get area(){
+        return Circle.pi * this.radius*this.radius;
+    }
+    
+    render(){
+        console.log("正在构建圆形...");
+    }
+}
