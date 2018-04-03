@@ -30,6 +30,7 @@ class Circle extens Shape{
     }
 }
 
+调用这个类
 var obj = new Circle(0, 0, 20);
 obj.l = 40;
 obj.render();
