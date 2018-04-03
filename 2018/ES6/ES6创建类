@@ -1,1 +1,12 @@
 
+class Shape{
+    constructor(w,l){
+        this.w = w;
+        this.l = l;
+    }
+    
+    render(){
+        console.log("开始构建图形...")
+    }
+}
+
