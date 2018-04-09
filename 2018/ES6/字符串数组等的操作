@@ -15,3 +15,45 @@ repeat()
 repeat方法返回一个新字符串，表示将原字符串重复n次。
 
 "x".repeat(3);  // xxx
+
+
+
+padStart()、padEnd()
+符串补全长度的功能。如果某个字符串不够指定长度，会在头部或尾部补全。padStart用于头部补全，padEnd用于尾部补全。
+
+"1".padStart(3, "0");   // 001
+"123".padStart(3, "0"); // 001
+
+Number.isFinite()	检查一个数值是否为有限的
+Number.isNaN()	检查一个值是否为NaN
+Number.parseInt()	转为整数
+Number.parseFloat()	转为浮点数
+Number.isInteger()	判断一个值是否为整数
+
+
+eg：
+/* isFinite() */
+Number.isFinite(15); // true
+Number.isFinite(Infinity);  // false
+Number.isFinite("5"); // false
+isFinite("5");  // true
+
+/* isNaN() */
+Number.isNaN(NaN);  // true
+Number.isNaN(5);  // false
+Number.isNaN("NaN");  // false
+isNaN("NaN");  // true
+
+/* parseFloat() */
+Number.parseInt("12.01a"); // 12
+parseInt("12.01a"); // 12
+
+/* parseFloat() */
+Number.parseFloat("12.01a"); // 12.01
+parseFloat("12.01a"); // 12.01
+
+/* isInteger() */
+Number.isInteger(121);  // true
+Number.isInteger(121.0);  // true
+Number.isInteger(121.01);  // false
+Number.isInteger("121");  // false
