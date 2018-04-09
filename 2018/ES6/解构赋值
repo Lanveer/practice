@@ -20,3 +20,9 @@ const node = {a: 1, b: 2};
 let {a, b, c} = node;
 // 可以使用默认值
 let {a, b, c = 3} = node
+
+
+为非同名局部变量赋值
+const node = {a:1, b: 2};
+let {a: A, b: B} = node;
+console.log(A, B); // 1 2
