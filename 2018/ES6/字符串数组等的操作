@@ -57,3 +57,8 @@ Number.isInteger(121);  // true
 Number.isInteger(121.0);  // true
 Number.isInteger(121.01);  // false
 Number.isInteger("121");  // false
+
+
+Math扩展
+（1）Math.trunc()：去除一个数的小数部分，返回整数部分； 
+（2）Math.sign()：判断一个数到底是正数、负数、还是零。
