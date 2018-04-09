@@ -12,3 +12,11 @@ const obj = {a: {b: 1}};
 let {a: {b}} = obj;
 console.log(a)  // a is not defined
 console.log(b)  // 1
+
+
+默认值 
+如果指定的局部变量名称在对象中不存在，那么这个局部变量会被赋值为undefined。
+const node = {a: 1, b: 2};
+let {a, b, c} = node;
+// 可以使用默认值
+let {a, b, c = 3} = node
