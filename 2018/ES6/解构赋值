@@ -26,3 +26,16 @@ let {a, b, c = 3} = node
 const node = {a:1, b: 2};
 let {a: A, b: B} = node;
 console.log(A, B); // 1 2
+
+
+数组解构
+通过在数组中的位置进行选取，且可以将其存储在任意变量中，未“显式声明”的元素都会被直接被忽略。
+
+let colors = ['red', 'blue', 'green'];
+let [, , thirdColor] = colors;
+console.log(thirdColor)
+
+// 对已声明的变量进行赋值
+let colors = ['red', 'blue', 'green'];
+let thirdColor;
+[, , thirdColor] = colors;
