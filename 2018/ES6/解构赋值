@@ -6,3 +6,9 @@ let {a, b} = node;
 const node = {a: 1, b: 2};
 let a, b;
 ({a, b} = node)
+
+
+const obj = {a: {b: 1}};
+let {a: {b}} = obj;
+console.log(a)  // a is not defined
+console.log(b)  // 1
