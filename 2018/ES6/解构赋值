@@ -1,1 +1,8 @@
 
+const node = {a: 1, b: 2};
+let {a, b} = node;
+
+// 对已经声明的变量赋值
+const node = {a: 1, b: 2};
+let a, b;
+({a, b} = node)
