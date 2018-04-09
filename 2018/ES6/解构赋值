@@ -39,3 +39,11 @@ console.log(thirdColor)
 let colors = ['red', 'blue', 'green'];
 let thirdColor;
 [, , thirdColor] = colors;
+
+
+不定元素
+let colors = ['red', 'blue', 'green'];
+let [firstColor, ...otherColor] = colors;
+console.log(otherColor) // ["blue", "green"]
+
+
