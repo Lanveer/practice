@@ -31,7 +31,7 @@ var str = `the result is ${ fn() }`;
 
 
 
-//参数传递
+//参数传递以及字符串模板
 let a=11; let b=22
 
 function str(str, v1, v2){
