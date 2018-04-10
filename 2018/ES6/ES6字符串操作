@@ -14,3 +14,9 @@ var a = 1;
 var b = 2;
 var str = `the result is ${a+b}`;
 //进行加法运算 结果：the result is 3
+
+
+var obj = {"a":1,"b":2};
+var str = `the result is ${obj.a+obj.b}`;
+//对象obj的属性
+//结果：the result is 3.
