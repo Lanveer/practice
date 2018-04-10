@@ -7,3 +7,10 @@ let str = `He is ${name},he is a ${occupation}`;
 //支持换行
 let str = `write once ,
            run anywhere`;
+
+
+//执行运算
+var a = 1;
+var b = 2;
+var str = `the result is ${a+b}`;
+//进行加法运算 结果：the result is 3
