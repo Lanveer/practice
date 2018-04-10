@@ -1,1 +1,9 @@
 
+let name = "Jacky";
+let occupation = "doctor";
+//模板字符串拼接
+let str = `He is ${name},he is a ${occupation}`;
+
+//支持换行
+let str = `write once ,
+           run anywhere`;
