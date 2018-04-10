@@ -20,3 +20,11 @@ var obj = {"a":1,"b":2};
 var str = `the result is ${obj.a+obj.b}`;
 //对象obj的属性
 //结果：the result is 3.
+
+
+//也可以是函数的调用
+function fn() {
+    return 3;
+}
+var str = `the result is ${ fn() }`;
+//函数fn的调用，结果：the result is 3
