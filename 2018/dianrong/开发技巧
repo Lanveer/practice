@@ -7,3 +7,5 @@
 2.npm ERR! code EINTEGRITY npm ERR! sha1-
 解决办法：npm cache verify
 
+
+3. nginx配置
