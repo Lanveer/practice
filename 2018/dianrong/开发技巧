@@ -1,4 +1,9 @@
 
-npm install出现"Unexpected end of JSON input while parsing near"错误解决方法
+1.npm install出现"Unexpected end of JSON input while parsing near"错误解决方法
 
 解决办法：npm cache clean --force
+
+
+2.npm ERR! code EINTEGRITY npm ERR! sha1-
+解决办法：npm cache verify
+
