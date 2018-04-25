@@ -38,3 +38,13 @@ server {
   }
 }
 
+
+
+将线上的js稳健代理到本地， 注意斜杠的方向，必要的时候可以查阅nginx的log错误日志，这样的话就会精准匹配url。
+
+		location /static/crm/lender/ {
+			alias E:/crm/crm/lcrm-static/crm/;	
+            	}
+
+
+
