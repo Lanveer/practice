@@ -1,1 +1,9 @@
 
+const eles = list.map(ele => (
+    <li className="ele" key={ele.name}>
+        <Upload {...uploadProps}>
+            <Icon type="picture" className="ico" />
+            <p>{ele.desc}</p>
+        </Upload>
+    </li>
+));
