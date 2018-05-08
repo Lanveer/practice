@@ -7,3 +7,18 @@ const eles = list.map(ele => (
         </Upload>
     </li>
 ));
+
+
+
+
+使用upload组件进行上传
+    <Upload
+                  withCredentials
+                  data={{appId:this.props.appId,docType:item.name}}
+                  action={`${uploadImageApi}`}
+                   onChange={this.test.bind(this)}
+              >
+                <Button>
+                  <Icon type="upload" />上传文件
+                </Button>
+              </Upload>
