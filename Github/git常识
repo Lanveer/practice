@@ -1,0 +1,11 @@
+git 使用中的基本常识
+
+1. 在使用给gitbash 的时候，不想每次git push 的时候都输入用户名和密码
+
+1.查看是否已经有了ssh密钥：cd ~/.ssh
+如果没有密钥则不会有此文件夹，有则备份删除
+2.生存密钥：
+$ ssh-keygen -t rsa -C “haiyan.xu.vip@gmail.com”
+按3个回车，密码为空。
+
+最后一步就是git config --global credential.helper --》 这样可以在gitconfig文件中生成一个 credentia标志， 这样的话再次上传的时候就不需要输入用户名和密码了
