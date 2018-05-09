@@ -1,1 +1,16 @@
-
+  1. 数组对象在循环中只要有一个是满足条件的就跳出循环。获得当前的值。
+var list =[
+    {flag:false, name:'lan'},
+    {flag:true, name:'lan'},
+    {flag:false,name:'lan'}
+];
+var test;
+ for(var i=0; i< list.length; i++){
+ if(list[i].flag){
+test=true;
+break;
+}else{
+test=false;
+}
+}
+console.log(test)
