@@ -1,1 +1,50 @@
-antd
+ eg：
+  平滑的曲线图
+      const data = [
+            { year: '1991', value: 55 },
+            { year: '1992', value: 34 },
+            { year: '1993', value: 67 },
+            { year: '1994', value: 89 },
+            { year: '1995', value: 56 },
+            { year: '1996', value: 34 },
+            { year: '1997', value: 56 },
+            { year: '1998', value: 23 },
+            { year: '1999', value: 34 }
+            ];
+        const chart = new G2.Chart({
+            container: 'c2',
+            forceFit: true,
+            height:200,
+        });
+        chart.source(data);
+        chart.scale({
+            value: {
+                min: 10 //设置最小值
+            },
+            year: {
+                range: [0, 1]
+            }
+        });
+        chart.axis('year', {   //选择出x轴或者是y轴
+            label: null,  //基线不存在
+            tickLine:null,//刻度线不存在
+            line:null //辅助线不存在
+        });
+        chart.axis('value', {
+            label: null,
+            grid:null   //横向辅助线不存在
+        });
+
+
+        chart.tooltip({
+            showTitle: false  // 隐藏title
+        });
+        chart.area().position('year*value').color('#D9F2E7').tooltip({
+            showTitle: false ,
+        });
+        chart.line().position('year*value').size(4).color('#40BF89').tooltip('year*value').shape('smooth');
+        chart.render()
+        
+        
+        
+        
