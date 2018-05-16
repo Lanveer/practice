@@ -1,0 +1,26 @@
+日期格式化
+
+moment().format('YYYY-MM-DD HH:mm:ss'); // ’2015-11-30 23:10:10‘
+moment().format('dddd'); // 星期一
+字符串转日期
+
+moment('2015-11-30').toDate();
+moment('2015-11-30 10:20:15').toDate();
+毫秒转日期
+
+moment(1448896064621).toDate();
+时间加减
+
+moment().add(7,'years'); // 加7年
+moment().add(7,'month');// 加7个月
+moment().add(7,'days'); // 加7天
+moment().add(7,'hours'); // 加7小时
+moment().add(7,'minutes');// 加7分钟
+moment().add(7,'seconds');// 加7秒钟
+
+moment().subtract(7,'years'); // 减7年
+moment().subtract(7,'month');// 减7个月
+moment().subtract(7,'days'); // 减7天
+moment().subtract(7,'hours'); // 减7小时
+moment().subtract(7,'minutes');// 减7分钟
+moment().subtract(7,'seconds');// 减7秒钟
