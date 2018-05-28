@@ -68,3 +68,5 @@ git rebase-i + id
  
 
 
+
+git cherry-pick的时候，新的功能已经加进来了，这个时候，不需要使用commit 提交代码到这个分支，只需要git push 就可以了。
