@@ -1,0 +1,6 @@
+1、forEach()
+var arr = [1,2,3,4];
+arr.forEach((item,index,arr) => {
+    console.log(item) //结果为1,2,3,4
+})
+//forEach遍历数组，无返回值，不改变原数组，仅仅只是遍历、常用于注册组件、指令等等。
