@@ -11,3 +11,6 @@
 简单地说，一个 React element 描述了你想在屏幕上看到什么。换个说法就是，一个 React element 是一些 UI 的对象表示。
 
 一个 React Component 是一个函数或一个类，它可以接受输入并返回一个 React element t（通常是通过 JSX ，它被转化成一个 createElement 调用）
+
+3.什么时候在功能组件( Class Component )上使用类组件( Functional Component )？
+如果您的组件具有状态( state )或生命周期方法，请使用 Class 组件。否则，使用功能组件
