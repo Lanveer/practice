@@ -14,3 +14,22 @@
 
 3.什么时候在功能组件( Class Component )上使用类组件( Functional Component )？
 如果您的组件具有状态( state )或生命周期方法，请使用 Class 组件。否则，使用功能组件
+
+4.什么是 React 的 refs ，为什么它们很重要？
+refs就像是一个逃生舱口，允许您直接访问DOM元素或组件实例。为了使用它们，您可以向组件添加一个 ref 属性，该属性的值是一个回调函数，
+它将接收底层的 DOM 元素或组件的已挂接实例，作为其第一个参数。
+class UnControlledForm extends Component {
+  handleSubmit = () => {
+    console.log("Input Value: ", this.input.value)
+  }
+  render () {
+    return (
+      <form onSubmit={this.handleSubmit}>
+        <input
+          type='text'
+          ref={(input) => this.input = input} />
+        <button type='submit'>Submit</button>
+      </form>
+    )
+  }
+}
