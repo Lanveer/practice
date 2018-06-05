@@ -53,6 +53,8 @@ min-height属性来设置这个功能。
 否则当src为空时也会向服务器发送一次请求。可以指向loading的地址。
 当载入页面时，先把可视区域内的img标签的data-src属性值负给src，然后监听滚动事件，把用户即将看到的图片加载。这样便实现了懒加载
 
+https://i.jakeyu.top/2016/09/04/scrollTop-offsetTop-scrollLeft-offsetLeft/
 
+这篇文章详细介绍了元素的相对位置和窗口的相对位置，以及jq 的对于scroll 的监听问题
 
 
