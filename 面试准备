@@ -40,3 +40,9 @@ textarea标签
 3.用一个div模拟textarea的实现
 contenteditable="true" 给div加上这个属性，此时div 就有了可以编辑的属性了，然后再设置div随着内容的高度自动撑开就可以了。。 可以使用
 min-height属性来设置这个功能。
+
+
+
+4.移动端避免将数字识别成电话号码或者邮箱的做法
+在header中加入下面标签
+<meta name = "format-detection" content = "telephone=no">
