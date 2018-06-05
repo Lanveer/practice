@@ -17,3 +17,22 @@
 
 2.input和textarea的区别
 
+input标签
+1、需要指定type属性，如text，password等。
+
+2、通过size属性指定显示字符的长度。
+
+3、value属性指定初始值
+
+4、Maxlength属性指定文本框可以输入的最长长度。
+
+5、焦点垂直居中文本框中，单行
+
+textarea标签
+1、需要</textarea>来封闭标签
+
+2、内容写在标签对中
+
+3、使用row、col指定textarea大小
+
+4、焦点在左上角，多行
