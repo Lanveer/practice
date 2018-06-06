@@ -58,3 +58,11 @@ https://i.jakeyu.top/2016/09/04/scrollTop-offsetTop-scrollLeft-offsetLeft/
 这篇文章详细介绍了元素的相对位置和窗口的相对位置，以及jq 的对于scroll 的监听问题
 
 
+6.js的事件委托
+主要是用于性能优化，通过点击父元素传递给子元素。达到事件的传播效果。
+
+7.js的extentd讲解
+
+
+
+
