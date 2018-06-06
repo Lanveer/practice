@@ -63,6 +63,23 @@ https://i.jakeyu.top/2016/09/04/scrollTop-offsetTop-scrollLeft-offsetLeft/
 
 7.js的extentd讲解
 
+var showDialog = (function() {
+     var defaultOption = {
+        title:'',
+        width:500,
+        close:function(){}
+    }
+    return function(option) {
+        $.extend({},defaultOption,option);
+    }
+})()
+
+showDialog({
+    title:'',
+    close:function() {
+      console.log('dialog closed')
+    }
+})
 
 
 
