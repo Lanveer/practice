@@ -58,3 +58,25 @@ function Person(age, name) {
 
 var person1 = new Person();
 var person2 = new Person();
+
+
+5）构造函数+原型组合模式
+组合模式是将构造函数模式和原型模式结合在一起，继承了它们优点的同时又避免了各自的缺点。它将具有各自特点的属性和方法定义在构造函数中，将实例间共享的属性和方法定义在prototype上，成为了在es6出现之前使用最普遍的一种创建对象模式。
+
+
+function  Person(age, name) { 
+    this.age = age;
+    this.name = name;
+    this.cry = function() {
+         console.log(name + 'is crying!!! T^T');
+    }
+}
+Person.prototype = {
+    constructor: Person,
+    sayName: function() {
+        console.log(this.name);
+    }
+}
+var person1 = new Person(11, '小白');
+var person2 = new Person(12, '小黑');
+
