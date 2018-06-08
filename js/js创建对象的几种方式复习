@@ -8,3 +8,22 @@ person.name = 'Dolanf';
 person.code = function() {
   console.log(‘hello world！’);
 };
+
+（2）工厂模式
+工厂模式通过将对象的创建封装到一个方法中，再通过在调用该方法时传入参数而实现对象的实例化，解决了以上提到的产生大量重复代码的问题，如下所示：
+
+
+function createPerson(age, name) { 
+    var o = new Object();
+    o.age = age;
+    o.name = name;
+    o.code = function() {
+         console.log('hello world!');
+    };
+
+    return o;
+}
+
+var person1 = createPerson(11, '小白');
+var person2 = createPerson(12, '小黑');
+
