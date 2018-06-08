@@ -1,1 +1,10 @@
 
+（1）Object构造函数和对象字面量
+在早期js开发中，很多开发者会使用Object构造函数的方式来创建一个对象，通过调用Object构造函数new一个Object对象，然后再给这个对象的每一个属性和方法进行
+赋值，代码如下所示：
+var person = new Object();
+person.age = 22;
+person.name = 'Dolanf';
+person.code = function() {
+  console.log(‘hello world！’);
+};
