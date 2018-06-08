@@ -42,3 +42,19 @@ function Person(age, name) {
 
 var person1 = new Person(11, '小白');
 var person2 = new Person(12, '小黑');
+
+
+（4）原型模式
+原型模式是通过将所有的属性和方法都定义在其prototype属性上，达到这些属性和方法能被所有的实例所共享的目的。代码如下所示：
+
+
+function Person(age, name) { 
+    Person.prototype.age = age;
+    Person.prototype.name = name;
+    Person.prototype.code = function() {
+         console.log('hello world！');
+    };
+}
+
+var person1 = new Person();
+var person2 = new Person();
