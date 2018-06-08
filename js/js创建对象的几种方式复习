@@ -27,3 +27,18 @@ function createPerson(age, name) {
 var person1 = createPerson(11, '小白');
 var person2 = createPerson(12, '小黑');
 
+（3）构造函数模式
+构造函数模式就是通过定义一个function函数，然后通过this给对象的属性和方法进行赋值。当我们实例化对象时，只需在该函数前面加一个new关键字就可以了。
+
+JavaScript
+
+function Person(age, name) { 
+    this.age = age;
+    this.name = name;
+    this.code = function() {
+         console.log('hello world!');
+    };
+}
+
+var person1 = new Person(11, '小白');
+var person2 = new Person(12, '小黑');
