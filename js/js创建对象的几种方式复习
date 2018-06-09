@@ -80,3 +80,5 @@ Person.prototype = {
 var person1 = new Person(11, '小白');
 var person2 = new Person(12, '小黑');
 
+
+
