@@ -22,3 +22,18 @@ let stu = new Student(); // "I'm a student."
 stu.study(); // "study!"
 stu.read(); // "Reading Now."
 
+类中的继承和超集：
+
+class Phone {
+  constructor() {
+    console.log("I'm a phone.");
+  }
+}
+ 
+class MI extends Phone {
+  constructor() {
+    super();
+    console.log("I'm a phone designed by xiaomi");
+  }
+}
+ 
