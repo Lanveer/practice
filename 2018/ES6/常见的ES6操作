@@ -1,0 +1,24 @@
+ES6中的类
+ES6 中支持 class 语法，不过，ES6的class不是新的对象继承模型，它只是原型链的语法糖表现形式。
+
+函数中使用 static 关键词定义构造函数的的方法和属性：
+
+class Student {
+  constructor() {
+    console.log("I'm a student.");
+  }
+ 
+  study() {
+    console.log('study!');
+  }
+ 
+  static read() {
+    console.log("Reading Now.");
+  }
+}
+ 
+console.log(typeof Student); // function
+let stu = new Student(); // "I'm a student."
+stu.study(); // "study!"
+stu.read(); // "Reading Now."
+
