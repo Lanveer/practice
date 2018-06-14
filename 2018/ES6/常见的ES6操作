@@ -1,4 +1,4 @@
-ES6中的类
+1.ES6中的类
 ES6 中支持 class 语法，不过，ES6的class不是新的对象继承模型，它只是原型链的语法糖表现形式。
 
 函数中使用 static 关键词定义构造函数的的方法和属性：
@@ -48,4 +48,19 @@ extends 允许一个子类继承父类，需要注意的是，子类的construct
 类的声明不会提升（hoisting)，如果你要使用某个 Class，那你必须在使用之前定义它，否则会抛出一个 ReferenceError 的错误
 在类中定义函数不需要使用 function 关键词
 
- 
+ 2.for...of 和 for...in
+for...of 用于遍历一个迭代器，如数组：
+let letter = ['a', 'b', 'c'];
+letter.size = 3;
+for (let letter of letters) {
+  console.log(letter);
+}
+// 结果: a, b, c
+for...in 用来遍历对象中的属性：
+let stu = ['Sam', '22', '男'];
+stu.size = 3;
+for (let stu in stus) {
+  console.log(stu);
+}
+// 结果: Sam, 22, 男
+
