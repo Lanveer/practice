@@ -42,3 +42,22 @@ function InnerCtrl($scope){
 不过，如果你不嫌麻烦的话，用 $scope.$parent 可以绑定并影响上一层作用域中的基本变量：
 
 <input type="text" ng-model="$parent.x">
+
+
+引用类型的解决办法
+<div ng-controller="OuterCtrl">
+  <p>{{x}}</p>
+  <div ng-controller="InnerCtrl">
+    <input type="text" ng-model="x">
+  </div>
+</div>
+<script>
+function OuterCtrl($scope){
+    $scope.data = {};
+    $scope.data.x = 'hello';
+}
+function InnerCtrl($scope){
+}
+</script>
+
+这种方法可以解决作用域的问题
