@@ -1,1 +1,8 @@
 
+1）作用域继承。利用子 Controller 控制父 Controller 上的数据。（父 Controller 中的数据要为引用类型，不能是基本类型，原因在于作用域的问题）
+
+2）注入服务。把需要共享的数据注册为一个 service，在需要的 Controller 中注入。
+
+3）基于事件。利用 Angular 的事件机制，使用 $on、$emit 和 $boardcast
+
+tips:作用域继承仅限于上下级之间的通信，注入服务和基于事件的机制可以实现任意级别的 Controller 通信。
