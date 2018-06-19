@@ -1,0 +1,46 @@
+factory
+把 service 的方法和数据放在一个对象里，并返回这个对象
+
+app.factory('FooService', function(){
+    return {
+        target: 'factory',
+        sayHello: function(){
+            return 'hello ' + this.target;
+        }
+    }
+});
+service
+通过构造函数方式创建 service，返回一个实例化对象
+
+app.service('FooService', function(){
+    var self = this;
+    this.target = 'service';
+    this.sayHello = function(){
+        return 'hello ' + self.target;
+    }
+});
+provider
+创建一个可通过 config 配置的 service，$get 中返回的，就是用 factory 创建 service 的内容
+
+app.provider('FooService', function(){
+    this.configData = 'init data';
+    this.setConfigData = function(data){
+        if(data){
+            this.configData = data;
+        }
+    }
+    this.$get = function(){
+        var self = this;
+        return {
+            target: 'provider',
+            sayHello: function(){
+                return self.configData + ' hello ' + this.target;
+            }
+        }
+    }
+});
+
+// 此处注入的是 FooService 的 provider
+app.config(function(FooServiceProvider){
+    FooServiceProvider.setConfigData('config data');
+});
