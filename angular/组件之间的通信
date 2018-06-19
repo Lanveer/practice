@@ -32,3 +32,37 @@ angular.module('demo', [])
 以上是父 Controller 中的数据是引用类型的情况。如果父 Controller 中的数据是基本类型，可通过 $scope.$parent.data 访问。
 
 很显然，这种方式仅适用于父子级间 Controller 的通信。
+
+
+注入服务
+在 Angular 中，服务是一个单例，所以在服务中生成一个对象，该对象就可以利用依赖注入的方式在所有的控制器中共享。
+
+看个栗子，先定义一个 service :
+
+angular.module('demo')
+    .factory('Data', function(){
+    	return {
+    	    name: 'htf'
+    	};
+    })
+    
+    页面
+    <div ng-controller="childCtrl1">
+  <h3>data in child controller 1 : {{data.name}}</h3>
+  <input class="form-control" type="text" ng-model="data.name">
+</div>
+<div ng-controller="childCtrl2">
+  <h3>data in child controller 2 : {{data.name}}</h3>
+  <input class="form-control" type="text" ng-model="data.name">
+</div>
+控制器
+.controller('childCtrl1', ['$scope', 'Data', function($scope, Data){
+    $scope.data = Data;
+}])
+
+.controller('childCtrl2', ['$scope', 'Data', function($scope, Data){
+    $scope.data = Data;
+}])
+
+基于事件
+Angular 为 $scope 提供了冒泡和隧道机制，$broadcast 会把事件广播给所有子 Controller，而 $emit 则会将事件冒泡传递给父 Controller，$on 则是 Angular 的事件监听函数，利用这三者，可以实现上下级和同级（需要构造一个共同的父级 Controller）之间的通信。
