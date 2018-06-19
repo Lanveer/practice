@@ -28,3 +28,7 @@ angular.module('demo', [])
 .controller('childCtrl', ['$scope', function($scope){
     
 }])
+
+以上是父 Controller 中的数据是引用类型的情况。如果父 Controller 中的数据是基本类型，可通过 $scope.$parent.data 访问。
+
+很显然，这种方式仅适用于父子级间 Controller 的通信。
