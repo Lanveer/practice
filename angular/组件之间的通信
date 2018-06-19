@@ -6,3 +6,25 @@
 3）基于事件。利用 Angular 的事件机制，使用 $on、$emit 和 $boardcast
 
 tips:作用域继承仅限于上下级之间的通信，注入服务和基于事件的机制可以实现任意级别的 Controller 通信。
+
+
+作用域通信
+
+<div ng-controller="parentCtrl">
+  <p>data in parent controller : {{data.name}}</p>
+  <div ng-controller="childCtrl">
+    <input type="text" ng-model="data.name">
+  </div>
+</div>
+
+angular.module('demo', [])
+
+.controller('parentCtrl', ['$scope', function($scope){
+    $scope.data = {
+        name: 'htf'
+    }
+}])
+
+.controller('childCtrl', ['$scope', function($scope){
+    
+}])
