@@ -1,1 +1,14 @@
-yu
+<div ng-controller="TestCtrl">
+  <p>{{name}}</p>
+  <div ng-if="show">
+    <input type="text" ng-model="name">
+  </div>
+</div>
+<script>
+function TestCtrl($scope){
+    $scope.show = true;
+    $scope.name = 'htf';
+}
+</script>
+
+这种情况下，input输入的值是不会改变到p标签中去的，原因就在于ng-if的使用创建了两个不同的作用域，
