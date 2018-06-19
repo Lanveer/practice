@@ -44,3 +44,8 @@ app.provider('FooService', function(){
 app.config(function(FooServiceProvider){
     FooServiceProvider.setConfigData('config data');
 });
+
+
+从底层实现上来看，service 调用了 factory，返回其实例；factory 调用了 provider，返回其 $get 中定义的内容。factory 和 service 功能类似，只不过 
+factory 是普通 function，可以返回任何东西（return 的都可以被访问，所以那些私有变量怎么写，你懂的）；service 是构造器，可以不返回（绑定到 this 
+的都可以被访问）；provider 是加强版 factory，返回一个可配置的 factory。
