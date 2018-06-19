@@ -19,3 +19,26 @@ function TestCtrl($scope){
 
 通常情况下，页面中 ng-model 绑定的变量都是在对应的 Controller 中定义的。如果一个变量未在当前作用域中定义，JavaScript 会通过当前 Controller 的 
 prototype 向上查找，也就是作用域的继承。
+
+基本类型变量
+<div ng-controller="OuterCtrl">
+  <p>{{x}}</p>
+  <div ng-controller="InnerCtrl">
+    <input type="text" ng-model="x">
+  </div>
+</div>
+<script>
+function OuterCtrl($scope){
+    $scope.x = 'hello';
+}
+function InnerCtrl($scope){
+}
+</script>
+运行后会发现跟文章开头一样的问题，里面输入框变了，外面的没跟着变。
+
+原因在于，InnerCtrl 中并未定义 x 这个变量，取值的时候，会沿着原型链向上找，找到了 OuterCtrl 中定义的 x ，然后赋值给自己，在 InnerCtrl
+的输入框输入值时，改变的是 InnerCtrl 中的 x ，而对 OuterCtrl 中的 x 无影响。此时，两个 x 是独立的。
+
+不过，如果你不嫌麻烦的话，用 $scope.$parent 可以绑定并影响上一层作用域中的基本变量：
+
+<input type="text" ng-model="$parent.x">
