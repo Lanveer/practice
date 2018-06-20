@@ -65,4 +65,18 @@ angular.module('demo')
 }])
 
 基于事件
-Angular 为 $scope 提供了冒泡和隧道机制，$broadcast 会把事件广播给所有子 Controller，而 $emit 则会将事件冒泡传递给父 Controller，$on 则是 Angular 的事件监听函数，利用这三者，可以实现上下级和同级（需要构造一个共同的父级 Controller）之间的通信。
+Angular 为 $scope 提供了冒泡和隧道机制，$broadcast 会把事件广播给所有子 Controller，而 $emit 则会将事件冒泡传递给父 Controller，
+$on 则是 Angular 的事件监听函数，利用这三者，可以实现上下级和同级（需要构造一个共同的父级 Controller）之间的通信。
+
+
+上下级之间
+这种情况下比较简单。
+
+如果是子 Controller 往父 Controller 上发送事件（从作用域往上发送事件），使用 scope.$emit
+
+$scope.$emit("someEvent", {});
+如果是父 Controller 往子 Controller 上发送事件（从作用域往下发送事件），使用 scope.$broadcast
+
+$scope.$broadcast("someEvent", {});
+无论是 $emit 还是 $broadcast 发送的事件，都用 $scope.$on 接收：
+
