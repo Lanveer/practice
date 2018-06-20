@@ -100,3 +100,66 @@ $scope.$broadcast("someEvent", {});
     <input class="form-control" type="text" ng-model="name" ng-change="change()">
   </div>
 </div>
+
+.controller('outerCtrl', ['$scope', function($scope){
+    $scope.name = 'htf';
+    $scope.$on('dataChanged', function(event, data){
+        $scope.name = data;
+        // 2. 父 Ctrl 监听到 dataChanged 时间后，触发 changeData 事件
+        $scope.$broadcast('changeData', data);
+    })
+}])
+
+.controller('innerCtrl1', ['$scope', function($scope){
+    $scope.change = function(){
+        // 1. 子 Ctrl1 中数据改变之后触发 dataChanged 事件
+        $scope.$emit('dataChanged', $scope.name);
+    }
+    $scope.$on('changeData', function(event, data){
+        $scope.name = data;
+    })
+}])
+
+.controller('innerCtrl2', ['$scope', function($scope){
+    $scope.change = function(){
+        $scope.$emit('dataChanged', $scope.name);
+    }
+    // 3. 监听到 changeData 事件后，改变子 Ctrl2 中 数据
+    $scope.$on('changeData', function(event, data){
+        $scope.name = data;
+    })
+}])
+
+借助 $rootScope
+每个 Angular 应用默认有一个根作用域 $rootScope， 根作用域位于最顶层，从它往下挂着各级作用域。
+
+所以，如果子控制器直接使用 $rootScope 广播和接收事件，那么就可实现同级之间的通信。
+
+看栗子：
+<div ng-controller="innerCtrlA">
+    <input class="form-control" type="text" ng-model="name" ng-change="change()">
+</div>
+<div ng-controller="innerCtrlB">
+    <input class="form-control" type="text" ng-model="name" ng-change="change()">
+</div>
+
+.controller('innerCtrlA', ['$scope', '$rootScope', function($scope, $rootScope){
+    $scope.change = function(){
+        // 广播事件
+        $rootScope.$broadcast('nameChanged', $scope.name);
+    }
+    $rootScope.$on('nameChanged', function(event, data){
+        $scope.name = data;
+    })
+}])
+
+.controller('innerCtrlB', ['$scope', '$rootScope', function($scope, $rootScope){
+    $scope.change = function(){
+        $rootScope.$broadcast('nameChanged', $scope.name);
+    }
+    // 监听事件
+    $rootScope.$on('nameChanged', function(event, data){
+        $scope.name = data;
+    })
+}])
+
