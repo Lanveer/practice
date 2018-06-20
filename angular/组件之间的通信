@@ -80,3 +80,23 @@ $scope.$emit("someEvent", {});
 $scope.$broadcast("someEvent", {});
 无论是 $emit 还是 $broadcast 发送的事件，都用 $scope.$on 接收：
 
+
+同级之间
+同级之间利用事件通信有两种方法。一种是利用上下级之间事件传播的变形，另一种是借助 $rootScope 。
+
+借助父 controller
+先看第一种，在子 Controller 中向父 Controller 触发一个事件，然后在父 Controller 中监听事件，再广播给子 Controller ，这样通过事件携带的参数，
+实现了数据经过父 Controller，在同级 Controller 之间传播。
+
+但是要注意，通过父 Controller 作为中介进行传递的话，子 Controller 触发的事件名和父 Controller 广播用的事件名不能一样，否则会进入死循环
+
+
+<div ng-controller="outerCtrl">
+  <h3>data in outer controller: {{name}}</h3>
+  <div ng-controller="innerCtrl1">
+    <input class="form-control" type="text" ng-model="name" ng-change="change()">
+  </div>
+  <div ng-controller="innerCtrl2">
+    <input class="form-control" type="text" ng-model="name" ng-change="change()">
+  </div>
+</div>
