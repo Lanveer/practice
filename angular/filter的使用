@@ -24,3 +24,23 @@ number（格式化数字，加上千位分隔符，并接收参数限定小数�
 filter（处理一个数组，过滤出含有某个子串的元素）
 
 json（格式化 json 对象）
+
+自定义 filter
+// 形式
+app.filter('过滤器名称',function(){
+    return function(需要过滤的对象,过滤器参数1,过滤器参数2,...){
+        //...做一些事情  
+        return 处理后的对象;
+    }
+});  
+
+// 栗子
+app.filter('timesFilter', function(){
+    return function(item, times){
+        var result = '';
+        for(var i = 0; i < times; i++){
+            result += item;
+        }
+        return result;
+    }
+})
