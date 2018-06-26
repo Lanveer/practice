@@ -5,3 +5,22 @@ app.filter('parseIntFilter', function(){
         return parseInt(item);
     }
 })
+ng 内置的 filter 有九种：
+
+date（日期）
+
+currency（货币）
+
+limitTo（限制数组或字符串长度）
+
+orderBy（排序）
+
+lowercase（小写）
+
+uppercase（大写）
+
+number（格式化数字，加上千位分隔符，并接收参数限定小数点位数）
+
+filter（处理一个数组，过滤出含有某个子串的元素）
+
+json（格式化 json 对象）
