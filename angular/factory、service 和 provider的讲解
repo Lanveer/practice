@@ -1,0 +1,11 @@
+factory
+把 service 的方法和数据放在一个对象里，并返回这个对象
+
+app.factory('FooService', function(){
+    return {
+        target: 'factory',
+        sayHello: function(){
+            return 'hello ' + this.target;
+        }
+    }
+});
