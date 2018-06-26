@@ -1,1 +1,43 @@
 
+1.平行组件之间的传值可以直接使用this.state来控制。
+
+2. 父组件往子组建传参数
+
+index页面中
+<UserInfo salesInfo={salesInfo} thisMonthOverdueRatio={thisMonthOverdueRatio}  postPersonData={postPersonData}/>
+
+子页面中可以通过
+this.props.salesInfo
+this.props.thisMonthOverdueRatio
+this.props.postPersonData
+来取到父组件传到子组件的参数
+
+
+3.子组件往父组件传参数
+
+子组件获得说需要的参数
+    renderPersonData(nextId){
+     this.fetchPersonData(nextId).then(
+         r=>{
+             if(r && r.result =='success'){
+                 this.setState({
+                     personData:r.content,
+                 });
+                 this.props.postPersonData(r.content)===》 通过这个函数传到父元素
+             }else{
+             }
+         }
+     ).catch(e=>{
+
+     })
+    }
+    
+    父元素获取值
+       //获取子组件的值
+    postPersonData(val){
+        this.setState({
+            postPersonData:val
+        })
+    }
+    
+    
