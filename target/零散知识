@@ -1,0 +1,51 @@
+1.请求
+
+首先一个请求，包含有请求头，请求行，请求正文。具体是怎样境，看下面的代码
+
+axios({
+ method: 'post',
+ url: '/user/12345',
+ headers:{
+ 'Content-Type':'application/x-www-form-urlencoded'
+ },
+ data: {
+ firstName: 'Fred',
+ lastName: 'Flintstone'
+ }
+});
+
+
+如上所述
+
+method和 url就是这个请求的请求行（这里是请求行部分信息，其实请求行还包括http协议的版本等信息）。 headers中的属性就是请求头，里面的属性，全部包含在请求的header里面，是服务端获取客户端版本，缓存等信息的一个途径。 data对应的就是请求正文，也就是平常所说的参数。
+
+
+2-2.响应
+
+在请求发出去，并且响应已经回来的时候，就时候信息可分为响应行，响应头，响应正文。
+
+响应行
+引用看云的一个请求作为实例，如下代码就是这个请求的响应行，返回请求的http协议及版本，状态码，请求状态等描述信息。
+
+Request URL:https://www.kancloud.cn/yunye/axios/comment?article_id=234845&page=1
+Request Method:GET
+Status Code:200 OK
+Remote Address:117.23.61.221:443
+响应头
+
+响应头和请求头格式一致，返回版本，缓存等信息。
+
+
+
+响应正文
+
+平常接触最多的就是响应正文，也就是日常开发需要用到的数据。开发者拿到这些数据之后，再进行相应的处理。
+
+
+2-3.关于https
+
+关于 https 。下面可以先了解下 http 的缺点，https就是http基础上做的加密处理。
+
+1.通信使用明文不加密，内容可能被窃听 
+2.不验证通信方身份，可能遭到伪装 
+3.无法验证报文完整性，可能被篡改
