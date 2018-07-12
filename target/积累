@@ -2,3 +2,6 @@ JSON.stringify()和JSON.parse()的区别
 JSON.stringify()此方法用于将一个对象解析成字符串并返回。
 
 JSON.parse()此方法刚好相反是将一个字符串对象解析成一个JSON对象。
+
+
+第二点
