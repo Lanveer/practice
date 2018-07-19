@@ -172,3 +172,17 @@ b.name='sh';
 
 
 b通过a赋值，a和b就共用了一个堆内存，修改了a或者b，都直接修改了堆内存的值，就会对另一个产生影响。
+
+
++ 操作符
+var val = 'smtg';
+
+console.log('Value is ' + (val === 'smtg') ? 'Something' : 'Nothing')
+
+// something
+
+var val = 'smtg';
+
+console.log('Value is '  (val === 'smtg') ? 'Something' : 'Nothing')
+
+// value is something
