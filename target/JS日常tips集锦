@@ -23,3 +23,40 @@ e、任何其他组合（array数组等），都不相等。
 所以其实”==“的转换规则，并没有想象的那么简单，由此可见[0] == true, 应该采用的是规则c, 而[] == [] 应该采用的是规则e.
 
 2. String('A') 和 new String('A') 的区别
+
+function showCase(value) {
+    switch(value) {
+    case 'A':
+        console.log('Case A');
+        break;
+    case 'B':
+        console.log('Case B');
+        break;
+    case undefined:
+        console.log('undefined');
+        break;
+    default:
+        console.log('Do not know!');
+    }
+}
+
+showCase(new String('A'));
+
+function showCase2(value) {
+    switch(value) {
+    case 'A':
+        console.log('Case A');
+        break;
+    case 'B':
+        console.log('Case B');
+        break;
+    case undefined:
+        console.log('undefined');
+        break;
+    default:
+        console.log('Do not know!');
+    }
+}
+showCase2(String('A'));
+答案：‘Do not know!' ; 'Case A'
+
