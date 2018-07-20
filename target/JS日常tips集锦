@@ -76,3 +76,12 @@ showCase2(String('A'));
 解析：1<2<3 等价于1<2=> true; true<3 => 1<3=> true;
 
 3<2=> false; false<1 => 0<1=> true.
+
+4.变量提升
+(function(){
+  var x = y = 1;
+})();
+console.log(y);  //1
+console.log(x);  // error
+
+
