@@ -1,1 +1,13 @@
 
+1. js的恒等
+var a = [0];
+if ([0]) {
+  console.log(a == true);
+} else {
+  console.log("wut");
+}
+
+[]==[]
+答案：false, false
+解析：[0]==true  //false   [0]===true  //false   [0]==false // true   [0]===false  // false
+Boolean([0]) //true
