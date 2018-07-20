@@ -60,3 +60,10 @@ function showCase2(value) {
 showCase2(String('A'));
 答案：‘Do not know!' ; 'Case A'
 
+解析：为什么两个代码段的输出不一致呢？
+
+两个原因：1.switch进行比较的时候用的是全等符“===”，所以不会做类型转换，即“10”不会等于10；
+
+2. new String() 和 String 返回的类型不同，前者返回的是object，后者返回的是string，所以在做全等比较的时候，返回的结果是false。
+
+所以如果有需要用到switch对于字符串做比较的时候，需要注意传入的参数类型。
