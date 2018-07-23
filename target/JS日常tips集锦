@@ -89,4 +89,17 @@ JSON.stringify()和JSON.parse()的区别
 JSON.stringify()此方法用于将一个对象解析成字符串并返回。
 JSON.parse()此方法刚好相反是将一个字符串对象解析成一个JSON对象。
 
+6. 隐藏姓名中的几个字段以及电话号码*号表示
+function hidden(str,frontLen,endLen) { 
+                     var len = str.length-frontLen-endLen;
+                     var xing = '';
+                     for (var i=0;i<len;i++) {
+                     xing+='*';
+                    }
+                     return str.substring(0,frontLen)+xing+str.substring(str.length-endLen);
+               }
+
+hidden('18200407614',3,3)
+// "182*****614"
+
 
