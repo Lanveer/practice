@@ -1,1 +1,11 @@
 
+1. 新增对数组的操作
+
+// map: 用给定的映射遍历数组，不改变原数组，生成新数组；
+let arr = [12, 58, 99, 86, 45, 21];
+let newArr = arr.map(item=>item>=60?"及格":"不及格");
+console.log(arr, newArr) // [12, 58, 99, 86, 45, 21] // ["不及格", "不及格", "及格", "及格", "不及格", "不及格"]
+
+// filter: 过滤器
+let filter = arr.filter(item=>item<=60);
+console.log(filter); // [12, 58, 45, 21]
