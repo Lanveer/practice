@@ -102,4 +102,15 @@ function hidden(str,frontLen,endLen) {
 hidden('18200407614',3,3)
 // "182*****614"
 
+解析：
+
+var str='18200407614'
+var a=str.substring(0,3);
+console.log(a) //182 表示从0开始截取三位数
+
+
+var str='18200407614'
+var a=str.substring(8);
+console.log(a)// 614 表示从第8位开始到最后的数
+
 
