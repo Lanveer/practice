@@ -9,3 +9,19 @@ console.log(arr, newArr) // [12, 58, 99, 86, 45, 21] // ["不及格", "不及格
 // filter: 过滤器
 let filter = arr.filter(item=>item<=60);
 console.log(filter); // [12, 58, 45, 21]
+
+// reduce: 遍历累加
+let sum = arr.reduce((item1, item2, index)=>item1+item2); // index表示下标，这里可不写
+console.log(sum); //321
+
+let arr2 = [
+    {title: "奔驰", price: 20},
+    {title: "宝马", price: 35},
+    {title: "路虎", price: 30},
+    {title: "特斯拉", price: 40},
+    {title: "大众", price: 15},
+    {title: "标致", price:15},
+];
+let filter2 = arr2.filter(item=>item.price >=30);
+console.log(filter2)
+//0: {title: "宝马", price: 35}1: {title: "路虎", price: 30}2: {title: "特斯拉", price: 40}
