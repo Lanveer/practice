@@ -25,3 +25,21 @@ let arr2 = [
 let filter2 = arr2.filter(item=>item.price >=30);
 console.log(filter2)
 //0: {title: "宝马", price: 35}1: {title: "路虎", price: 30}2: {title: "特斯拉", price: 40}
+
+
+2. 字符串的操作
+let str = "http://www.baidu.com";
+if(str.startsWith("https")){
+    console.log("加密网址");
+}else if(str.startsWith("http")){
+    console.log("普通网址");
+}
+// 普通网址
+
+let str2 = "abc1234@163.com";
+if(str2.endsWith("163.com")){
+    console.log("163邮箱");
+}else if(str2.endsWith("qq.com")){
+    console.log("qq邮箱");
+}
+// 163邮箱
