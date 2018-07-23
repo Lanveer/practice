@@ -43,3 +43,87 @@ if(str2.endsWith("163.com")){
     console.log("qq邮箱");
 }
 // 163邮箱
+
+
+3. class 类的概念
+class Person{
+    constructor(name, gender){
+        this.name = name;
+        this.gender = gender;
+    }
+    showName(){
+        console.log(this.name);
+    }
+    showGender(){
+        console.log(this.gender);
+    }
+}
+
+var sun = new Person("孙悟空", "male");
+sun.showName();
+sun.showGender();
+// 孙悟空
+// male
+
+继承的概念
+class Child extends Person{
+    constructor(name, gender, age){
+        super(name, gender);
+        this.age = age;
+    }
+    showAge(){
+        console.log(this.age);
+    }
+}
+
+var child = new Child("小猴子", "male", 12);
+child.showAge();
+// 12
+
+4.generator惰性函数
+function *show() {
+    console.log("------1-----");
+    let a = yield 12;
+    console.log("------2-----");
+    console.log(a);
+    return a;
+}
+
+let gen = show();
+let a = gen.next(123);  // 当yield 后赋值时，第一次执行到yield时返回该值
+let b = gen.next(456);
+console.log(a, b); // a是一个json对象
+
+ eg:
+ function* g() {
+    yield 'a';
+    yield 'b';
+    yield 'c';
+    return 'ending';
+}
+
+var gen = g();
+gen.next(); // {value: "a", done: false}
+var gen = g();
+var gen = g();//{value: "b", done: false}
+
+function* g() {
+    var o = 1;
+    yield o++;
+    yield o++;
+    yield o++;
+
+}
+var geng = g();
+
+console.log(geng.next()); // {value: 1, done: false}
+var xxx = g();
+console.log(geng.next()); // {value: 2, done: false}
+console.log(xxx.next());  // {value: 1, done: false}
+console.log(geng.next()); // {value: 3, done: false}
+
+
+
+
+
+
