@@ -1,5 +1,5 @@
 
-1. 最原始的继承
+1. 最原始的继承--类式继承（构造函数间的继承）
   
   一个狗类的构造函数
   function Dog(){
@@ -21,7 +21,7 @@
   　dogA.species = '猫科';
 　　alert(dogB.species); // 显示"犬科"，不受dogA的影响  这样的话就是资源的极大浪费
   
-2. 为了解决这样的资源浪费问题，于是就引入了prototype
+2. 为了解决这样的资源浪费问题，于是就引入了prototype   ---原型链继承（对象间的继承）
   function Dog(){
   this.name=name
   }
@@ -37,3 +37,6 @@
   console.log(dog2.species)  // cat
   
   由于所有的实例对象共享同一个prototype对象，那么从外界看起来，prototype对象就好像是实例对象的原型，而实例对象则好像"继承"了prototype对象一样。
+  
+  
+  
