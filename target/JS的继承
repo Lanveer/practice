@@ -1,1 +1,22 @@
 
+1. 最原始的继承
+  
+  一个狗类的构造函数
+  function Dog(){
+  this.name = name
+  }
+  
+  通过使用new 关键字就可以生成一个狗对象的实例
+  var dog1= new Dog('zhangsan');
+  
+  这样的使用构造函数生成实例有一个弊端就是实例之间无法共享属性和方法
+  　function DOG(name){
+　　　　this.name = name;
+　　　　this.species = '犬科';
+　　}
+  生成了两个实例对象
+    var dogA = new DOG('大毛');
+　　var dogB = new DOG('二毛');
+  这两个对象的species属性是独立的，修改其中一个，不会影响到另一个。
+  　dogA.species = '猫科';
+　　alert(dogB.species); // 显示"犬科"，不受dogA的影响  这样的话就是资源的极大浪费
