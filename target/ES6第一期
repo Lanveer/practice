@@ -123,6 +123,34 @@ console.log(xxx.next());  // {value: 1, done: false}
 console.log(geng.next()); // {value: 3, done: false}
 
 
+7. 数组去重
+    1.) es6新增方法去重
+let arr = [1, 2, 3, 2, 1];
+
+function unique(arr){
+    return Array.from(new Set(arr));
+}
+console.log(unique(arr))   // [1, 2, 3]
+
+在这里分享另外一种去重的方法 
+ 2.) reduce方法去重
+var arr = [1,2,1,2,3,5,4,5,3,4,4,4,4];
+	var result = arr.sort().reduce((init, current)=>{
+	    if(init.length===0 || init[init.length-1]!==current){
+	        init.push(current);
+	    }
+	    return init;
+	}, []);
+	console.log(result);//1,2,3,4,5
+ 
+ 
+ 8. 类型检验检测
+ Object.prototype.toString.call()
+  这是目前检测最为标准的检测方法。typeof等等的都只是初步检测
+ 
+
+
+
 
 
 
