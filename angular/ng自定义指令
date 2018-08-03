@@ -43,3 +43,49 @@
  
 </script>
 
+
+同时可以使用自定义指令来实现输入的格式化
+
+.directive('textTransform', function() {
+   var transformConfig = {
+     uppercase: function(input){
+       return input.toUpperCase();
+     },
+     capitalize: function(input){
+       return input.replace(
+         /([a-zA-Z])([a-zA-Z]*)/gi,
+         function(matched, $1, $2){
+          return $1.toUpperCase() + $2;
+        });
+     },
+     lowercase: function(input){
+       return input.toLowerCase();
+     }
+   };
+  return {
+    require: 'ngModel',
+    link: function(scope, element, iAttrs, modelCtrl) {
+      var transform = transformConfig[iAttrs.textTransform];
+      if(transform){
+        modelCtrl.$parsers.push(function(input) {
+          return transform(input || "");
+        }); 
+        element.css("text-transform", iAttrs.textTransform);
+      }
+    }
+  };
+});
+
+
+在页面上就可以这样使用了
+<input type="text" ng-model="demo.text" text-transform="capitalize" />
+<input type="text" ng-model="demo.text" text-transform="uppercase" />
+<input type="text" ng-model="demo.text" text-transform="lowercase" />
+
+
+
+
+
+
+
+
