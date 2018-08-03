@@ -1,1 +1,117 @@
 
+1. 主要作用点
+ 这个插件主要是生成一个html文件，然后动态的插入我们打包好的资源文件，这是他的主要功能，但是我们在日常项目中肯定不止用到这两个功能， 有时候需要几个页面
+ 分别应用不同的js文件这个时候，就需要配置这个插件了。
+ 
+ 
+ chunk属性 -- 可以指定某个页面加载哪些js文件。
+ 
+ eg 
+    index --- index.js  header.js   footer.js
+    list  --header.js   list.js   footer.js
+    detail  --header.js   detail.js   footer.js
+  
+  就像这样的结构，传统的话我们会根据每个页面需要引用的js文件去手动添加，但是这样的话在文件多了的时候容易出错。
+  
+  
+  下面我们引出htmlwebpackplugin文件
+  
+  1. const HtmlWebpackPlugin = require('html-webpack-plugin');
+  
+  2. 配置webpack.config.js文件
+   module.exports={
+     entry：{
+       index:'index.js',
+       list:'list.js',
+       detail:'detail.js',
+       header:'header.js',
+       footer:'footer.js'
+     }
+       output : {
+        path : __dirname + '/dist', //输出路径，要用绝对路径
+        filename : 'js/[name]-[hash].bundle.js', //打包之后输出的文件名
+      }
+      
+      
+       plugins: [
+        new HtmlWebpackPlugin({
+            template : './index.html',
+            title : '首页',
+            filename : 'index.html',
+            inject : true,
+            chunks : ['index', 'header', 'footer']
+        }),
+        new HtmlWebpackPlugin({
+            template : './index.html',
+            title : '列表页',
+            filename : 'list.html',
+            inject : true,
+            chunks : ['header', 'list','footer']
+        }),
+        new HtmlWebpackPlugin({
+            template : './index.html',
+            title : '详情页',
+            filename : 'detail.html',
+            inject : true,
+            chunks : ['detail', 'header', 'footer']
+        })
+    ]
+     
+   }
+   
+具体的功能扇上面的代码已经很清晰了， 这个插件就是根据不同的页面需要调整动态加载不同的所需js文件（这里不仅仅局限于js文件，css文件也是一样可以模块化输出的）
+
+
+3. 性能优化-- 将所需加载的代码以script标签嵌入式加载
+    1）需要安装另外一个插件来实现
+      npm install --save-dev html-webpack-inline-source-plugin
+    2)代码还是使用之前的
+    const HtmlWebpackPlugin = import 'html-webpack-plugin';
+    const HtmlWebpackInlineSourcePlugin = import 'html-webpack-inline-source-plugin';
+      module.exports={
+     entry：{
+       index:'index.js',
+       list:'list.js',
+       detail:'detail.js',
+       header:'header.js',
+       footer:'footer.js'
+     }
+       output : {
+        path : __dirname + '/dist', //输出路径，要用绝对路径
+        filename : 'js/[name]-[hash].bundle.js', //打包之后输出的文件名
+      }
+      
+      
+       plugins: [
+        new HtmlWebpackPlugin({
+            template : './index.html',
+            title : '首页',
+            filename : 'index.html',
+            inject : true,
+            excludeChunks : ['list'],  // 这个的功能是讲不需要的排除在外，跟chunks是相反的。二者取一即可。
+            inlineSource : '.(js|css)$' //全部内嵌
+        }),
+        
+        new HtmlWebpackInlineSourcePlugin(),
+        new HtmlWebpackPlugin({
+            template : './index.html',
+            title : '列表页',
+            filename : 'list.html',
+            inject : true,
+           // chunks : ['header', 'list','footer']  // 这个的功能是讲不需要的排除在外，跟chunks是相反的。二者取一即可。
+             excludeChunks : ['index','detail']
+        }),
+        new HtmlWebpackPlugin({
+            template : './index.html',
+            title : '详情页',
+            filename : 'detail.html',
+            inject : true,
+            //chunks : ['detail', 'header', 'footer']
+            excludeChunks : ['list','index']  // 这个的功能是讲不需要的排除在外，跟chunks是相反的。二者取一即可。
+        })
+    ]
+     
+   }
+    
+  
+  
