@@ -1,1 +1,62 @@
+在angular中如何获取input以及textarea等的焦点，就是在输入之后，不需要点击操作就能执行某一些方法，这样的话只有指令才能做到了，下面就讲解一下ng的自定义
+指令。
 
+
+<div ng-app="myApp" ng-controller="control">
+  <input type="text" set-Focus ng-blur="setBlur()">
+  <button ng-click="getFocus()">点击</button>
+ </div> 
+ 
+ <script type="text/javascript">  
+ //模型
+ var app = angular.module('myApp',[]);
+ 
+ //控制器
+ app.controller("control",function($scope){
+  $scope.isCome = false;  
+  $scope.isFocus = false;  
+ 
+  $scope.getFocus = function(){
+   $scope.isFocus = true; 
+   $scope.isCome = true; 
+  };
+ 
+  $scope.setBlur = function(){
+   $scope.isFocus = false;
+  }
+ });
+ 
+ //自定义指令
+  app.directive('setFocus',[ function(){
+   return {
+    scope:false,
+    link:function(scope, element){      
+     scope.$watch("isFocus",function(newValue,oldValue, scope) {
+      //如果有新的输入
+      if(newValue && scope.isCome){
+       element[0].focus(); //获取焦点
+      }
+    }, true);;
+    }
+   };
+ }]);
+ 
+</script>
+
+
+
+自定义directive实现
+<body>
+ <div ng-app="myApp" >
+  <input type="text" set-Focus>
+ </div>
+ <script type="text/javascript">
+   var app = angular.module('myApp',[]);
+   app.directive('setFocus', function(){
+     return function(scope, element){
+      element[0].focus();
+      //在这里面可以定义自己的方法
+     };
+   });
+ </script>
+</body>
