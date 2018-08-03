@@ -1,0 +1,110 @@
+1.二位数组降维
+
+var arr=[1,2,[3,4,5]]
+Array.prototype.concat.apply([],arr)//[1,2,3,4,5]
+
+var arr=[1,2,[3,[4,5]]]
+Array.prototype.concat.apply([],arr)//[1,2,3,4,5]`
+//[1,2,3,[4,5]]
+
+let flatten = arr => arr.reduce((begin,current)=>{
+        Array.isArray(current)?
+        begin.push(...flatten(current)):
+        begin.push(current);
+        return begin
+    },[])
+    
+    arr.reduce()，函数总共有两个参数
+    
+    
+  ****************************************************************************************************
+  
+  reduce 英文释义为减少，在代码里面也是起着简化的作用， 能够将一个复杂的数组逐渐简化，最后得到一个值， 首先reduce 处理的是数组， 所以在使用之前
+  需要进行类型判断一下， 为了准确起见，推荐使用Object.prototype.toString.call()来判断。
+  
+  reduce接受一个回调函数作为参数，在回调函数中又有四个参数， 分别是prev， cur，index， arr 这四个参数的意思分别是， 第一项的值，或者是上一次
+  叠加的值， 第二个是当前会参与叠加的值， 第三个是当前值得索引值， 第四个是数组的本身。
+  
+  但是reduce还会有第二个参数， 第二个参数可以设置prev的初始类型和初始值，如果设置为0，表示prev的初始值类型为number类型，因此reduce的值也会为number
+  
+  同时第二个参数也是作为累计结果的初始值， 如果需要最后在总结果上减去多少，这里就可以设置。
+  
+  1)下面是第一个简单的列子
+  
+      ********** 只设定一个参数 *********
+      arr=[1,2,3,4];
+      let sum = reduce(function(prev,cur,index, arr){
+          console.log(prev,cur,index);
+          return prev+cur
+        })
+
+        console.log(sum)  // 10
+
+        ********** 初始值设定为总数减去5 *********
+         arr=[1,2,3,4];
+      let sum = reduce(function(prev,cur,index, arr){
+          console.log(prev,cur,index);
+          return prev+cur
+        },-5)
+
+        console.log(sum)  // 5
+
+        ********** 初始值设定为0 *********
+        let sum = reduce(function(prev,cur,index, arr){
+          console.log(prev,cur,index);
+          return prev+cur
+        },0)
+
+        console.log(sum)  // 10
+ 
+ 2)统计字符串中每个字符出现的次数
+    这个算是js中的算法问题了， 如果使用es5的话也就是嵌套循环来解决， 但是如果使用reduce的话就会简化很多。
+    
+    这里设定了reduce的第二个参数为{}。 表明了最后将返回一个对象。
+    var str='abcdaabc';
+    var a= str.splict('').reduce(function(res,cur){
+    res[cur]?res[cur]++:res[cur]=1;
+    return res
+    },{})
+    
+    console.log(a) // {a: 3, b: 2, c: 2, d: 1}
+    
+    
+    首先reduce接受的是一个数组对象， 所以第一步arr.split('') 将字符串转换为数组， 得到以下值 ["a", "b", "c", "d", "a", "a", "b", "c"];
+    
+      如果将第二个参数设定为数组的话，最后返回的就是一个数组
+      var arrString = 'abcdaabc';
+      var a=arrString.split('').reduce(function(res, cur) {
+          res[cur] ? res[cur] ++ : res[cur] = 1
+          return res;
+      },[])
+      console.log(a)  // [a: 3, b: 2, c: 2, d: 1]
+      
+      
+  3）解决多维数组降维的问题，如果使用传统的js来实现的话，会写很多冗余的代码，甚至会出现一些bug。
+  
+    下面一个列子需要把这个二维数组转化为一维数组，首先使用传统的方法实现。
+    
+    var arr=[1,2,[3,4,5]];
+    Array.prototype.concat.apply([],arr)  // [1,2,3,4,5]  
+    
+     二维数组降为一维数组很容易就出来了，下面将实现多维数组将为一维数组。
+     
+    var arr=[1,2,[3,[4,5]]]
+    Array.prototype.concat.apply([],arr)//[1,2,3,4,5]`
+    //[1,2,3,[4,5]]
+    
+    很明显，对于超过二维数组再使用这种方法就没法实现了， 下面就需要清楚reduce了。
+    
+      var arr=[1,2,[3,[4,5]]]  
+      var  flatten = arr => arr.reduce((begin,current)=>{
+                  Array.isArray(current)?begin.push(...flatten(current)):begin.push(current);
+                  return begin
+              },[])
+
+      flatten(arr)  //[1, 2, 3, 4, 5]
+        
+        
+    结语：
+     虽然使用了reduce实现了降维，但是js还是有很多其他的api可以实现数组的降维 ， 比如filter等，这里就不一一列举了。
+        
