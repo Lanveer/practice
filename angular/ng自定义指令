@@ -43,20 +43,3 @@
  
 </script>
 
-
-
-自定义directive实现
-<body>
- <div ng-app="myApp" >
-  <input type="text" set-Focus>
- </div>
- <script type="text/javascript">
-   var app = angular.module('myApp',[]);
-   app.directive('setFocus', function(){
-     return function(scope, element){
-      element[0].focus();
-      //在这里面可以定义自己的方法
-     };
-   });
- </script>
-</body>
