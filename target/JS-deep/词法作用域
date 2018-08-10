@@ -1,1 +1,21 @@
 
+概念：
+ 
+ 作用域是指源代码中定义变量的区域，其规定了如何查找变量，以及代码对变量的访问权限，js中采取的是词法作用域，也就是所谓的静态作用域。
+ 
+ 列子
+ 
+ var a=1;
+ function getValue(){
+ console.log(a)
+ }
+ 
+ function getValue2(){
+ var a=2;
+ getValue();
+ }
+ 
+ getValue2()
+ 
+ 解析： 由于js采取的是静态作用域，执行getValue的时候，就会在getValue函数内部查找a的值，而不会在getValue2 函数的作用域内查找，但是如果是动态作用域的
+话，就会打印2.
