@@ -15,3 +15,10 @@
     开启服务：redis-server --service-start
 
     停止服务：redis-server --service-stop
+    
+3. 测试状况
+    精简模式：
+    redis-cli.exe
+    指定模式：
+    redis-cli.exe -h 127.0.0.1 -p 6379 -a requirepass
+    (-h 服务器地址  -p 指定端口号 -a 连接数据库的密码[可以在redis.windows.conf中配置]，默认无密码)
