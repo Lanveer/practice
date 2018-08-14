@@ -1,1 +1,17 @@
 
+1. windows下面安装msi文件，https://github.com/MSOpenTech/redis/tags
+
+2.安装到硬盘
+
+3. 开启服务（可以在安装目录打开控制台使用命令行开启redis-server redis.windows.conf， 还可以直接双击redis-cli.exe开启服务）
+
+这种开启方式有一个局限就是关闭了cmd窗口的话，redis服务就关闭了，下面我们将介绍如何将redis服务添加到系统服务。
+
+1. 安装redis服务 redis-server --service-install redis.windows-service.conf --loglevel verbose
+2.启动redis服务 redis-server --service-start
+
+    卸载服务：redis-server --service-uninstall
+
+    开启服务：redis-server --service-start
+
+    停止服务：redis-server --service-stop
