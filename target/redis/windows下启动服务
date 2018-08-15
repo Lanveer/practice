@@ -22,3 +22,13 @@
     指定模式：
     redis-cli.exe -h 127.0.0.1 -p 6379 -a requirepass
     (-h 服务器地址  -p 指定端口号 -a 连接数据库的密码[可以在redis.windows.conf中配置]，默认无密码)
+
+
+4. 配置密码
+　　config set requirepass "yourpassword"//设置当前密码,服务重新启动后又会置为默认，即无密码；不建议此种方式
+  
+  修改redis.windows-service.config中的requirepass pwd 然后重启服务，
+  
+  这个时候， config get requirepass 就能看到当前的密码了
+  
+  
