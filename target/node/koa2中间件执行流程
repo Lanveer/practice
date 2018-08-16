@@ -1,1 +1,59 @@
 
+var koa = require('koa');
+var app = koa();
+
+app.use(function* f1(next) {
+    console.log('f1: pre next');
+    yield next;
+    console.log('f1: post next');
+});
+
+app.use(function* f2(next) {
+    console.log('  f2: pre next');
+    yield next;
+    console.log('  f2: post next');
+});
+
+app.use(function* f3(next) {
+    console.log('    f3: pre next');
+    this.body = 'hello world';
+    console.log('    f3: post next');
+});
+
+app.listen(4000);
+
+执行结果：
+f1: pre next
+  f2: pre next
+    f3: pre next
+    f3: post next
+  f2: post next
+f1: post next
+
+
+模拟：
+function* f1() {
+    console.log('f1: pre next');
+    yield f2;
+    console.log('f1: post next');
+}
+
+function* f2() {
+    console.log('  f2: pre next');
+    yield f3;
+    console.log('  f2: post next');
+}
+
+function* f3() {
+    console.log('    f3: pre next');
+    console.log('    f3: post next');
+}
+
+var g = f1();
+g.next();
+g.next();
+
+输出结果：
+f1: pre next
+f1: post next
+
