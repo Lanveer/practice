@@ -8,3 +8,47 @@
 <script src="https://cdn.jsdelivr.net/alasql/0.3/alasql.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.7.12/xlsx.core.min.js"></script>
 
+2. 文件按钮绑定事件。
+  <button class="btn btn-primary" ng-click="exportExcel()">导出excel</button>
+
+3.controller中处理事件 
+  $scope.exportExcel=function(){
+        var arr = [];
+        var type = null;
+        var amountIN = 0;
+        var amountOUT = 0;
+        arr.push({
+            '兑付情况':12,
+            '合同':'something',
+            '收付日期':'2018-09-21',
+            '科目':'chinese',
+            '收入':232,
+            '支出':33,
+            '结存':65
+        },{
+            '兑付情况':12,
+            '合同':'hello',
+            '收付日期':'2018-09-21',
+            '科目':'chinese',
+            '收入':232,
+            '支出':33,
+            '结存':65
+        });
+
+
+        console.log(arr);
+        if(arr.length < 1){
+            console.log('暂无数据，导出失败！');  // 处理空数组导出的情况
+        }else{
+            alasql.promise('SELECT * INTO XLSX("日记账-'+ "-"+ 'lanveer'+'.xlsx",{headers:true}) FROM ?',[arr])
+                .then(function (data) {
+                    console.log('data is:', data)  // 这里打印的data就是1
+                    if(data == 1){
+                        console.log('数据导出成功！')
+                    }
+                })
+        }
+    }
+    
+    
+    这样点击导出按钮的时候，对应的excel文件就下载成功了。
