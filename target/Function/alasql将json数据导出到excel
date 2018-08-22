@@ -1,1 +1,10 @@
 
+最近项目接到一个需求就是在angular1x 版本中，某一个报表页面添加一个报表导出的功能，思来想去， 在网上找了alasql这个插件， 完美实现了将json数组导出
+成excel文件， 这个插件的优势在于能够自由组合数据，然后统一导出， 下面就写一个列子。
+
+1. 首先在页面中引入相对应的js文件，或者也可以使用npm安装。
+
+
+<script src="https://cdn.jsdelivr.net/alasql/0.3/alasql.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.7.12/xlsx.core.min.js"></script>
+
