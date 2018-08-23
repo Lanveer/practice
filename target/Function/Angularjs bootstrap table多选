@@ -25,3 +25,63 @@
         </tbody>
 
     </table>
+
+
+controller：
+
+ scope.datas = [
+                {name:'admin1', rem:'备注'}, 
+                { name:'admin2', rem:'备注'}, 
+                { name:'admin3', rem:'备注'}
+                ];
+
+            scope.count = 0;//已选择数量 
+            scope.selectData = [];//已选对象
+              //选择单个（取消选择单个
+            scope.changeCurrent = function(current, $event) {
+              //计算已选数量 true加， false减
+                scope.count += current.checked ? 1 : -1;
+                //判断是否全选，选数量等于数据长度为true
+        scope.selectAll = scope.count === scope.datas.length;
+                //统计已选对象
+                scope.selectData = [];
+                angular.forEach(scope.datas, function(item) {
+                    if(item.checked){
+                        scope.selectData[scope.selectData.length] = item;
+                    }
+                });
+
+
+              $event.stopPropagation();//阻止冒泡
+
+            };
+            
+            
+            
+             //全选（取消全选
+            scope.changeAll = function() {
+                //console.log(scope.selectAll);
+                angular.forEach(scope.datas, function(item) {
+                    item.checked = scope.selectAll;
+                });
+                scope.count = scope.selectAll ? scope.datas.length : 0;
+                if (scope.selectAll) {
+
+                    scope.selectData = scope.datas;
+                } else {
+                    scope.selectData = [];
+
+                }
+
+            };
+            
+            
+             //单击行选中
+            scope.changeCurrents = function(current, $event) {
+                if(current.checked == undefined){
+                    current.checked = true;
+                }else{
+                    current.checked = !current.checked;
+                }
+                scope.changeCurrent(current, $event);
+            };
