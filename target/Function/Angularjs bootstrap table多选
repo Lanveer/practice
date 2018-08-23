@@ -1,1 +1,27 @@
 
+<table class="table table-bordered" >
+        <thead>
+          <tr>
+                <th>
+                    <input type="checkbox" ng-model="selectAll"  ng-change="changeAll()" />  选择</th>
+                <th>序号</th>
+                <th>用户</th>
+                <th>备注</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="row in datas" ng-init="outerIndex = $index" ng-click="changeCurrents(row, $event)">
+                <td><input type="checkbox" ng-model="row.checked" ng-click="changeCurrent(row, $event)" /></td>
+                <td ng-bind="outerIndex+1"></td>
+                <td ng-repeat="tddata in row | filterTable">
+                        {{tddata}}
+                </td>
+                <td>
+                     <button type="button" class="btn btn-info" ng-click="zdTableEdit(row, $event)">编辑</button>
+                     <button type="button" class="btn btn-danger" ng-click="zdTableRemove(row, $event)">删除</button>
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
