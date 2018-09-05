@@ -1,0 +1,182 @@
+HTTP
+主要对HTTP相关的概念进行考察。
+
+常见问题：
+HTTP请求和响应的报文格式 
+了解HTTP请求和响应由哪些部分组成。
+HTTP常见状态码及其含义 
+要求面试者至少能说出2xx, 3xx, 4xx, 5xx的含义，更进一步，可以具体到对某个常见状态码的理解（比如301、304、404、500)。如果能说出1xx的含义和具体的使用场景，则是加分项。
+HTTP请求类型 
+至少需要知道GET、POST的区别。 需要明确，GET和POST的区别更多是在“语义化”而非实现上，服务端可以用GET实现非幂等的请求，也可以使用POST实现查询请求。除了GET和POST，如果能够了解DEL、PUT和Restful风格的API设计更好。
+前端如何保持用户的登陆状态 
+能够讲出常见的登陆态保存和验证的方法。最常见的做法是将服务端生成的sessionId或jwt保存到cookie中，后端通过cookie中的sessionId来判断用户的登陆状态。如果答到这一点，可以问一下cookie工作原理、为什么会限制cookie大小、cookie的储存时间等问题，如果希望不同浏览器窗口可以登陆多个帐号，应该如何实现？ ，如果知道sessionStorage，问一下 cookie, sessionStorage和localStorage的区别。
+跨域请求的过程和解决办法 
+首先需要了解什么是跨域请求，实际生产中跨遇问题产生的原因以及具体的解决办法（ngxin/node代理，jsonp，后端设置allow-access-origin头等），如果提到jsonp，那么可以问jsonp的原理与实现方法。如果知道使用nginx进行反向代理，具体问一下nginx location匹配的规则。
+HTML、CSS
+对这部分的考察，可以分为两部分：
+
+概念考察
+概念可以单独提出来问，也可以穿插在实例中，
+
+DOM和BOM 
+概念性的东西，dom主要指的是document对象，bom则是浏览器对象（包括navigator, history等）。在开发者的视角，两者都封装了一组基于自身封装的领域的api。
+浏览器的渲染过程 
+rendering
+首先要了解上面这个经典的图所示的过程。这部分常常结合动画进行考察，比如实现一个简单的渐入渐出动画或是位移的动画，如何保证渲染的效率，或是在添加了transformX: 123px的组件中，添加一个position: fixed的子元素，元素的位置会是怎样的？理解paint和composite是关键。
+HTML5中的新特性 
+需要大概了解新增的很多语义化标签和一些其他功能性的标签，同时在这些标签的基础上新增的一些API，常问的有localstorage、sessionstorage、canvas、svg等。
+盒模型&&弹性盒模型 
+对盒模型，除了概念，还会考察一些常用的属性，比如box-sizing如何使用，或是极端情况下border的表现等。还有一些比较少见的情况比如 margin边界叠加可能也会问到。对flex我比较喜欢结合下面的实例进行考察。
+line-height相关的问题 
+比如line-height:120%和line-height:1.2的区别是什么?
+事件冒泡&&捕获 
+首先需要了解js中的事件模型，了解dom0和dom2事件的区别，知道dom2事件的捕获和冒泡阶段，能够利用这两点解决一些实际问题（常常结合弹窗组件来进行考察）。
+实际例子
+这部分除了对基本概念，还通过一些常见的布局方式和组件实现，考察面试人对HTML及CSS属性的熟练程度。
+
+圣杯布局 
+最常见的布局方式之一，要求面试者实现如下图所示的布局。如果用到了语义化标签，则是加分项。 
+后续的问题包括： 
+如果使用float进行布局，那么可以问一些float属性相关的问题。 
+如果使用flex实现，可以顺便问一下flex实现的原理，flex: 1的含义等flex相关的问题。 
+如果布局需要响应式的适配手机页面，又该如何实现？（media-query） 
+如果布局中，需要显示的是图片，如何保证在不同的手机上，都可以显示完整的图片切不被拉伸变形?(rem、em、vw&&vh) 
+如果提到rem或em，可以问一问它们的原理。 
+holy-grail-layout
+图片悬挂于文字一侧的布局 
+这种布局可分为单图+多行文字或单图+单行文字两种情况。 
+单行文字的情况比较好处理，使用inline-block、float和flex都可以很好的解决。对于多行文字的情况，需要考虑：
+文字是否环绕图片
+图片和文字是否基于中线垂直对齐
+如果不希望文字环绕图片，且图片和文字顶部对齐，float就可以解决。如果使用inline-block属性，则要注意设置vertical-align，而它又涉及到对line-height的理解，因此，如果提到inline-block，就可以顺道问一些关于line-height属性的问题，比如单行或多行文字分别如何实现垂直居中。 
+hang-up-layout
+
+input和autocomplete组件 
+如果希望实现下图所示的输入框组件，应该如何做？ 
+布局的实现比较简单，如果能实现基本的布局，接着可以问如果希望实现自动完成的功能应该如何实现（此处如果提到debounce则是加分项），如果没有提到debounce函数，可以追问如果用户输入速度非常快，如何避免过多的请求造成的不可控性？当用户拿到搜索结果后，如果希望搜索结果中奇偶行的背景颜色不同，应该如何实现(nth-child)？ 
+在单行输入组件的基础上，如果输入组件要求实现类似QQ邮箱的效果，应该如何实现？ 
+input-layout
+无限下拉列表 
+对无限下拉列表，首先询问下拉列表的实现（监听onscroll函数或是采用setInterval的方式），如果采用onscroll实现，那么如何避免重复调用API的情况出现？如何消除安卓和ios设备上，onscroll函数调用的差异性？（throttle和debounce函数）。当下拉列表中，存在大量的图片时，如何实现图片的懒加载，避免多余的带宽消耗?如何实现一个墓碑元素（占位元素）来提升用户的体验？
+弹窗组件 
+对于弹窗组件，主要是要求实现水平垂直居中的效果。分为宽高确定和宽高不确定两种情况。 
+在确定宽高的前提下，可以采用absolute居中的方式。 
+如果宽高不确定，那么可以用top: 50%; left 50% + transformX/Y或是flex实现。 
+在弹窗的基础上，还需要实现一个backdrop click的效果，即点击backdrop弹窗关闭。也有两种实现的思路： 
+增加一个遮罩层并监听click方法或是监听document的click方法，如果!popupNode.cotains(e.target)则关闭弹窗。 
+如果希望popup在打开/关闭时有一个放大/缩小的动画效果，又该如何实现？（通过transition和scale去实现）
+实现一个气泡图（碰撞检测） 
+实现一个包含10个气泡的气泡图，保证所有气泡之间不会重叠。 
+可以使用html+css或是canvas来实现。碰撞检测的思路是把每个气泡看作一个正方形，实现一个网格棋盘，并记录气泡的直径、左上角的坐标和右下角的坐标，这样，新增加的气泡就可以准确的定位之前气泡所在的位置。
+使用css实现帧动画 
+主要考察对动画的熟悉程度。animation和keyframe。如果用js实现，怎么做？requestAnimationFrame。
+Javascript
+es5实现js的继承 
+继承的实现包括对实例属性、原型链属性和静态属性的继承。一般我会问：如何使用ES5实现对error类的继承(class MyError extends Error() { ... })并且保证new MyError() instanceof Error === true。 
+之后，可以问一下instanceof的实现原理和对原型链的理解。如果能实现对实例属性和原型链的继承，那么问一下如何实现对静态属性的继承。
+js中对类型的判断(typeof, instanceof, toString, constructor) 
+可以给个例子，比如如何判断变量a是否是string类型? 
+比较满意的答案应该是对基本数据类型或是js内置对象，用toString，自定义类型，用instanceof。。 
+如果回答用typeof，可以问一下typeof new String('123')和typeof '123的结果，如果回答知道返回的结果分别是object和string。 
+如果知道toString，可以问一下如何使用toString方法对对象类型检测Object.proptypes.toString.call(new String('123'))。之所以用Object的toString方法，是因为String对象覆盖了原来的toString方法。更进一步，可以问下toString方法进行类型检测的原理。
+隐式类型转换 
+在js中，隐式类型转换的核心是对toString和valueOf方法的调用。对象到字符串一般会优先调用toString，如何该方法不存在或返回的不是js中的原始类型，则会调用valueOf。对像到数字之前的转换顺序则相反。 
+常见问题如 
+"1" == true的返回结果是什么? 
+如何判断实例是NaN? 
+定义一个对象a，使得for(let i = 0; i < 5; i++) console.log(a)依次输出1,2,3,4,5。 
+对这个问题的理解可以看看这篇文章。 
+对于一些稀奇古怪的隐式类型转换，比如++[[]][+[]]+[+[]] === 10，可以看看为什么这串等式 == 10？。不过这样的问题不会出现在面试中。
+js中浮点数的运算 
+一个常规的面试题目：解释一下console.log(0.1 + 0.2 == 0.3); //false的。对于这道题目，面试者首先要清楚出现该问题的原因，即js采用的IEEE-754格式并不能精确的表示类似0.1这样的简单数字。如果能结合浮点数的具体储存方式来谈会更好。不清楚的可以结合谁偷了你的精度一起来看。
+变量提升的问题 
+所谓变量提升，是指ES5中，函数声明和变量声明被隐式的提升到函数开头的现象。需要注意的是使用var声明的变量只会提升变量的声明，而类似于function a() {} 这样的函数定义则会整体被提升。 
+ES5中，只存在全局和函数作用域，不存在块级作用域，再加上变量提升的特性，很容易产生很多在其他语言中不会出现的现象，下面是一道非常典型的包含变量提升的面试题:
+var getName; //getName声明被提升到开头
+function getName() { alert(5); } //函数getName被提升到开头，并覆盖getName变量
+function Foo() {
+getName= function() { alert(1); }; //没有使用var声明的getName默认指向全局变量
+return this;
+}
+Foo.getName = function () { alert(2); }
+Foo.prototype.getName = function () { alert(3); }
+getName = function () { alert(4); } //getName函数定义未被提升
+promise，yield，async和await 
+三者都是针对异步回调的解决方案，面试中可能会要求简单写一个基于promise的settimeout函数之类的实现，并在这个基础上实现async和await函数。
+内存泄露 
+会结合js的垃圾回收机制来进行考察。需要知道常见的引起内存泄露的原因：全局变量、闭包等情况。
+模块化(AMD,commonJS, es6)
+event loop 
+结合实际题目考察。需要了解js中task、microtask和macrotask的区别
+js中this指向的问题 
+这部分也是一个常考点，一般会结合实际的题目一起考察。对熟悉ES6的同学，可以问一问上箭头函数的this指向问题。 
+关于这个问题，主要是掌握this指向的一般性原则: 
+this永远指向函数运行时所在的对象，而不是函数被创建时所在的对象。 
+匿名函数或不处于任何对象中的函数指向window。 
+1.如果是call，apply,with，指定的this是谁，就是谁。 
+2.普通的函数调用，函数被谁调用，this就是谁。 
+箭头函数的this:箭头函数不绑定this，而允许局部作用域的方式来沿袭处理this。 
+个人比较喜欢的一道题目如下：
+// 请说出控制台的输出结果
+const myObj = {
+name: 'myobj1',
+funcA: () => { console.log(this.name); },
+funcB: function () { console.log(this.name); }
+};
+function outerFunc() {
+ const innerObj = {
+name: 'myobj2',
+funcA: () => { console.log(this.name); },
+funcB: function () { console.log(this.name); }
+ };
+innerObj.funcA();
+innerObj.funcB();
+}
+myObj.funcA();
+myObj.funcB();
+outerFunc();
+outerFunc.call({name: 'test'});
+算法、数据结构
+主要是一些简单的算法和数据结构的考察，包括：
+
+如何实现栈、队列 
+一般是填空题，给出一个栈的定义，实现其pop和push函数即可:
+Class Stack { 
+constructor() {
+ this.arr = [];
+ }
+pop() {
+ //todo
+ }
+push() {
+ //todo
+ }
+}
+随机打乱数组元素的顺序 
+主要是对洗牌算法的理解。
+树的深度优先遍历&&广度优先遍历算法
+设计模式和设计原则
+设计模式不是考察的重点。如果对有后端开发经验或是职级较高的同学，可以问一些设计模式相关的问题： 
+说说了解的设计模式，并给出一些简单设计模式的实现（比如singleton、工厂模式、监听者模式、迭代器等）。 
+由于js中，函数是一等公民，可以作为参数进行传递，因此有的在强类型语言中常见的设计模式在JS中反而成了累赘，使用的时候一定要多多思考。 
+之间的笔记大概总结了一些设计模式，可以作为参考。 
+设计模式一 
+设计模式二
+
+React、Vue、AngularJS等框架的考察
+首先需要知道MVC和MVVM这两个概念的区别和联系。 
+框架部分一般问的不多。对React来说，主要需要了解React的生命周期、virtualdom的概念、props和state、pureComponent对组件进行优化的原理以及高阶组件的概念。 
+对Vue，了解的不多，常常会问一些基本的语法知识和双向绑定的相关的问题。
+
+JSBrige，RN && 小程序、Electron
+能说出jsbridge的原理
+知道RN和Hybrid解决方案各自的原理，能够说出两者的差异和优缺点。
+其他
+前端性能优化 
+图片压缩, 雪碧图，gzip，代码的压缩混淆等等。
+webpack的基本使用 
+了解webpack的entry，output，loaders，plugin
+常见编码算法 
+理解utf8，unicode的区别和原理，base64，urlencode的原理。
+常见的浏览器内核和js引擎
+对常见的前端安全问题如XSS、CSRF了解多少?
