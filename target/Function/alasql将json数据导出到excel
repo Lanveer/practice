@@ -17,6 +17,8 @@
         var type = null;
         var amountIN = 0;
         var amountOUT = 0;
+        
+        //这里的arr可以换成返回值，进行处理
         arr.push({
             '兑付情况':12,
             '合同':'something',
