@@ -1,1 +1,4 @@
 
+
+AngularJS分页序号递增
+<td md-cell ng-bind="$index+1+(query.page-1)*query.size">1</td>
