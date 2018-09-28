@@ -2,3 +2,27 @@
 
 AngularJS分页序号递增
 <td md-cell ng-bind="$index+1+(query.page-1)*query.size">1</td>
+
+
+将网页保存为图片
+使用html2canvas
+
+     function downloadFile(href, filename) {
+            var $a = document.createElement('a');
+            $a.download = filename;
+            $a.href = href;
+            $a.target = '_blank';
+            $a.dispatchEvent(new MouseEvent('click', {
+                    view: window,
+                    bubbles: true,
+                    cancelable: false
+                })
+            );
+        }
+        vm.saveImgLocal= function () {
+            html2canvas($('#test')[0]).then(function(canvas) {
+                var url = canvas.toDataURL('image/jpeg');
+                downloadFile(url, 'test.jpg');
+            });
+        }
+        
