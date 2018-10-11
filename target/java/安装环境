@@ -1,1 +1,21 @@
 
+1. jdk  10.2 的下载安装， 需要注意的是新版本的jdk精简了lib， 所以稍后再配置class_path的时候就只需要到达bin目录就可以了
+
+2. 变量的配置
+  a.JAVA_HOME  指向刚刚安装的jdk下面的bin目录，也可以不直接指向bin，到jdk的根目录即可
+  b.path  在path中添加jdk目录， 以便于随地都可以运行java程序， 需要注意的是路径要使用绝对路径， 不能像之前使用%JAVA_HOME%，还有就是要放在path的最前面
+  c.class_path 这个.;%JAVA_HOME%\bin;%JAVA_HOME%\bin;   注意前面的小点，必不可少。
+  
+3. 测试一下在cmd命令行中输入java -version java javac 如果能正常的输出，代表安装正确。
+
+4.tomcat服务器的安装，这个有绿色免安装和安装版， 注意端口不要被占用就没什么问题
+
+5. eclipse的安装，
+
+6.在eclipse中配置tomcat
+
+  a.window/preference/server/runtime Environment/add 然后apply and close
+  b.控制台中找到server， 
+  c.
+  d.
+  e.
