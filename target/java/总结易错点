@@ -1,0 +1,13 @@
+   1. java中比较两个int类型的时候， 当范围在-127~128 的时候，两个变量使用了同一地址：
+    Integer a=123;
+    Integer b=123;
+    System.out.println(a==b);        // 输出 true
+    System.out.println(a.equals(b);  // 输出 true
+    
+    但是当比较的数据不在这个范围的时候
+    当两个 Integer 变量的数值超出 -128 ~ 127 范围时, 变量使用了不同地址：
+   
+    a=1230;
+    b=1230;
+    System.out.println(a==b);        // 输出 false
+    System.out.println(a.equals(b));  // 输出 true
