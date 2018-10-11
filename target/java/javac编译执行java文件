@@ -1,0 +1,25 @@
+在eclipse中编译能够顺利通过， 在控制台打印出我们写的helloworld
+
+当在cmd控制台中的时候就会出现各种各样的报错，
+错误: 找不到或无法加载主类 HelloWorld
+原因: java.lang.NoClassDefFoundError: helloWorld/HelloWorld (wrong name: HelloWo
+rld)
+
+这些就是在正常执行javac之后， 在使用java   class类的时候报的错误
+
+
+网上关于这些错误的解决办法也是很多， 但是试过之后几乎都不起作用，有的说是环境变量的问题， 还有一些说是文件名的问题。
+
+
+下面贴出解决办法
+
+1.D:\java\helloWorld\src\helloWorld>javac Helloworld.java   在java文件夹下面执行javac命令，注意这里都在helloWorld包名下面
+2.D:\java\helloWorld\src>   java helloWorld.HelloWorld      当回到包名的目录下， 使用. 拼接文件名字， 进行执行， 就能正确打印结果。
+结果：hello world, this is my first java programm
+
+
+总结：
+ 报错的内容大概意思就是在当前的目录下找不到对应的主类，所以没法执行class文件， 只有当回到包的目录下面， 使用点拼接， 依次找到需要执行的class文件
+ 目录下面， 这样才能正常的执行java 命令下的class文件。
+
+
